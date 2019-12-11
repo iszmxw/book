@@ -109,7 +109,8 @@
         <p>
             <label>平台二维码</label>
             <span class="field">
-						<iframe src="{:U('upload', 'event=setPic&url='.$_CFG['site']['qrcode'])}" scrolling="no"
+						<iframe src="{isset($_CFG['site']['qrcode']) ? :U('upload', 'event=setPic&url='.$_CFG['site']['qrcode']) : ''}"
+                                scrolling="no"
                                 width="100" height="100"></iframe>
 						<input type="hidden" name="qrcode" id="qrcode" value="{$_CFG['site']['qrcode']}"
                                class="smallinput"/>
