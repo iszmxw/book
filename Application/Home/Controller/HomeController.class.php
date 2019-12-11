@@ -57,7 +57,7 @@ class HomeController extends Controller
         $this->chapter = session('chapter');
         foreach ($config as $v) {
             $key              = '_' . $v['name'];
-            $this->{$key}     = @unserialize($v['value']);
+            $this->{$key}     = unserialize($v['value']);
             $_CFG[$v['name']] = $this->{$key};
         }
         if (session('member')) {
