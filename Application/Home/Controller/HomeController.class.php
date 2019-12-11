@@ -72,6 +72,11 @@ class HomeController extends Controller
                         $val['zidongzhuce'] = 0;
                     }
                     break;
+                case '_ads':
+                    if (!isset($val['isopen'])) {
+                        $val['isopen'] = 0;
+                    }
+                    break;
             }
             $this->{$key}     = $val;
             $_CFG[$v['name']] = $this->{$key};
