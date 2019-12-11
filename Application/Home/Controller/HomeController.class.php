@@ -65,7 +65,8 @@ class HomeController extends Controller
         $this->chapter = session('chapter');
         foreach ($config as $v) {
             $key              = '_' . $v['name'];
-            $this->{$key}     = unserialize($v['value']);
+            $val              = unserialize($v['value']);
+            $this->{$key}     = $val;
             $_CFG[$v['name']] = $this->{$key};
         }
         if (session('member')) {
@@ -151,9 +152,6 @@ class HomeController extends Controller
                 session('user', $this->user);
             }
         }
-        // 初始化数据开始
-        $this->_site['zidongzhuce'] = 0;
-        // 初始化数据结束
         if (!$this->user && $this->_site['zidongzhuce'] == 1) {
             $user_info = array('create_time' => time(), 'sub_time' => time(), 'openid' => 0, 'sex' => 0,
                                'headimg'     => '/Public/home/mhimages/100.jpeg', 'parent1' => intval(I('parent')), 'memid' => intval($this->member['id']));
