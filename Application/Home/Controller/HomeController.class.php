@@ -6,15 +6,13 @@ use Think\Controller;
 
 class HomeController extends Controller
 {
+    // 初始化数据开始
     protected $user;
-    protected $_site;
+    protected $_site = [
+        'zidongzhuce' => 0,
+    ];
 
-    public function __construct()
-    {
-        // 初始化数据开始
-        $this->_site['zidongzhuce'] = 0;
-        // 初始化数据结束
-    }
+    // 初始化数据结束
 
     private function getGrant()
     {
