@@ -76,7 +76,7 @@
 					<label>代理公众号二维码</label>
 					<span class="field">
 						<iframe src="{:U('upload', 'event=setPic&url='.$info['gqrcode'])}" scrolling="no" width="100" height="100"></iframe>
-						<input type="hidden" name="gqrcode" id="gqrcode" value="{$_CFG['site']['gqrcode']}" class="smallinput" />
+						<input type="hidden" name="gqrcode" id="gqrcode" value="{@$_CFG['site']['gqrcode']}" class="smallinput" />
 						<script>
 						function setPic(url){
 							document.getElementById('gqrcode').value = url;

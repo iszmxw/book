@@ -50,7 +50,7 @@
 							<a href="{:U('audit?id='.$vo['id'])}">审核</a>
 							<elseif condition="$vo['status'] eq 2"/>
 							<!--企业付款方式显示一件转账链接-->
-							<if condition="$_CFG['site']['withdraw'] eq 2">
+							<if condition="@$_CFG['site']['withdraw'] eq 2">
 							<a href="{:U('Finance/pay', array('user_id' => $vo['user_id'],'money' => $vo['money'], 'remark' => '平台提现'))}" target="_blank">一键转账</a>	 |
 							</if>
 							<a href="{:U('confirm?id='.$vo['id'])}">确认完成</a>

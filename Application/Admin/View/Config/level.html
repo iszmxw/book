@@ -37,7 +37,7 @@
                     </thead>
                     <tbody>
 						<tr>
-                            <td><input type="text" name="name[]" value="{$_CFG['level'][0]['name']}" /></td>
+                            <td><input type="text" name="name[]" value="{@$_CFG['level'][0]['name']}" /></td>
                             <td><input type="text" style="width:30px" name="orders[]" value="0" readonly /></td>
                             <td><input type="text" style="width:30px" name="agent1[]" value="0" readonly /></td>
                             <td><input type="text" style="width:30px" name="agent2[]" value="0" readonly /></td>
@@ -46,25 +46,25 @@
 							<td><input type="text" style="width:60px" name="sales[]" value="0" readonly /></td>
 							<td><input type="text" style="width:60px" name="touzibi[]" value="0" readonly /></td>
 							<td>
-								<select name="dist[]" default="{$_CFG['level'][0]['dist']}">
+								<select name="dist[]" default="{@$_CFG['level'][0]['dist']}">
 									<option value="1">开启</option>
 									<option value="0">关闭</option>
 								</select>
 							</td>
 							<td>
-								<select name="withdraw[]" default="{$_CFG['level'][0]['withdraw']}">
+								<select name="withdraw[]" default="{@$_CFG['level'][0]['withdraw']}">
 									<option value="1">开启</option>
 									<option value="0">关闭</option>
 								</select>
 							</td>
 							<td>
-								<select name="deposit[]" default="{$_CFG['level'][0]['deposit']}">
+								<select name="deposit[]" default="{@$_CFG['level'][0]['deposit']}">
 									<option value="1">开启</option>
 									<option value="0">关闭</option>
 								</select>
 							</td>
-							<td><input type="text" style="width:60px" name="level[]" value="{$_CFG['level'][0]['level']}"  /></td>
-							<td><input type="text" style="width:60px" name="bonus[]" value="{$_CFG['level'][0]['bonus']}"  /></td>
+							<td><input type="text" style="width:60px" name="level[]" value="{@$_CFG['level'][0]['level']}"  /></td>
+							<td><input type="text" style="width:60px" name="bonus[]" value="{@$_CFG['level'][0]['bonus']}"  /></td>
 							<td>无</td>
                         </tr>
                     	<volist name="_CFG['level']" id="vo" offset="1">
