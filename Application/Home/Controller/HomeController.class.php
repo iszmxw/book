@@ -29,13 +29,13 @@ class HomeController extends Controller
 
         $config = M('config')->select();
         if (!is_array($config)) {
-            $_var_0('请先在后台设置好各参数');
+            $this->error('请先在后台设置好各参数');
         }
-        if ($_GET['imei']) {
-            $member = M('member')->where(array('imei' => $_GET['imei']))->find();
+        if (I('imei')) {
+            $member = M('member')->where(array('imei' => I('imei')))->find();
             if ($member) {
                 $imei = xmd5($member['salt']);
-                if ($imei == $_GET['imei']) {
+                if ($imei == I('imei')) {
                     session('member', $member);
                     $this->assign('member', $member);
                 }
