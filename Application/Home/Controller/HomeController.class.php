@@ -72,7 +72,7 @@ class HomeController extends Controller
                 $val = unserialize($v['value']);
                 dump($val);
             } catch (\Exception $e) {
-                dd($e);
+                dd($key,$val,$e);
             }
             switch ($key) {
                 case '_site':
