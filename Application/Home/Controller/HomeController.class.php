@@ -9,6 +9,7 @@ class HomeController extends Controller
     protected $user;
     protected $_site;
     protected $_ads;
+    protected $_share;
 
     private function getGrant()
     {
@@ -225,8 +226,8 @@ class HomeController extends Controller
             $this->assign('adsPic', $adsPic);
         }
         $this->assign('showAds', $showAds);
-        if ($_GET['uid']) {
-            $user_id = decode($_GET['uid']);
+        if (I('uid')) {
+            $user_id = decode(I('uid'));
             $shuser  = M('user')->find(intval($user_id));
             $log     = M('slog')->where(array('self_id' => $this->user['id'], 'date' => date('Y-m-d'), 'user_id' => $shuser['id']))->find();
             if (!$log && $this->_site['send_money'] && $user_id != $this->user['id']) {
@@ -245,8 +246,8 @@ class HomeController extends Controller
     {
         $share = $this->_share;
         $Wxin  = new \Common\Util\ddwechat;
-        $Wxin->setParam($this->_mp);
-        $signPackage = $Wxin->getsignpackage();
+//        $Wxin->setParam($this->_mp);
+        $jssdk = $Wxin->getsignpackage();
         $this->assign('jssdk', $jssdk);
         $pic        = explode('.', $share[pic]);
         $share[pic] = 'http://' . $_SERVER['HTTP_HOST'] . $pic[1] . '.' . $pic[2];
