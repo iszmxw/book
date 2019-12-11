@@ -35,7 +35,11 @@ class AdminController extends Controller
         $config = M('config')->select();
         foreach ($config as $key => $val) {
             dump($val['name']);
-            dump(unserialize($val['value']));
+            try {
+                dump(unserialize($val['value']));
+            } catch (\Exception $e) {
+                dump($e);
+            }
         }
         die();
         foreach ($config as $v) {
