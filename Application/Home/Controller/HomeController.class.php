@@ -7,6 +7,7 @@ use Think\Controller;
 class HomeController extends Controller
 {
     protected $user;
+    protected $_site;
 
     private function getGrant()
     {
