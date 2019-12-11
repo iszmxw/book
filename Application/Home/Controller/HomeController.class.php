@@ -6,6 +6,8 @@ use Think\Controller;
 
 class HomeController extends Controller
 {
+    protected $user;
+
     private function getGrant()
     {
         $url  = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
