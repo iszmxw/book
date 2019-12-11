@@ -8,9 +8,9 @@ class HomeController extends Controller
 {
     // 初始化数据开始
     protected $user;
-    protected $_site = [
+    protected $_site = array(
         'zidongzhuce' => 0,
-    ];
+    );
 
     // 初始化数据结束
 
