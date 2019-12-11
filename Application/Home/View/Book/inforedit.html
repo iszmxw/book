@@ -1141,14 +1141,18 @@
         $.post(url, data, fun1, 'json');
     }
 </script>
-<script>
-    window.shareData = {
-        img: "{$binfo['share_pic']|complete_url}",
-        link: "<?php echo complete_url(U('inforedit',http_build_query(array_merge(array('uid' => encode($user['id']),'bid'=>$binfo['id'],'ji_no'=>$_GET['ji_no']),$_GET))));?>",
-        title: "{$binfo['share_title']}",
-        desc: "{$binfo['share_desc']}",
-    };
-</script>
-<include file="include/share"/>
+
+<!--如果是微信端打开-->
+<if condition="$is_weixin">
+    <script>
+        window.shareData = {
+            img: "{$binfo['share_pic']|complete_url}",
+            link: "<?php echo complete_url(U('inforedit',http_build_query(array_merge(array('uid' => encode($user['id']),'bid'=>$binfo['id'],'ji_no'=>$_GET['ji_no']),$_GET))));?>",
+            title: "{$binfo['share_title']}",
+            desc: "{$binfo['share_desc']}",
+        };
+    </script>
+    <include file="include/share"/>
+</if>
 </body>
 </html>

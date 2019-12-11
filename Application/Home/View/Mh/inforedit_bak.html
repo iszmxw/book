@@ -521,14 +521,18 @@
         }, 500);
     }, false);
 </script>
-<script>
-    window.shareData = {
-        img: "{$mhinfo['cover_pic']|complete_url}",
-        link: "<?php echo complete_url(U('Mh/inforedit',array('mhid'=>$mhinfo['id'],'ji_no'=>1)));?>",
-        title: document.title,
-        desc: "{$mhinfo['title']}",
-    };
-</script>
-<include file="include/share2"/>
+
+<!--如果是微信端打开-->
+<if condition="$is_weixin">
+    <script>
+        window.shareData = {
+            img: "{$mhinfo['cover_pic']|complete_url}",
+            link: "<?php echo complete_url(U('Mh/inforedit',array('mhid'=>$mhinfo['id'],'ji_no'=>1)));?>",
+            title: document.title,
+            desc: "{$mhinfo['title']}",
+        };
+    </script>
+    <include file="include/share2"/>
+</if>
 </body>
 </html>

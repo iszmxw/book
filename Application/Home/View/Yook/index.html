@@ -317,14 +317,18 @@
     });
 
 </script>
-<script>
-    window.shareData = {
-        img: "{$_CFG['site']['logo']|complete_url}",
-        link: "<?php echo complete_url(U('index',http_build_query(array_merge(array('uid' => encode($user['id'])),$_GET))));?>",
-        title: document.title,
-        desc: "这是我的漫画小说世界，快来为我加油助威吧！"
-    };
-</script>
-<include file="include/share"/>
+
+<!--如果是微信端打开-->
+<if condition="$is_weixin">
+    <script>
+        window.shareData = {
+            img: "{$_CFG['site']['logo']|complete_url}",
+            link: "<?php echo complete_url(U('index',http_build_query(array_merge(array('uid' => encode($user['id'])),$_GET))));?>",
+            title: document.title,
+            desc: "这是我的漫画小说世界，快来为我加油助威吧！"
+        };
+    </script>
+    <include file="include/share"/>
+</if>
 </body>
 </html>
