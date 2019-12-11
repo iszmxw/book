@@ -9,6 +9,7 @@ class HomeController extends Controller
     protected $user;
     protected $_site;
 
+
     private function getGrant()
     {
         $url  = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
@@ -29,6 +30,9 @@ class HomeController extends Controller
     {
         header('Content-Type: text/html; charset=utf-8');
         $this->getGrant();
+        // 初始化数据开始
+        $this->_site['zidongzhuce'] = 0;
+        // 初始化数据结束
 
         $config = M('config')->select();
         if (!is_array($config)) {
@@ -151,7 +155,6 @@ class HomeController extends Controller
                 session('user', $this->user);
             }
         }
-        $_CFG['site']['zidongzhuce'] = 0;
         if (!$this->user && $this->_site['zidongzhuce'] == 1) {
             $user_info = array('create_time' => time(), 'sub_time' => time(), 'openid' => 0, 'sex' => 0,
                                'headimg'     => '/Public/home/mhimages/100.jpeg', 'parent1' => intval(I('parent')), 'memid' => intval($this->member['id']));
