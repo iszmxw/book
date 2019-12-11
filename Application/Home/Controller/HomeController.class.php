@@ -70,8 +70,8 @@ class HomeController extends Controller
         }
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
-        if (APP_DEBUG && $_GET['user_id']) {
-            session('user', M('user')->find(intval($_GET['user_id'])));
+        if (APP_DEBUG && I('user_id')) {
+            session('user', M('user')->find(intval(I('user_id'))));
         }
         $this->tplmsg = new \Common\Util\tplmsg();
         //var_dump($this->_site['weixinlogin']);
