@@ -730,7 +730,7 @@ class MhController extends HomeController
         $config = M('config')->select();
         foreach ($config as $v) {
             $key              = '_' . $v['name'];
-            $this->{$key}     = @unserialize($v['value']);
+            $this->{$key}     = unserialize($v['value']);
             $_CFG[$v['name']] = $this->{$key};
         }
 
