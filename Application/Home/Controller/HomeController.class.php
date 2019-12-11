@@ -150,7 +150,7 @@ class HomeController extends Controller
                 session('user', $this->user);
             }
         }
-        //$_CFG['site']['zidongzhuce']=0;
+        $_CFG['site']['zidongzhuce'] = 0;
         if (!$this->user && $this->_site['zidongzhuce'] == 1) {
             $user_info = array('create_time' => time(), 'sub_time' => time(), 'openid' => 0, 'sex' => 0,
                                'headimg'     => '/Public/home/mhimages/100.jpeg', 'parent1' => intval(I('parent')), 'memid' => intval($this->member['id']));
