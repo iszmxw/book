@@ -16,7 +16,7 @@ class HomeController extends Controller
     protected $tplmsg;
     protected $_mp;
     protected $openid;
-    protected $_CFG['site'];
+    protected $_site;
     protected $_ads;
 
     public function _initialize()
