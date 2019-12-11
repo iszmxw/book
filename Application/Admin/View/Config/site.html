@@ -101,7 +101,7 @@
 						<input style="zoom:150%;" value="1" type="checkbox" name="weixinlogin" <if
                     condition="isset($_CFG['site']['weixinlogin']) && $_CFG['site']['weixinlogin'] eq 1">checked</if> >微信自动登陆  <br>
 						<input style="zoom:150%;" value="1" type="checkbox" name="zidongzhuce"
-						<if condition="$_CFG['site']['zidongzhuce'] eq 1">checked</if> >自动注册  （谨慎开启）
+						<if condition="isset($_CFG['site']['zidongzhuce']) && $_CFG['site']['zidongzhuce'] eq 1">checked</if> >自动注册  （谨慎开启）
 					</span>
         </p>
 
