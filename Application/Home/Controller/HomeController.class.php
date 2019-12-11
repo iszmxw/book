@@ -130,10 +130,10 @@ class HomeController extends Controller
             //如果是手机端
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
-                setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
+                setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
             } else {
-                if (!isset(I('parent'))) {
-                    session('parent', intval(I('parent')));
+                if (!isset($_GET['parent'])) {
+                    session('parent', intval($_GET['parent']));
                 }
                 $no_login = array('Index/index', 'Mh/index', 'Book/index', 'Yook/index');
                 if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
