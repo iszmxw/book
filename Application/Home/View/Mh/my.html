@@ -489,6 +489,9 @@
     })();
 </script> -->
 <!-- 第三方qq统计 -->
-<include file="include/share2"/>
+<!--如果是微信端打开-->
+<if condition="$is_weixin">
+    <include file="include/share2"/>
+</if>
 </body>
 </html>

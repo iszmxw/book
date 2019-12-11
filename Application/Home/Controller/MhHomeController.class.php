@@ -23,9 +23,9 @@ class MhHomeController extends Controller
 
         //print_r($this -> _level);
 
-        if (APP_DEBUG && $_GET['user_id']) {
-            session('user', M('user')->find(intval($_GET['user_id'])));
-            session('user_id', $_GET['user_id']);
+        if (APP_DEBUG && I('user_id')) {
+            session('user', M('user')->find(intval(I('user_id'))));
+            session('user_id', I('user_id'));
             $this->user = M('user')->find(session('user.id'));
             $this->assign('user', $this->user);
         }
