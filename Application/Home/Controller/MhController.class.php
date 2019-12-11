@@ -1089,9 +1089,8 @@ class MhController extends HomeController
     // 提现记录
     public function withdraw_recode()
     {
-        $user = M('user')->where(array("id" => $this->user['id']))->find();
-
-        $page             = $_POST['p'] ? $_POST['p'] : 1;
+        $user             = M('user')->where(array("id" => $this->user['id']))->find();
+        $page             = I('p') ? I('p') : 1;
         $pagesize         = 5;
         $stat             = ($page - 1) * $pagesize;
         $where['user_id'] = $this->user['id'];
