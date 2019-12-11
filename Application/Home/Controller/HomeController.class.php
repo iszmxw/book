@@ -143,6 +143,7 @@ class HomeController extends Controller
                 }
             }
         }
+        dd($_COOKIE);
         if (!$this->user) {
             $uloginid = $_COOKIE['uloginid'];
             if ($uloginid) {
