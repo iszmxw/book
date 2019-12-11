@@ -32,9 +32,11 @@ class Think
         // 注册AUTOLOAD方法
         spl_autoload_register('Think\Think::autoload');
         // 设定错误和异常处理
-        register_shutdown_function('Think\Think::fatalError');
-        set_error_handler('Think\Think::appError');
-        set_exception_handler('Think\Think::appException');
+
+//      register_shutdown_function('Think\Think::fatalError');
+//      set_error_handler('Think\Think::appError');
+//      set_exception_handler('Think\Think::appException');
+
 
         // 初始化文件存储方式
         Storage::connect(STORAGE_TYPE);
@@ -98,7 +100,13 @@ class Think
                 if (is_file(CONF_PATH . 'debug' . CONF_EXT))
                     C(include CONF_PATH . 'debug' . CONF_EXT);
             }
+
         }
+
+        $whoops         = new \Whoops\Run();
+        $whoops_handler = new \Whoops\Handler\PrettyPageHandler();
+        $whoops->pushHandler($whoops_handler);
+        $whoops->register();
 
         // 读取当前应用状态对应的配置文件
         if (APP_STATUS && is_file(CONF_PATH . APP_STATUS . CONF_EXT))
@@ -156,7 +164,8 @@ class Think
             include self::$_map[$class];
         } elseif (false !== strpos($class, '\\')) {
             $name = strstr($class, '\\', true);
-            if (in_array($name, array('Think', 'Org', 'Behavior', 'Com', 'Vendor')) || is_dir(LIB_PATH . $name)) {
+            /*新增Whoops*/
+            if (in_array($name, array('Think', 'Org', 'Behavior', 'Com', 'Vendor', 'Whoops')) || is_dir(LIB_PATH . $name)) {
                 // Library目录下面的命名空间自动定位
                 $path = LIB_PATH;
             } else {
@@ -164,10 +173,14 @@ class Think
                 $namespace = C('AUTOLOAD_NAMESPACE');
                 $path      = isset($namespace[$name]) ? dirname($namespace[$name]) . '/' : APP_PATH;
             }
-            $filename = $path . str_replace('\\', '/', $class) . EXT;
+            $ext = EXT;
+            /*针对Whoops单独后缀*/
+            if ($name == 'Whoops') $ext = '.php';
+
+            $filename = $path . str_replace('\\', '/', $class) . $ext;
             if (is_file($filename)) {
                 // Win环境下面严格区分大小写
-                if (IS_WIN && false === strpos(str_replace('/', '\\', realpath($filename)), $class . EXT)) {
+                if (IS_WIN && false === strpos(str_replace('/', '\\', realpath($filename)), $class . $ext)) {
                     return;
                 }
                 include $filename;
