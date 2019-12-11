@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     protected $user;
     protected $_site;
+    protected $_ads;
 
     private function getGrant()
     {
@@ -221,9 +222,9 @@ class HomeController extends Controller
             } elseif ($this->_ads['url']) {
                 $adsPic = $this->_ads['url'];
             }
+            $this->assign('adsPic', $adsPic);
         }
         $this->assign('showAds', $showAds);
-        $this->assign('adsPic', $adsPic);
         if ($_GET['uid']) {
             $user_id = decode($_GET['uid']);
             $shuser  = M('user')->find(intval($user_id));
