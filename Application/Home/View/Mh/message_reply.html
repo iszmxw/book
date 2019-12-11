@@ -157,5 +157,8 @@
     })();
 </script> -->
 <!-- 第三方qq统计 -->
-<include file="include/share2" />
+<!--微信端代码-->
+<if condition="$is_weixin">
+    <include file="include/share2" />
+</if>
 </body></html>

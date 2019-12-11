@@ -89,7 +89,10 @@
 </section>
 </div>
 
-<include file="include/share2" />
+<!--微信端代码-->
+<if condition="$is_weixin">
+	<include file="include/share2" />
+</if>
 <script>
 $('.toggle').click(function(data){
 	$('#show').hide();

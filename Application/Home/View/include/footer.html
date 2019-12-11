@@ -88,5 +88,8 @@
 	<a href="{:U('Ucenter/index')}"  class="f4">个人中心</a>
 </div>
 </body>
-<include file="include/share2" />
+<!--微信端代码-->
+<if condition="$is_weixin">
+	<include file="include/share2" />
+</if>
 </html>

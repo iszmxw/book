@@ -179,5 +179,9 @@
 		
 
 <div id="backtop"><i class="iconfont icon-fold"></i></div>
-<include file="include/share2" />
+
+<!--微信端代码-->
+<if condition="$is_weixin">
+	<include file="include/share2" />
+</if>
 <include file="include/footer" />

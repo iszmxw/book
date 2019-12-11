@@ -77,6 +77,9 @@
 <div style="height: 5rem;padding: 2rem;font-size: .8rem;color: #FF5722;line-height: 2.5rem;">
 	温馨提示：该视频免费试看{$info['trytime']}秒，如果您对本视频满意，请在试看结束购买本视频！
 </div>
-<include file="include/share2" />
+<!--微信端代码-->
+<if condition="$is_weixin">
+	<include file="include/share2" />
+</if>
 </body>
 </html>

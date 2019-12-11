@@ -25,5 +25,8 @@
 	var player = new ckplayer(videoObject);
 </script>
 </body>
-<include file="include/share2" />
+<!--微信端代码-->
+<if condition="$is_weixin">
+ <include file="include/share2" />
+</if>
 </html>
