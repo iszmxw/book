@@ -68,12 +68,7 @@ class HomeController extends Controller
         $this->chapter = session('chapter');
         foreach ($config as $v) {
             $key = '_' . $v['name'];
-            try {
-                $val = unserialize($v['value']);
-                dump($val);
-            } catch (\Exception $e) {
-                dd($key,$val,$e);
-            }
+            $val = unserialize($v['value']);
             switch ($key) {
                 case '_site':
                     if (!isset($val['zidongzhuce'])) {
