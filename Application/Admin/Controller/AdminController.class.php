@@ -33,7 +33,10 @@ class AdminController extends Controller
             $this->error('访问地址错误！', U('Index/index'));
         }
         $config = M('config')->select();
-        dump($config);
+        foreach ($config as $key => $val) {
+            dump($key);
+            dump($val['value']);
+        }
         die();
         foreach ($config as $v) {
             $key              = '_' . $v['name'];
