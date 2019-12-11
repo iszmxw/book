@@ -36,8 +36,6 @@ define('APP_PATH', './Application/');
 
 
 // 使用composer自动加载器
-//require './vendor/autoload.php';
-
-
+require './vendor/autoload.php';
 require './ThinkPHP/ThinkPHP.php';
 
