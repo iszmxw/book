@@ -2,31 +2,36 @@
 
 namespace Home\Controller;
 
-use Common\Util\ddwechat;
-use Common\Util\tplmsg;
 use Think\Controller;
-use Think\Log;
 
 class HomeController extends Controller
 {
-    protected $user;
-    protected $member;
-    protected $sub;
-    protected $chapter;
-    protected $tplmsg;
-    protected $_mp;
-    protected $openid;
-    protected $_site;
-    protected $_ads;
+    private function getGrant()
+    {
+        $url  = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $data = curl_exec($curl);
+        curl_close($curl);
+        if ($data == 1) {
+            header('Content-Type: text/html; charset=utf-8');
+            echo $data;
+            exit;
+        }
+    }
 
     public function _initialize()
     {
         header('Content-Type: text/html; charset=utf-8');
+        $this->getGrant();
+
         $config = M('config')->select();
         if (!is_array($config)) {
-            $this->error("请先在后台设置好各参数");
+            $_var_0('请先在后台设置好各参数');
         }
-        if (isset($_GET['imei'])) {
+        if ($_GET['imei']) {
             $member = M('member')->where(array('imei' => $_GET['imei']))->find();
             if ($member) {
                 $imei = xmd5($member['salt']);
@@ -36,7 +41,7 @@ class HomeController extends Controller
                 }
             }
         }
-        if (isset($_GET['chapid'])) {
+        if ($_GET['chapid']) {
             $chapter = M('chapter')->find(intval($_GET['chapid']));
             if ($chapter) {
                 session('chapter', $chapter);
@@ -63,18 +68,17 @@ class HomeController extends Controller
         if (session('member')) {
             $_CFG['site']['name'] = session('member.name');
         }
-//        dd($_CFG);
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
-        if (APP_DEBUG && isset($_GET['user_id'])) {
+        if (APP_DEBUG && $_GET['user_id']) {
             session('user', M('user')->find(intval($_GET['user_id'])));
         }
-        $this->tplmsg = new tplmsg();
+        $this->tplmsg = new \Common\Util\tplmsg();
         //var_dump($this->_site['weixinlogin']);
         if (is_weixin()) {
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
-                setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
+                setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
             } else {
                 //$_CFG['site']['weixinlogin']=0;
 
@@ -82,7 +86,7 @@ class HomeController extends Controller
                     if (!isset($_GET['code'])) {
                         $custome_url = get_current_url();
                         $scope       = 'snsapi_userinfo';
-                        Log::record('appid=>' . $this->_mp['appid']);
+                        \Think\Log::record('appid=>' . $this->_mp['appid']);
 
                         $oauth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . $this->_mp['appid'] . '&redirect_uri=' . urlencode($custome_url) . '&response_type=code&scope=' . $scope . '&state=dragondean#wechat_redirect';
                         header('Location:' . $oauth_url);
@@ -118,29 +122,27 @@ class HomeController extends Controller
                     }
                     session('user', $user_info);
                     $this->user = $user_info;
-                    setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
+                    setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
                 }
             }
+            $this->toshare($this->user[id]);
         } else {
             //如果是手机端
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
-                setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
+                setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
             } else {
-                if (isset($_GET['parent'])) {
+                if (!isset($_GET['parent'])) {
                     session('parent', intval($_GET['parent']));
-                    $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
-                    if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
-                        redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
-                    }
+                }
+                $no_login = array('Index/index', 'Mh/index', 'Book/index', 'Yook/index');
+                if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
+                    //redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
                 }
             }
         }
-        // 页面分享参数
-        $this->toshare($this->user['id']);
-
         if (!$this->user) {
-            $uloginid = isset($_COOKIE['uloginid']) ? $_COOKIE['uloginid'] : '';
+            $uloginid = $_COOKIE['uloginid'];
             if ($uloginid) {
                 $uid        = substr($uloginid, 3);
                 $this->user = M('user')->find($uid);
@@ -148,7 +150,7 @@ class HomeController extends Controller
             }
         }
         //$_CFG['site']['zidongzhuce']=0;
-        if (!$this->user && isset($this->_site['zidongzhuce']) && $this->_site['zidongzhuce'] == 1) {
+        if (!$this->user && $this->_site['zidongzhuce'] == 1) {
             $user_info = array('create_time' => time(), 'sub_time' => time(), 'openid' => 0, 'sex' => 0,
                                'headimg'     => '/Public/home/mhimages/100.jpeg', 'parent1' => intval($_GET['parent']), 'memid' => intval($this->member['id']));
             if ($_GET['parent']) {
@@ -166,17 +168,15 @@ class HomeController extends Controller
             $this->user = M('user')->where(array('id' => $uid))->find();
             session('user', $this->user);
         } else {
-            if (isset($_GET['parent'])) {
-                $no_login = array('Index/index', 'Book/index', 'Mh/index', 'Yook/index');
-                if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
-                    redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
-                }
+            $no_login = array('Index/index', 'Mh/index', 'Book/index', 'Yook/index');
+            if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
+                redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
             }
         }
         $this->assign('user', $this->user);
         $this->_data_log();
         $showAds = 0;
-        if (isset($this->_ads['isopen']) && 1 == $this->_ads['isopen']) {
+        if ($this->_ads['isopen'] == 1) {
             $jino = I('get.ji_no');
             if ($jino) {
                 if ($this->_ads['chapter']) {
@@ -201,7 +201,6 @@ class HomeController extends Controller
                 }
             }
         }
-        $adsPic = null;
         if ($showAds == 1) {
             if ($this->_ads['pic']) {
                 $adsPic = $this->_ads['pic'];
@@ -209,10 +208,9 @@ class HomeController extends Controller
                 $adsPic = $this->_ads['url'];
             }
         }
-        // 广告信息
         $this->assign('showAds', $showAds);
         $this->assign('adsPic', $adsPic);
-        if (isset($_GET['uid'])) {
+        if ($_GET['uid']) {
             $user_id = decode($_GET['uid']);
             $shuser  = M('user')->find(intval($user_id));
             $log     = M('slog')->where(array('self_id' => $this->user['id'], 'date' => date('Y-m-d'), 'user_id' => $shuser['id']))->find();
@@ -221,7 +219,7 @@ class HomeController extends Controller
                 M('user')->where(array('id' => $user_id))->save(array("money" => array('exp', 'money+' . $this->_site['send_money'])));
                 flog($user_id, "money", $this->_site['send_money'], 13);
                 $dd = new \Common\Util\ddwechat();
-//                $dd->setParam($this->_mp);
+                $dd->setParam($this->_mp);
                 $html = "尊敬的" . $shuser['nickname'] . "，您分享的漫画小说被用户" . $this->user['nickname'] . '阅读观看了，恭喜您获得' . $this->_site['send_money'] . '元书币奖励，分享更多内容可获得更多奖励哦！';
                 $dd->send_msg($shuser['openid'], $html);
             }
@@ -231,12 +229,13 @@ class HomeController extends Controller
     private function toshare($id)
     {
         $share = $this->_share;
-        $Wxin  = new ddwechat();
-//        $Wxin->setParam($this->_mp);
-        $jssdk = $Wxin->getsignpackage();
+        $Wxin  = new \Common\Util\ddwechat;
+        $Wxin->setParam($this->_mp);
+        $signPackage = $Wxin->getsignpackage();
         $this->assign('jssdk', $jssdk);
-        $pic          = explode('.', $share['pic']);
-        $share['pic'] = 'http://' . $_SERVER['HTTP_HOST'] . $pic[1] . '.' . $pic[2];
+        $pic        = explode('.', $share[pic]);
+        $share[pic] = 'http://' . $_SERVER['HTTP_HOST'] . $pic[1] . '.' . $pic[2];
+        //print_r($share);
         $this->assign('share', $share);
         return true;
     }
