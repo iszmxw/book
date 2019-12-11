@@ -45,7 +45,7 @@ class AdminController extends Controller
 
     public function welcome()
     {
-        $info = [];
+        $info = array();
         $this->assign('info', $info);
         $this->display();
     }
@@ -90,7 +90,7 @@ class AdminController extends Controller
         if ($id > 0) {
             $info = $model->find($id);
             if (!$info) {
-                $_var_0('信息不存在');
+                $this->error('信息不存在');
             }
             $this->assign('info', $info);
         }
