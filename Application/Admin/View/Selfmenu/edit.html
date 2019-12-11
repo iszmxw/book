@@ -21,7 +21,7 @@
 						<select name="pid"  default="{$info.pid}">
 							<option value="0">顶级菜单</option>
 							<volist name="parents" id="vo">
-								<option value="{$vo.id}" <if condition="$_GET['id'] eq $vo['id']">disabled</if>>{$vo.name}</option>
+								<option value="{$vo.id}" <if condition="@$_GET['id'] eq $vo['id']">disabled</if>>{$vo.name}</option>
 							</volist>
 						</select>
 					</span>

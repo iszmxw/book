@@ -35,14 +35,14 @@
 			<div class="tableoptions">        
 				<form method="post">
 					<!-- 等级:
-					<select name="level" default="{$_GET['level']}" style="width:90px; min-width:0;">
+					<select name="level" default="{@$_GET['level']}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<volist name="_CFG['level']" id="vo">
 						<option value="{$key}">{$vo.name}</option>
 						</volist>
 					</select> -->
 					编号:
-					<input type="text" name="id" value="{$_GET['id']}" class="smallinput" style="width:100px;" />
+					<input type="text" name="id" value="{@$_GET['id']}" class="smallinput" style="width:100px;" />
 					<input type="submit" value="查找" />
 					<input type="button" value="模板消息设置" onclick="location.href=&#39;{:U('Lind/tpl')}&#39;" />
 					<input type="button" value="模板消息" onclick="location.href=&#39;{:U('Lind/tplmsg')}&#39;" />
@@ -55,13 +55,13 @@
 					<tr>
 						<th class="head1" width="50">请选择</th>
 						<th class="head1">
-							<a href="<?php if($_GET['order'] == 'id' && $_GET['type'] == 'desc'){
+							<a href="<?php if(@$_GET['order'] == 'id' && @$_GET['type'] == 'desc'){
 								echo U('index?order=id&type=asc');
 							}else{
 								echo U('index?order=id&type=desc');
 							}?>">
 							编号
-							<?php if($_GET['order'] == 'id' && $_GET['type'] == 'desc')echo '↑';else echo '↓';?>
+							<?php if(@$_GET['order'] == 'id' && @$_GET['type'] == 'desc')echo '↑';else echo '↓';?>
 							</a>
 						</th>
 						<th class="head1">头像</th>
@@ -69,43 +69,43 @@
 						<th class="head1">账户书币</th>
 						<th class="head1">账户余额</th>
 						<th class="head0">
-							<a href="<?php if($_GET['order'] == 'sub_time' && $_GET['type'] == 'desc'){
+							<a href="<?php if(@$_GET['order'] == 'sub_time' && @$_GET['type'] == 'desc'){
 								echo U('index?order=sub_time&type=asc');
 							}else{
 								echo U('index?order=sub_time&type=desc');
 							}?>">
 							注册时间
-							<?php if($_GET['order'] == 'sub_time' && $_GET['type'] == 'desc')echo '↑';else echo '↓';?>
+							<?php if(@$_GET['order'] == 'sub_time' && @$_GET['type'] == 'desc')echo '↑';else echo '↓';?>
 							</a>
 						</th>
 						<th class="head0">
-							<a href="<?php if($_GET['order'] == 'agent1' && $_GET['type'] == 'desc'){
+							<a href="<?php if(@$_GET['order'] == 'agent1' && @$_GET['type'] == 'desc'){
 								echo U('index?order=agent1&type=asc');
 							}else{
 								echo U('index?order=agent1&type=desc');
 							}?>">
 							一级下线数
-							<?php if($_GET['order'] == 'agent1' && $_GET['type'] == 'desc')echo '↑';else echo '↓';?>
+							<?php if(@$_GET['order'] == 'agent1' && @$_GET['type'] == 'desc')echo '↑';else echo '↓';?>
 							</a>
 						</th>
 						<th class="head0">
-							<a href="<?php if($_GET['order'] == 'agent2' && $_GET['type'] == 'desc'){
+							<a href="<?php if(@$_GET['order'] == 'agent2' && @$_GET['type'] == 'desc'){
 								echo U('index?order=agent2&type=asc');
 							}else{
 								echo U('index?order=agent2&type=desc');
 							}?>">
 							二级下线数
-							<?php if($_GET['order'] == 'agent2' && $_GET['type'] == 'desc')echo '↑';else echo '↓';?>
+							<?php if(@$_GET['order'] == 'agent2' && @$_GET['type'] == 'desc')echo '↑';else echo '↓';?>
 							</a>
 						</th>
 						<th class="head0">
-							<a href="<?php if($_GET['order'] == 'agent3' && $_GET['type'] == 'desc'){
+							<a href="<?php if(@$_GET['order'] == 'agent3' && @$_GET['type'] == 'desc'){
 								echo U('index?order=agent3&type=asc');
 							}else{
 								echo U('index?order=agent3&type=desc');
 							}?>">
 							三级下线数
-							<?php if($_GET['order'] == 'agent3' && $_GET['type'] == 'desc')echo '↑';else echo '↓';?>
+							<?php if(@$_GET['order'] == 'agent3' && @$_GET['type'] == 'desc')echo '↑';else echo '↓';?>
 							</a>
 						</th>
 						<!-- <th>消费额</th> -->

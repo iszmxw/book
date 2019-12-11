@@ -9,11 +9,11 @@
 			<div class="tableoptions">        
 				<form method="post" id="form">
 					用户ID:
-					<input type="text" name="user_id" value="{$_GET['user_id']}" class="smallinput" style="width:50px;" />
+					<input type="text" name="user_id" value="{@$_GET['user_id']}" class="smallinput" style="width:50px;" />
 					下单时间:
-					<input type="text" name="time1" value="{$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
+					<input type="text" name="time1" value="{@$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
 					到
-					<input type="text" name="time2" value="{$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
+					<input type="text" name="time2" value="{@$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
 					<input type="submit" value="查找" />
 					</script>
 				</form>
@@ -49,7 +49,7 @@
 			<if condition="$orders gt 0">
 			
 			<!-- <span style="float:left;">
-			<if condition="$_GET['status'] eq ''">
+			<if condition="@$_GET['status'] eq ''">
 			总充值数：{$orders_paid}/{$orders},
 			总金额：￥{$total_paid}/￥{$total},
 			微信支付：￥{$wxpay|default=0}，

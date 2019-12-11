@@ -11,17 +11,17 @@
 			<div class="tableoptions">                    
 				<form method="post">
 					等级:
-					<select name="status" default="{$_GET['status']}" style="width:90px; min-width:0;">
+					<select name="status" default="{@$_GET['status']}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<option value="2">成功</option>
 						<option value="-1">失败</option>
 					</select>
 					用户:
-					<input type="text" name="user_id" value="{$_GET['user_id']}" placeholder="请输入用户编号" class="smallinput" style="width:100px;" />
+					<input type="text" name="user_id" value="{@$_GET['user_id']}" placeholder="请输入用户编号" class="smallinput" style="width:100px;" />
 					操作时间:
-					<input type="text" name="time1" value="{$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
+					<input type="text" name="time1" value="{@$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
 					到
-					<input type="text" name="time2" value="{$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
+					<input type="text" name="time2" value="{@$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
 					<input type="submit" value="查找" />
 				</form>
 			</div><!--tableoptions-->
