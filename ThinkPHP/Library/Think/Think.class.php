@@ -103,10 +103,12 @@ class Think
 
         }
 
-        $whoops         = new \Whoops\Run();
-        $whoops_handler = new \Whoops\Handler\PrettyPageHandler();
-        $whoops->pushHandler($whoops_handler);
-        $whoops->register();
+        if (APP_DEBUG) {
+            $whoops         = new \Whoops\Run();
+            $whoops_handler = new \Whoops\Handler\PrettyPageHandler();
+            $whoops->pushHandler($whoops_handler);
+            $whoops->register();
+        }
 
         // 读取当前应用状态对应的配置文件
         if (APP_STATUS && is_file(CONF_PATH . APP_STATUS . CONF_EXT))
