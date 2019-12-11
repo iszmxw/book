@@ -9,6 +9,12 @@ class HomeController extends Controller
     protected $user;
     protected $_site;
 
+    public function __construct()
+    {
+        // 初始化数据开始
+        $this->_site['zidongzhuce'] = 0;
+        // 初始化数据结束
+    }
 
     private function getGrant()
     {
@@ -30,9 +36,6 @@ class HomeController extends Controller
     {
         header('Content-Type: text/html; charset=utf-8');
         $this->getGrant();
-        // 初始化数据开始
-        $this->_site['zidongzhuce'] = 0;
-        // 初始化数据结束
 
         $config = M('config')->select();
         if (!is_array($config)) {
