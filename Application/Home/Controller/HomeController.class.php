@@ -63,6 +63,7 @@ class HomeController extends Controller
         if (session('member')) {
             $_CFG['site']['name'] = session('member.name');
         }
+        dump($_CFG);
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
         if (APP_DEBUG && isset($_GET['user_id'])) {
