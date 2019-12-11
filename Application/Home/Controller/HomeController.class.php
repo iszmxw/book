@@ -16,7 +16,7 @@ class HomeController extends Controller
     protected $tplmsg;
     protected $_mp;
     protected $openid;
-    protected $_site;
+    protected $_CFG['site'];
     protected $_ads;
 
     public function _initialize()
@@ -63,7 +63,7 @@ class HomeController extends Controller
         if (session('member')) {
             $_CFG['site']['name'] = session('member.name');
         }
-        dd($_CFG);
+//        dd($_CFG);
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
         if (APP_DEBUG && isset($_GET['user_id'])) {

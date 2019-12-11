@@ -166,7 +166,7 @@
             <?php
                 $money = M('book_episodes')->where(array('ji_no'=>$vo['ji_no'],'mhid'=>$info['id']))->getField('money');
             if(!$money || $money<=0){
-            $money = $_site['xsmoney'];
+            $money = $_CFG['site']['xsmoney'];
             }
             $money = intval($money);
             $read =

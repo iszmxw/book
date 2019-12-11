@@ -96,7 +96,7 @@
 			$next = $jiinfo['next'];
 			
 			$money = M('mh_episodes')->where(array('ji_no'=>$next,'mhid'=>$mhinfo['id']))->getField('money');
-			$money = $money?$money:$_site['jimoney'];
+			$money = $money?$money:$_CFG['site']['jimoney'];
 			$read = M('mh_read')->where(array('ji_no'=>$next,'mhid'=>$mhinfo['id'],'user_id'=>$user['id']))->find();
         ?>
             <a href="{:U('Mh/inforedit')}&mhid={$mhid}&ji_no={$before}" onclick="return checkSub();"><i></i>上一话</a>
@@ -143,7 +143,7 @@
 			<if condition="$member">
 			<img src="{$member['gqrcode']}" />
 			<else />
-			<img src="{@$_site['qrcode']}" />
+			<img src="{@$_CFG['site']['qrcode']}" />
 			</if>
 			<div class="title3">长按上图识别二维码</div>
 		</div>		

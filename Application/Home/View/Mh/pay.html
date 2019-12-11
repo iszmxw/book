@@ -39,8 +39,8 @@
 			<a href="javascript:void(0);" class="container" data-fee="{$v['money']}" _vip="0">
 				<div class="body">
 					<div class="num">{$v['money']}元</div>
-					<div class="bio">{$v['money']*$_site['rate']}+{$v['send']}书币</div>
-					<div class="text">多送{$v['send']/$_site['rate']}元</div>
+					<div class="bio">{$v['money']*$_CFG['site']['rate']}+{$v['send']}书币</div>
+					<div class="text">多送{$v['send']/$_CFG['site']['rate']}元</div>
 				</div>
 				<if condition="$v['ishot']">
 				<label class="label label-first"></label>
@@ -50,12 +50,12 @@
 			</a>
 		</div>
 	</foreach>
-	<if condition="$_site['vip']">
+	<if condition="$_CFG['site']['vip']">
     <div class="item">
 		<input type="radio" name="recharge" value="{$v['money']}">
-		<a href="javascript:void(0);" class="container" data-fee="{$_site['vip']}" _vip="1">
+		<a href="javascript:void(0);" class="container" data-fee="{$_CFG['site']['vip']}" _vip="1">
 			<div class="body">
-				<div class="num">{$_site['vip']}元</div>
+				<div class="num">{$_CFG['site']['vip']}元</div>
 				<div class="bio">VIP包年</div>
 				<div class="text">VIP包年</div>
 			</div>
@@ -84,7 +84,7 @@
 </div>
 <div class="recharge-notice">
     <div class="title">充值说明</div>
-    <p>1、人民币/金币的汇率为：1元={$_site['rate']}书币</p>
+    <p>1、人民币/金币的汇率为：1元={$_CFG['site']['rate']}书币</p>
     <p>2、金币属于虚拟商品，一经购买概不退换。</p>
     <p>3、若充值遇到任何问题，可以联系我们的客服。</p>
 </div>

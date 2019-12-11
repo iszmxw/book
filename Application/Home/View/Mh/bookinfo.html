@@ -92,7 +92,7 @@
 	<?php 
 		$money = M('mh_episodes')->where(array('ji_no'=>$vo,'mhid'=>$info['id']))->getField('money');
 		if(!$money || $money<=0){
-			$money = $_site['mhmoney'];
+			$money = $_CFG['site']['mhmoney'];
 		}
 		$money = intval($money);
 		$read = M('mh_read')->where(array('ji_no'=>$vo,'mhid'=>$info['id'],'user_id'=>$user['id']))->find();

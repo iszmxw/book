@@ -678,7 +678,7 @@
 			$next = $info['next'];
 			
 			$money = M('book_episodes')->where(array('ji_no'=>$next,'bid'=>$binfo['id']))->getField('money');
-            $money = $money?$money:$_site['jimoney'];
+            $money = $money?$money:$_CFG['site']['jimoney'];
             $read = M('book_read')->where(array('ji_no'=>$next,'bid'=>$binfo['id'],'user_id'=>$user['id']))->find();
             ?>
             <a href="javascript:;" onclick="before({$binfo['id']},{$before})"><i></i>上一章</a>
@@ -831,7 +831,7 @@
             <if condition="$member">
                 <img src="{$member['gqrcode']}"/>
                 <else/>
-                <img src="{@$_site['qrcode']}"/>
+                <img src="{@$_CFG['site']['qrcode']}"/>
             </if>
             <div class="title3">长按上图识别二维码</div>
         </div>
