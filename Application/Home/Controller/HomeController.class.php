@@ -133,7 +133,7 @@ class HomeController extends Controller
                 setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
             } else {
                 if (!isset($_GET['parent'])) {
-                    session('parent', intval($_GET['parent']));
+                    session('parent', intval(I('parent')));
                 }
                 $no_login = array('Index/index', 'Mh/index', 'Book/index', 'Yook/index');
                 if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
