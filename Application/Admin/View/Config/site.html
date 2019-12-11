@@ -1,6 +1,3 @@
-<?php
-dump($_CFG['site']);die();
-?>
 <div class="pageheader notab">
     <h1 class="pagetitle">站点设置</h1>
     <span class="pagedesc">设置网站的基本信息</span>
@@ -102,7 +99,7 @@ dump($_CFG['site']);die();
             <label>登陆方式<small></small></label>
             <span class="field">
 						<input style="zoom:150%;" value="1" type="checkbox" name="weixinlogin" <if
-                    condition="$_CFG['site']['weixinlogin'] eq 1">checked</if> >微信自动登陆  <br>
+                    condition="isset($_CFG['site']['weixinlogin']) && $_CFG['site']['weixinlogin'] eq 1">checked</if> >微信自动登陆  <br>
 						<input style="zoom:150%;" value="1" type="checkbox" name="zidongzhuce"
 						<if condition="$_CFG['site']['zidongzhuce'] eq 1">checked</if> >自动注册  （谨慎开启）
 					</span>
