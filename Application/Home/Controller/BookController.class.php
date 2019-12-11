@@ -32,12 +32,9 @@ class BookController extends HomeController
         }
         $this->assign('bookcate', $bookcate);
         $this->assign('mf', M('book')->where(array('free_type' => 1))->order('sort desc')->select());
-
-        $dd = new ddwechat();
-//        $dd->setParam($this->_mp);
+        $dd    = new ddwechat();
         $jssdk = $dd->getsignpackage();
         $this->assign('jssdk', $jssdk);
-//        dump($_CFG['site']);
         $this->display();
     }
 
