@@ -320,14 +320,17 @@
 
     });
 </script>
-<script>
-    window.shareData = {
-        img: "{$share['pic']}",
-        link: "<?php echo complete_url(U('index',http_build_query(array_merge(array('uid' => encode($user['id'])),$_GET))));?>",
-        title: "{$_share['title']}",
-        desc: "{$_share['desc']}！"
-    };
-</script>
+<!--如果是微信端打开-->
+<if condition="$is_weixin">
+    <script>
+        window.shareData = {
+            img: "{$share['pic']|complete_url}",
+            link: "<?php echo complete_url(U('index',http_build_query(array_merge(array('uid' => encode($user['id'])),$_GET))));?>",
+            title: "{$_share['title']}",
+            desc: "{$_share['desc']}！"
+        };
+    </script>
+</if>
 <include file="include/share"/>
 </body>
 </html>

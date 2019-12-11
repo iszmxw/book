@@ -94,7 +94,9 @@ class HomeController extends Controller
         }
         $this->tplmsg = new \Common\Util\tplmsg();
         //var_dump($this->_site['weixinlogin']);
-        if (is_weixin()) {
+        $is_weixin = is_weixin();
+        $this->assign('is_weixin', $is_weixin);
+        if ($is_weixin) {
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
                 setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
