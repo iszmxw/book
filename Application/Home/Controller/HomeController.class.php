@@ -41,8 +41,8 @@ class HomeController extends Controller
                 }
             }
         }
-        if ($_GET['chapid']) {
-            $chapter = M('chapter')->find(intval($_GET['chapid']));
+        if (I('chapid')) {
+            $chapter = M('chapter')->find(intval(I('chapid')));
             if ($chapter) {
                 session('chapter', $chapter);
                 session('chapid', $chapter['id']);
