@@ -34,7 +34,7 @@ class AdminController extends Controller
         }
         $config = M('config')->select();
         foreach ($config as $key => $val) {
-            dump($key);
+            dump($val['key']);
             dump($val['value']);
         }
         die();
