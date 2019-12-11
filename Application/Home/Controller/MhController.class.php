@@ -1086,7 +1086,7 @@ class MhController extends HomeController
         $this->display();
     }
 
-    //提现记录
+    // 提现记录
     public function withdraw_recode()
     {
         $user = M('user')->where(array("id" => $this->user['id']))->find();
