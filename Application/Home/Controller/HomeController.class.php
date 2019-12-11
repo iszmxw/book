@@ -9,6 +9,7 @@ class HomeController extends Controller
     protected $user;
     protected $_site;
     protected $_ads;
+    protected $chapter;
     protected $_share;
 
     private function getGrant()
@@ -96,7 +97,7 @@ class HomeController extends Controller
         if (is_weixin()) {
             if (session('?user')) {
                 $this->user = M('user')->find(session('user.id'));
-                setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
+                setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
             } else {
                 //$_CFG['site']['weixinlogin']=0;
 
@@ -140,10 +141,10 @@ class HomeController extends Controller
                     }
                     session('user', $user_info);
                     $this->user = $user_info;
-                    setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
+                    setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
                 }
             }
-            $this->toshare($this->user[id]);
+            $this->toshare($this->user['id']);
         } else {
             //如果是手机端
             if (session('?user')) {
