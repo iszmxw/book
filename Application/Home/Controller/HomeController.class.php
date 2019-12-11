@@ -107,9 +107,9 @@ class HomeController extends Controller
                             if (empty($jsonrt['openid'])) {
                                 $this->error('获取用户详细信息失败');
                             }
-                            $user_info = array('sub_time' => time(), 'nickname' => $jsonrt['nickname'], 'openid' => $this->openid, 'sex' => $jsonrt['sex'], 'headimg' => $jsonrt['headimgurl'], 'parent1' => intval($_GET['parent']), 'memid' => intval($this->member['id']));
-                            if ($_GET['parent']) {
-                                $parent_info = M('user')->find(intval($_GET['parent']));
+                            $user_info = array('sub_time' => time(), 'nickname' => $jsonrt['nickname'], 'openid' => $this->openid, 'sex' => $jsonrt['sex'], 'headimg' => $jsonrt['headimgurl'], 'parent1' => intval(I('parent')), 'memid' => intval($this->member['id']));
+                            if (I('parent')) {
+                                $parent_info = M('user')->find(intval(I('parent')));
                                 if ($parent_info) {
                                     $user_info = array_merge(array('parent1' => $parent_info['id'], 'parent2' => $parent_info['parent1'], 'parent3' => $parent_info['parent2']), $user_info);
                                 }
@@ -132,12 +132,12 @@ class HomeController extends Controller
                 $this->user = M('user')->find(session('user.id'));
                 setcookie("uloginid", rand(100, 999) . $this->user[id], time() + 5 * 365 * 24 * 3600);
             } else {
-                if (!isset($_GET['parent'])) {
-                    session('parent', intval($_GET['parent']));
+                if (!isset(I('parent'))) {
+                    session('parent', intval(I('parent')));
                 }
                 $no_login = array('Index/index', 'Mh/index', 'Book/index', 'Yook/index');
                 if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
-                    //redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
+                    //redirect(U('MhPublic/binding', array('parent' => I('parent'), 'fr' => base64_encode(get_current_url()))));
                 }
             }
         }
@@ -152,9 +152,9 @@ class HomeController extends Controller
         //$_CFG['site']['zidongzhuce']=0;
         if (!$this->user && $this->_site['zidongzhuce'] == 1) {
             $user_info = array('create_time' => time(), 'sub_time' => time(), 'openid' => 0, 'sex' => 0,
-                               'headimg'     => '/Public/home/mhimages/100.jpeg', 'parent1' => intval($_GET['parent']), 'memid' => intval($this->member['id']));
-            if ($_GET['parent']) {
-                $parent_info = M('user')->find(intval($_GET['parent']));
+                               'headimg'     => '/Public/home/mhimages/100.jpeg', 'parent1' => intval(I('parent')), 'memid' => intval($this->member['id']));
+            if (I('parent')) {
+                $parent_info = M('user')->find(intval(I('parent')));
                 if ($parent_info) {
                     $user_info = array_merge(array('parent1' => $parent_info['id'],
                                                    'parent2' => $parent_info['parent1'], 'parent3' => $parent_info['parent2']), $user_info);
@@ -170,7 +170,7 @@ class HomeController extends Controller
         } else {
             $no_login = array('Index/index', 'Mh/index', 'Book/index', 'Yook/index');
             if (!$this->user && !in_array(CONTROLLER_NAME . '/' . ACTION_NAME, $no_login)) {
-                redirect(U('MhPublic/binding', array('parent' => $_GET['parent'], 'fr' => base64_encode(get_current_url()))));
+                redirect(U('MhPublic/binding', array('parent' => I('parent'), 'fr' => base64_encode(get_current_url()))));
             }
         }
         $this->assign('user', $this->user);
