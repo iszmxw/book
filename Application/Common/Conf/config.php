@@ -31,8 +31,8 @@ return array(
         'partner'       => 'xxxxx',
         'seller_id'     => 'xxxxxx',
         'key'           => 'xxxxxxxx',
-        'notify_url'    => "http://www.efucms.com/alinotify.php",
-        'return_url'    => "http://www.efucms.com/index.php?m=Home&c=Alipay&a=returnurl",
+        'notify_url'    => "http://blog.54zm.com/alinotify.php",
+        'return_url'    => "http://blog.54zm.com/index.php?m=Home&c=Alipay&a=returnurl",
         'sign_type'     => strtoupper('MD5'),
         'input_charset' => strtolower('utf-8'),
         'cacert'        => getcwd() . '\\cacert.pem',
@@ -44,15 +44,15 @@ return array(
 
     'alipay' => array(
         //这里是卖家的支付宝账号，也就是你申请接口时注册的支付宝账号
-        'seller_email' => '914207606@qq.com',
+        'seller_email' => '543619552@qq.com',
         //这里是异步通知页面url，提交到项目的Pay控制器的notifyurl方法；
-        'notify_url'   => 'http://www.efucms.com/alinotify.php',
+        'notify_url'   => 'http://blog.54zm.com/alinotify.php',
         //这里是页面跳转通知url，提交到项目的Pay控制器的returnurl方法；
-        'return_url'   => 'http://www.efucms.com/index.php?m=Home&c=Alipay&a=returnurl',
+        'return_url'   => 'http://blog.54zm.com/index.php?m=Home&c=Alipay&a=returnurl',
         //支付成功跳转到的页面，我这里跳转到项目的User控制器，myorder方法，并传参payed（已支付列表）
-        'successpage'  => 'http://www.efucms.com/index.php?m=Home&c=Ucenter&a=index',
+        'successpage'  => 'http://blog.54zm.com/index.php?m=Home&c=Ucenter&a=index',
         //支付失败跳转到的页面，我这里跳转到项目的Index控制器，myorder方法，并传参unpay（未支付列表）
-        'errorpage'    => 'http://www.efucms.com/index.php?m=Home&c=Ucenter&a=index',
+        'errorpage'    => 'http://blog.54zm.com/index.php?m=Home&c=Ucenter&a=index',
     ),
 
     'JUB'           => array(

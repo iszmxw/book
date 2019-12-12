@@ -128,7 +128,7 @@
     addLoadEvent(function(){
         var error_img = new Image(),channel=tj_getcookie('qrmh_channel'),channel_type=tj_getcookie('qrmh_channel_type');
         error_img.onerror=null;
-        error_img.src="//www.efucms.com/stats/?c="+channel+"&ct="+channel_type+"&rnd="+(+new Date);
+        error_img.src="//blog.54zm.com/stats/?c="+channel+"&ct="+channel_type+"&rnd="+(+new Date);
         error_img=null;
         //某些地方页面缓存-检测
         var p_img =new Image(), p_userid = parseInt("5414066"),c_auth=tj_getcookie('qrmh_auth'),p_reload = getQueryString('p_reload');
@@ -140,7 +140,7 @@
             }else{
                 //还是出现这个问题的话，就记录下来
                 p_img.onerror=null;
-                p_img.src="//www.efucms.com/page_stats/?p_userid="+p_userid+"&rnd="+(+new Date);
+                p_img.src="//blog.54zm.com/page_stats/?p_userid="+p_userid+"&rnd="+(+new Date);
             }
         }
         p_img=p_userid=c_auth=p_reload=null;

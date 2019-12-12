@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `vv_admin` (
 --
 
 INSERT INTO `vv_admin` (`id`, `username`, `password`, `nickname`, `wxid`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', 'd5dede8aa0f398db3a88350057750233', '管理者', 'kinglong1168', '13417228032', 1483000493, '0', 1543840260, 1270, 0, 1);
+(1, 'admin', 'd5dede8aa0f398db3a88350057750233', '管理者', 'qn54zm', '13417228032', 1483000493, '0', 1543840260, 1270, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `vv_autoreply` (
 
 INSERT INTO `vv_autoreply` (`id`, `keyword`, `type`, `content`, `status`) VALUES
 (1, '关注', 1, '☞欢迎关注~\r\nHello，终于等到您！我们已经恭候多时啦，本站内容全部免费哦！\r\n请您尽情阅读浏览！\r\n我们这里有全网火爆、流行、优质的男生、女生小说和漫画！\r\n并且为大家提供不断更新，谢谢啦！\r\n而且每日签到送100书币、每日分享送100书币哦（分享方式：点击进入任何一部小说、漫画页面，然后点击右上角，分享到朋友圈即可获赠100书币，一位好友点击，您获得100书币，两位好友点击，您获得200书币，以此类推，无上限哦）！\r\n回复：推广赚钱，您可以在阅读的时候赚钱！\r\n回复：代理介绍，您可以成为我们平台代理，享受永久分成哦！\r\n回复：联系客服，您有任何问题都可以咨询我们！', 1),
-(2, '联系客服', 1, '客服微信：kinglong1168\r\n客服QQ：914207606\r\n小窝小说漫画系统站点：www.efucms.com', 1),
+(2, '联系客服', 1, '客服微信：qn54zm\r\n客服QQ：543619552\r\n小窝小说漫画系统站点：blog.54zm.com', 1),
 (3, '推广赚钱', 1, '推广赚钱说明：\r\n1. 分享你的推广二维码，你将获得：通过此二维码进入充值的客户的20%提成佣金。\r\n2. 你的推广二维码获取方式：点击下方菜单“用户中心-个人中心-推广二维码”即可获取推广二维码，然后点击右上角将二维码分享给朋友、群、朋友圈。\r\n3. 有人通过你分享的二维码进入漫画平台的，则该用户为你的推广用户。\r\n4. 你将永久获得：通过此二维码进入充值的客户的20%提成，不限充值次数和时间。\r\n5. 推广二维码分享后，你可以在：“个人中心—我的客户”中查看通过此推广二维码进入的客户和客户充值的金额。然后在“申请提现”中可以申请提现。\r\n6.申请提现三个工作日内到账。', 1),
 (4, '代理介绍', 1, 'Hallo！！！\r\n成为代理方式：\r\n点击公众号右下角-用户中心-代理教程，下载教程观看。\r\n很简单的哈！', 1);
 
@@ -374,7 +374,7 @@ INSERT INTO `vv_config` (`name`, `value`) VALUES
 ('config', 'a:1:{s:5:"index";N;}'),
 ('send', 'a:4:{i:1;a:2:{s:3:"pic";s:53:"./Public/upload/images/1804/24/030511906701003443.jpg";s:5:"money";s:3:"100";}i:2;a:2:{s:3:"pic";s:53:"./Public/upload/images/1804/24/030513547258009716.jpg";s:5:"money";s:3:"388";}i:3;a:2:{s:3:"pic";s:53:"./Public/upload/images/1804/24/030515531618007134.jpg";s:5:"money";s:3:"588";}i:4;a:2:{s:3:"pic";s:53:"./Public/upload/images/1804/24/030517500688005051.jpg";s:5:"money";s:3:"888";}}'),
 ('yook', 'a:8:{i:1;a:5:{s:3:"pic";s:53:"./Public/upload/images/1804/06/200049038107006927.png";s:3:"url";s:48:"http://e10.eteawell.cn/index.php?m=&c=Mh&a=index";s:4:"name";s:6:"漫画";s:4:"show";s:1:"1";s:6:"isshow";s:1:"1";}i:2;a:5:{s:3:"pic";s:53:"./Public/upload/images/1804/06/195455908579001143.png";s:3:"url";s:53:"http://e10.eteawell.cn/index.php?m=&c=Yook&a=book_hot";s:4:"name";s:6:"排行";s:4:"show";s:1:"1";s:6:"isshow";s:1:"1";}i:3;a:5:{s:3:"pic";s:53:"./Public/upload/images/1804/06/195459752272006347.png";s:3:"url";s:54:"http://e10.eteawell.cn/index.php?m=&c=Yook&a=book_free";s:4:"name";s:6:"免费";s:4:"show";s:1:"1";s:6:"isshow";s:1:"1";}i:4;a:5:{s:3:"pic";s:53:"./Public/upload/images/1804/06/195503455502007059.png";s:3:"url";s:54:"http://e10.eteawell.cn/index.php?m=&c=Yook&a=book_cate";s:4:"name";s:6:"分类";s:4:"show";s:1:"1";s:6:"isshow";s:1:"1";}i:5;a:5:{s:3:"pic";s:53:"./Public/upload/images/1811/24/020451884765007403.jpg";s:3:"url";s:0:"";s:4:"name";s:12:"小编推荐";s:4:"show";s:1:"2";s:6:"isshow";s:1:"1";}i:6;a:5:{s:3:"pic";s:53:"./Public/upload/images/1811/24/020456087890003563.jpg";s:3:"url";s:0:"";s:4:"name";s:12:"新书推荐";s:4:"show";s:1:"2";s:6:"isshow";s:1:"1";}i:7;a:5:{s:3:"pic";s:53:"./Public/upload/images/1811/24/020459619140003985.jpg";s:3:"url";s:0:"";s:4:"name";s:12:"收听榜单";s:4:"show";s:1:"2";s:6:"isshow";s:1:"1";}i:8;a:5:{s:3:"pic";s:0:"";s:3:"url";s:0:"";s:4:"name";s:12:"听书分类";s:4:"show";s:1:"2";s:6:"isshow";s:1:"1";}}'),
-('ads', 'a:5:{s:3:"url";s:21:"http://www.efucms.com";s:3:"pic";s:53:"./Public/upload/images/1811/15/230605878937004817.jpg";s:7:"chapter";s:1:"1";s:8:"achapter";s:3:"2,5";s:8:"xchapter";s:2:"10";}'),
+('ads', 'a:5:{s:3:"url";s:21:"http://blog.54zm.com";s:3:"pic";s:53:"./Public/upload/images/1811/15/230605878937004817.jpg";s:7:"chapter";s:1:"1";s:8:"achapter";s:3:"2,5";s:8:"xchapter";s:2:"10";}'),
 ('share', 'a:3:{s:5:"title";s:48:"efucms系统e10，小说漫画阅读平台搭建";s:4:"desc";s:48:"efucms系统e10，小说漫画阅读平台搭建";s:3:"pic";s:53:"./Public/upload/images/1807/24/050514617388003349.jpg";}'),
 ('ybanner', 'a:1:{s:6:"config";a:2:{i:0;a:2:{s:3:"pic";s:53:"./Public/upload/images/1807/09/010714569476002281.png";s:3:"url";s:0:"";}i:1;a:2:{s:3:"pic";s:53:"./Public/upload/images/1807/09/010725991262001145.png";s:3:"url";s:0:"";}}}');
 
