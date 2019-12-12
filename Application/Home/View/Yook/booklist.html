@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{$_CFG['site']['name']}</title>
     <meta name="keywords" content="漫画,漫画大全,漫画图片,免费漫画,原创漫画,在线漫画,神漫画,漫画下载,看漫画,手机漫画,小说漫画源码">
-    <meta name="description" content="易付小说漫画系统源码致力于打造正版小说漫画在线阅读平台搭建、网站开发,连载众多优秀原创国漫等海量精彩内容,看漫画,就来易付漫画小说源码系统efucms!">
+    <meta name="description" content="易付小说漫画系统源码致力于打造正版小说漫画在线阅读平台搭建、网站开发,连载众多优秀原创国漫等海量精彩内容,看漫画,就来易付漫画小说源码系统!">
     <!-- 共用引入资源.开始 -->
     <script src="__PUBLIC__/home/mhjs/stats.js" name="MTAH5" sid="500462993"></script>
     <meta name="viewport"
@@ -61,7 +61,8 @@
         }(window, window.lib || (window.lib = {}));
     </script>
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/mhcss/style.min.css">
-    <script type="text/javascript" src="__PUBLIC__/home/mhjs/fundebug.0.1.7.min.js" apikey="ba3a0e0d938e92b44f279067dffb8d071ee87fc35eb75918b7a900e8581a955d"></script>
+    <script type="text/javascript" src="__PUBLIC__/home/mhjs/fundebug.0.1.7.min.js"
+            apikey="ba3a0e0d938e92b44f279067dffb8d071ee87fc35eb75918b7a900e8581a955d"></script>
     <script type="text/javascript" src="__PUBLIC__/home/mhjs/jquery.js"></script>
     <!-- 共用引入资源.结束 -->
     <script type="text/javascript" src="__PUBLIC__/home/mhjs/saved_resource"></script>
@@ -102,27 +103,29 @@
     <div class="list clearfix" id="html_box" style="min-height: 748px;">
 
         <volist name="list" id="vo">
-        <div class="item clearfix">
-        <a href="{:U('bookinfo')}&yid={$vo.id}" class="clearfix">
-            <div class="cover">
-            	<img width="75" height="100" class="" src="{$vo.cover_pic}" data-original="{$vo.cover_pic}" style="background: rgb(238, 238, 238); display: block;">
+            <div class="item clearfix">
+                <a href="{:U('bookinfo')}&yid={$vo.id}" class="clearfix">
+                    <div class="cover">
+                        <img width="75" height="100" class="" src="{$vo.cover_pic}" data-original="{$vo.cover_pic}"
+                             style="background: rgb(238, 238, 238); display: block;">
+                    </div>
+                    <div class="body">
+                        <div class="title">{$vo.title}</div>
+                        <div class="col">
+                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="7" r="6" fill="#ccc"></circle>
+                                <path d="M12 11a10 10 0 0 1 10 10 2 2 0 0 1-2 2H4a2 2 0 0 1-2-2 10 10 0 0 1 10-10z"
+                                      fill="#ccc"></path>
+                            </svg>
+                            {$vo.author}
+                        </div>
+                        <div class="col">
+                            {$vo.arr_catename}
+                        </div>
+                        <div class="col">更新至：第{$vo.episodes}话 <!-- 跟我有一腿的，是你 --></div>
+                    </div>
+                </a>
             </div>
-            <div class="body">
-                <div class="title">{$vo.title}</div>
-                <div class="col">
-                    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <circle cx="12" cy="7" r="6" fill="#ccc"></circle>
-                        <path d="M12 11a10 10 0 0 1 10 10 2 2 0 0 1-2 2H4a2 2 0 0 1-2-2 10 10 0 0 1 10-10z" fill="#ccc"></path>
-                    </svg>
-                    	{$vo.author}
-                </div>
-                <div class="col">
-                {$vo.arr_catename}
-                </div>
-                <div class="col">更新至：第{$vo.episodes}话 <!-- 跟我有一腿的，是你 --></div>
-            </div>
-        </a>
-        </div>
         </volist>
     </div>
 </div>
@@ -187,6 +190,7 @@
             window.attachEvent("onload", func);
         }
     }
+
     function tj_getcookie(name) {
         var nameValue = "";
         var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
@@ -195,12 +199,14 @@
         }
         return nameValue;
     }
+
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
     }
+
     addLoadEvent(function () {
         var error_img = new Image(), channel = tj_getcookie('qrmh_channel'),
             channel_type = tj_getcookie('qrmh_channel_type');
