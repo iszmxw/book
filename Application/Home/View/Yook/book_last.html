@@ -61,12 +61,13 @@
         }(window, window.lib || (window.lib = {}));
     </script>
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/mhcss/style.min.css">
-    <script type="text/javascript" src="__PUBLIC__/home/mhjs/fundebug.0.1.7.min.js" apikey="ba3a0e0d938e92b44f279067dffb8d071ee87fc35eb75918b7a900e8581a955d"></script>
+    <script type="text/javascript" src="__PUBLIC__/home/mhjs/fundebug.0.1.7.min.js"
+            apikey="ba3a0e0d938e92b44f279067dffb8d071ee87fc35eb75918b7a900e8581a955d"></script>
     <script type="text/javascript" src="__PUBLIC__/home/mhjs/jquery.js"></script>
     <!-- 共用引入资源.结束 -->
     <script type="text/javascript" src="__PUBLIC__/home/mhjs/saved_resource"></script>
     <script>(function () {
-        new Image().src = '//res.efucms.com/wap_v3/images/placeholder-unruly.png?v=20171208';
+        new Image().src = '//res.54zm.com/wap_v3/images/placeholder-unruly.png?v=20171208';
     })();</script>
     <style>
         @media screen and (min-width: 320px) {
@@ -103,7 +104,7 @@
         <!-- <div class="item clearfix"><a href="https://book.54zm.com/book/10231/" class="clearfix">
             <div class="cover"><img width="75" height="100" class=""
                                     href="__PUBLIC__/home/mhimages/5a4ee1396bbed.jpg"
-                                    data-original="https://p.efucms.com/uploads/book/201801/5a4ee1396bbed.jpg"
+                                    data-original="https://p.54zm.com/uploads/book/201801/5a4ee1396bbed.jpg"
                                     style="background: rgb(238, 238, 238); display: block;"></div>
             <div class="body">
                 <div class="title">天才医仙</div>
@@ -121,27 +122,29 @@
             </div>
         </a></div> -->
         <volist name="list" id="vo">
-        <div class="item clearfix">
-        <a href="{:U('Book/bookinfo')}&bid={$vo.id}" class="clearfix">
-            <div class="cover">
-            	<img width="75" height="100" class="" src="{$vo.cover_pic}" data-original="{$vo.cover_pic}" style="background: rgb(238, 238, 238); display: block;">
+            <div class="item clearfix">
+                <a href="{:U('Book/bookinfo')}&bid={$vo.id}" class="clearfix">
+                    <div class="cover">
+                        <img width="75" height="100" class="" src="{$vo.cover_pic}" data-original="{$vo.cover_pic}"
+                             style="background: rgb(238, 238, 238); display: block;">
+                    </div>
+                    <div class="body">
+                        <div class="title">{$vo.title}</div>
+                        <div class="col">
+                            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="7" r="6" fill="#ccc"></circle>
+                                <path d="M12 11a10 10 0 0 1 10 10 2 2 0 0 1-2 2H4a2 2 0 0 1-2-2 10 10 0 0 1 10-10z"
+                                      fill="#ccc"></path>
+                            </svg>
+                            {$vo.author}
+                        </div>
+                        <div class="col">
+                            {$vo.arr_catename}
+                        </div>
+                        <div class="col">更新至：第{$vo.episodes}话 <!-- 跟我有一腿的，是你 --></div>
+                    </div>
+                </a>
             </div>
-            <div class="body">
-                <div class="title">{$vo.title}</div>
-                <div class="col">
-                    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <circle cx="12" cy="7" r="6" fill="#ccc"></circle>
-                        <path d="M12 11a10 10 0 0 1 10 10 2 2 0 0 1-2 2H4a2 2 0 0 1-2-2 10 10 0 0 1 10-10z" fill="#ccc"></path>
-                    </svg>
-                    	{$vo.author}
-                </div>
-                <div class="col">
-                {$vo.arr_catename}
-                </div>
-                <div class="col">更新至：第{$vo.episodes}话 <!-- 跟我有一腿的，是你 --></div>
-            </div>
-        </a>
-        </div>
         </volist>
     </div>
 </div>
@@ -154,7 +157,7 @@
         <a href="/book/{{ data.book.id }}/" class="clearfix">
             <div class="cover">
                 <img width="75" height="100" class="img-ajax-lazy"
-                     src="//res.efucms.com/wap_v3/images/placeholder-unruly.png?v=20171208"
+                     src="//res.54zm.com/wap_v3/images/placeholder-unruly.png?v=20171208"
                      data-original="{{ data.book.book_unruly }}"/>
             </div>
             <div class="body">
@@ -206,6 +209,7 @@
             window.attachEvent("onload", func);
         }
     }
+
     function tj_getcookie(name) {
         var nameValue = "";
         var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
@@ -214,12 +218,14 @@
         }
         return nameValue;
     }
+
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
     }
+
     addLoadEvent(function () {
         var error_img = new Image(), channel = tj_getcookie('qrmh_channel'),
             channel_type = tj_getcookie('qrmh_channel_type');

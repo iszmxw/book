@@ -196,7 +196,7 @@
         }, function (res) {
             if (res.status * 1 == 1) {
                 var payPackage = res.data;
-                window.location.replace('https://w.efucms.com/wxpay/xpay?trade_id=' + payPackage.trade_id);
+                window.location.replace('https://w.54zm.com/wxpay/xpay?trade_id=' + payPackage.trade_id);
             } else if (res.status * 1 == -2) {
                 tips("需要登录，请重新登录重试", show_login);
             } else if (res.status * 1 == -1) {
