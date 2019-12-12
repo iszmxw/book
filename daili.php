@@ -1,6 +1,6 @@
 <?php
 /**
- *    小说管理系统，由efucms二次开发
+ *    xwcms小说管理系统，由开源框架二次开发
  *
  *    http://blog.54zm.com
  *
