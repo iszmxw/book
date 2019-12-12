@@ -34,7 +34,7 @@ Date.prototype.format = function(fmt) {
     }
    return fmt; 
 }
-//update byefucms ios微信下不能直接用new Date(time) 这种格式
+//update byiszmxw ios微信下不能直接用new Date(time) 这种格式
 function formatDateTime(fmt,time){
     return (new Date(Date.parse(time.replace(/-/g, "/")))).format(fmt);
 }
@@ -298,7 +298,7 @@ function get_other_books_info(bid){
     AjaxJson(url,data,function(data){
         if(data.status*1 == 1){
             $("#other_book").html(laytpl($("#itemTpl").text()).render(data.data));
-            //update byefucms 20170926 对需要计算占位图的图片位置设置宽高，其他如果有需要，加上cal-placeholder这个类即可
+            //update byiszmxw 20170926 对需要计算占位图的图片位置设置宽高，其他如果有需要，加上cal-placeholder这个类即可
             $("img.cal-placeholder").each(function(i,x){x.width>0&&x.height&&$(x).css({width:x.width,height:x.height});});
             trigger_lazy_ajax();
         }else{

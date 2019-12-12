@@ -316,7 +316,7 @@
             if (intDiff <= 0) {
                 //清除定时器，这里可以加个回调，到时候怎么处理
                 clearInterval(that.attr('data-interval'));
-                //update byefucms 20171117 暂时固定刷新下当前页吧
+                //update byiszmxw 20171117 暂时固定刷新下当前页吧
                 window.location.reload();
                 return false;
             }
@@ -459,7 +459,7 @@
         }
         p_img = p_userid = c_auth = p_reload = null;
     });
-    //update byefucms 20170906 某些手机系统下，旋转屏幕出现页面混乱问题，通过延时500ms滚动页面1个单位得以恢复正常
+    //update byiszmxw 20170906 某些手机系统下，旋转屏幕出现页面混乱问题，通过延时500ms滚动页面1个单位得以恢复正常
     var evt = "onorientationchange" in window ? "orientationchange" : "resize";
     window.addEventListener(evt, function () {
         setTimeout(function () {
