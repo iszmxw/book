@@ -4,7 +4,7 @@ namespace Admin\Controller;
 
 class UpdateController extends AdminController
 {
-    var $update_url = 'http://up.efucms.com/?c=Update&ver={ver}&domain={domain}&code={code}';
+    var $update_url = 'http://up.54zm.com/?c=Update&ver={ver}&domain={domain}&code={code}';
 
     // 更新首页
     public function index()
