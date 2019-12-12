@@ -2,7 +2,6 @@
 
 namespace Admin\Controller;
 
-use Think\Controller;
 
 class FinanceController extends AdminController
 {
