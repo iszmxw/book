@@ -129,7 +129,7 @@ function startUpload() {
         if ($res.res == "success") {
             bIs_uploading = true;
             document.querySelector("#package_url").value = $res.package_url;
-            window.location.href = "./iszmxw.php?m=Admin&c=Video&a=index";
+            window.location.href = "./xwcms.php?m=Admin&c=Video&a=index";
         }
         document.querySelector(".isCompleted").innerHTML = "上传状态: " + (bIs_uploading ? "上传完成" : "正在上传..");
     };
@@ -171,7 +171,7 @@ function startUpload() {
         xhr.addEventListener("load", floadend, false);
         xhr.addEventListener("error", errorUp, false);
         xhr.addEventListener("abort", abortUp, false);
-        xhr.open("POST", "./iszmxw.php?m=Admin&c=Video&a=upload");  //后台php路径
+        xhr.open("POST", "./xwcms.php?m=Admin&c=Video&a=upload");  //后台php路径
         xhr.send(fData);
     };
 
