@@ -735,7 +735,6 @@ class MhController extends HomeController
         }
 
         $_CFG['site']['gonggao'] = "小窝小说站正式免费对外开放了！";
-
         //查询是否签到
         $this->assign('sign', M('sign')->where(array('date' => date('Ymd'), 'user_id' => $this->user['id']))->find());
         $this->assign($asdata);

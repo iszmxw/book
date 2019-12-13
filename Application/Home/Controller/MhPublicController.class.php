@@ -434,13 +434,8 @@ class MhPublicController extends MhHomeController
      */
     public function logout()
     {
-        try {
-            session('vip_user', null);
-            session('user', null);
-            session('user_id', null);
-        } catch (\Exception $e) {
-            dump($e);
-        }
+        session('parent', null);
+        session('user', null);
         redirect(U('Book/index'));
     }
 }
