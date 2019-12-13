@@ -295,5 +295,4 @@ class AlipayController extends Controller
             echo "支付失败！";
         }
     }
-
 }
