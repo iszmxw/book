@@ -12,18 +12,18 @@
 				<p>
 					<label>分享标题<small></small></label>
 					<span class="field">
-						<input type="text" name="title" id="title" value="{$_share.title}" class="smallinput" />
+						<input type="text" name="title" id="title" value="{$_CFG['share'].title}" class="smallinput" />
 					</span>
 				</p>
 				<p>
 					<label>分享简介<small></small></label>
-					<span class="field"><input type="text" name="desc" id="desc" value="{$_share.desc}" class="smallinput" /></span>
+					<span class="field"><input type="text" name="desc" id="desc" value="{$_CFG['share'].desc}" class="smallinput" /></span>
 				</p>
 				<p>
 					<label>分享图片</label>
 					<span class="field">
 						<iframe src="{:U('upload', 'event=setPic&url='.$_share['pic'])}" scrolling="no" width="100" height="100"></iframe>
-						<input type="hidden" name="pic" id="pic" value="{$_share['pic']}" class="smallinput" />
+						<input type="hidden" name="pic" id="pic" value="{$_CFG['share']['pic']}" class="smallinput" />
 						<script>
 						function setPic(url){
 							document.getElementById('pic').value = url;
