@@ -38,6 +38,9 @@ class AdminController extends Controller
             $val = unserialize($v['value']);
             switch ($key) {
                 case '_site':
+                    if (!isset($val['zidongzhuce'])) {
+                        $val['zidongzhuce'] = 0;
+                    }
                     if (!isset($val['weixinlogin'])) {
                         $val['weixinlogin'] = 0;
                     }
