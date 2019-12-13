@@ -36,7 +36,6 @@ class AdminController extends Controller
         foreach ($config as $v) {
             $key = '_' . $v['name'];
             $val = unserialize($v['value']);
-            dump($key);
             switch ($key) {
                 case '_site':
                     if (!isset($val['weixinlogin'])) {
