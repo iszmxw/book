@@ -9,7 +9,7 @@
 			<div class="tableoptions">        
 				<form method="post" id="form">
 					状态:
-					<select name="status" default="{@$_GET['status']}" style="width:90px; min-width:0;">
+					<select name="status" default="{$_GET['status']}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<option value="1">待支付</option>
 						<option value="2">待发货</option>
@@ -17,11 +17,11 @@
 						<option value="4">已完成</option>
 					</select>
 					用户ID:
-					<input type="text" name="user_id" value="{@$_GET['user_id']}" class="smallinput" style="width:50px;" />
+					<input type="text" name="user_id" value="{$_GET['user_id']}" class="smallinput" style="width:50px;" />
 					下单时间:
-					<input type="text" name="time1" value="{@$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
+					<input type="text" name="time1" value="{$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
 					到
-					<input type="text" name="time2" value="{@$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
+					<input type="text" name="time2" value="{$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
 					<input type="submit" value="查找" />
 					<!-- <input type="button" value="导出" onclick="exportExcel()" /> -->
 					<script>

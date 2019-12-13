@@ -140,8 +140,9 @@ class YookController extends AdminController
 
 
     // 上传图片
-    public function upload($file)
+    public function upload()
     {
+        $file = $_FILES['size'];
         if ($file['size'] < 1 && $file['size'] > 0) {
             return array('errmsg' => '上传错误！', 'url' => '');
         } else {

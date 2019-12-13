@@ -123,18 +123,6 @@ class UserController extends AdminController
         $this->success('操作成功');
     }
 
-    public function set_col()
-    {
-        $id    = intval($_REQUEST['id']);
-        $col   = $_REQUEST['col'];
-        $value = $_REQUEST['value'];
-
-        if (!$table) $table = CONTROLLER_NAME;
-        M($table)->where('id=' . $id)->setField($col, $value);
-
-        update_level(intval($_REQUEST['id']));
-        $this->success('操作成功', $_SERVER['HTTP_REFERER']);
-    }
 
     public function sendMsg()
     {

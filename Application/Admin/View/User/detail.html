@@ -180,7 +180,7 @@
 				if(!confirm('您确定要给 {$info.nickname} ' + method_name + "  "+ money+" 元吗?")){
 					return false;
 				}
-				jQuery.post("{:U('charge')}", {method:method,user_id:{@$_GET['id']},money:money},function(d){
+				jQuery.post("{:U('charge')}", {method:method,user_id:{$_GET['id']},money:money},function(d){
 					alert(d.info);
 					if(d.status==1)location.href=location.href;
 				});

@@ -35,14 +35,14 @@
 			<div class="tableoptions">        
 				<form method="post">
 					<!-- 等级:
-					<select name="level" default="{@$_GET['level']}" style="width:90px; min-width:0;">
+					<select name="level" default="{$_GET['level']}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<volist name="_CFG['level']" id="vo">
 						<option value="{$key}">{$vo.name}</option>
 						</volist>
 					</select> -->
 					编号:
-					<input type="text" name="id" value="{@$_GET['id']}" class="smallinput" style="width:100px;" />
+					<input type="text" name="id" value="{$_GET['id']}" class="smallinput" style="width:100px;" />
 					<input type="submit" value="查找" />
 					<input type="button" value="模板消息设置" onclick="location.href=&#39;{:U('Lind/tpl')}&#39;" />
 					<input type="button" value="模板消息" onclick="location.href=&#39;{:U('Lind/tplmsg')}&#39;" />
