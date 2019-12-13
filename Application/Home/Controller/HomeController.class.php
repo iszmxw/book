@@ -79,7 +79,6 @@ class HomeController extends Controller
                     }
                     break;
                 case '_share':
-                    dd($val);
                     break;
                 case '_ads':
                     if (!isset($val['isopen'])) {
