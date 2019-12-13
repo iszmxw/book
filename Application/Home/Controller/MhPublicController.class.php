@@ -434,8 +434,9 @@ class MhPublicController extends MhHomeController
      */
     public function logout()
     {
-        session('parent', null);
+        session('vip_user', null);
         session('user', null);
+        session('user_id', null);
         setcookie('uloginid', null);
         redirect(U('Book/index'));
     }
