@@ -35,7 +35,7 @@
         <p>
             <label>平台支付方式</label>
             <span class="field">
-						<select name="paymodel" default="{@$_CFG['site']['paymodel']}">
+						<select name="paymodel" default="{$_CFG['site']['paymodel']}">
 							<option value="1">企业微信收款</option>
 							<option value="2">优云宝收款</option>
 							<option value="3">个人微信收款</option>
@@ -99,9 +99,9 @@
             <label>登陆方式<small></small></label>
             <span class="field">
 						<input style="zoom:150%;" value="1" type="checkbox" name="weixinlogin" <if
-                    condition="@$_CFG['site']['weixinlogin'] eq 1">checked</if> >微信自动登陆  <br>
+                    condition="$_CFG['site']['weixinlogin'] eq 1">checked</if> >微信自动登陆  <br>
 						<input style="zoom:150%;" value="1" type="checkbox" name="zidongzhuce"
-						<if condition="@$_CFG['site']['zidongzhuce'] eq 1">checked</if> >自动注册  （谨慎开启）
+						<if condition="$_CFG['site']['zidongzhuce'] eq 1">checked</if> >自动注册  （谨慎开启）
 					</span>
         </p>
 
@@ -109,7 +109,7 @@
         <p>
             <label>平台二维码</label>
             <span class="field">
-						<iframe src="{:U('upload', 'event=setPic&url='.@$_CFG['site']['qrcode'])}"
+						<iframe src="{:U('upload', 'event=setPic&url='.$_CFG['site']['qrcode'])}"
                                 scrolling="no"
                                 width="100" height="100"></iframe>
 						<input type="hidden" name="qrcode" id="qrcode" value="{$_CFG['site']['qrcode']}"

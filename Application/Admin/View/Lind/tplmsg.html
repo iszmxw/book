@@ -43,7 +43,7 @@
 				<p>
 					<label>升级成功通知</label>
 					<span class="field">
-						<input type="checkbox" name="OPENTM207008612" onclick="switch_status(this)" <if condition="@$_CFG['tplmsg']['OPENTM207008612']['status'] eq 1">checked</if> <empty name="_CFG['tplmsg']['OPENTM207008612']['id']">disabled</empty> /> 勾选表示启用
+						<input type="checkbox" name="OPENTM207008612" onclick="switch_status(this)" <if condition="$_CFG['tplmsg']['OPENTM207008612']['status'] eq 1">checked</if> <empty name="_CFG['tplmsg']['OPENTM207008612']['id']">disabled</empty> /> 勾选表示启用
 					</span>
 				</p>
 				<script>

@@ -22,7 +22,7 @@
 					<volist name="dir_list" id="vo">
 						<li tpl="{$vo}">
 							<img src="{$tpl_path}/{$vo}/preview.jpg" />
-							<if condition="@$_CFG['tpl']['index'] eq $vo"><span class="checked"></span></if>
+							<if condition="$_CFG['tpl']['index'] eq $vo"><span class="checked"></span></if>
 						</li>
 					</volist>
 					<ul>

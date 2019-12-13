@@ -15,7 +15,7 @@
 						<option value="">全部</option>
 						<option value="money">余额</option>
 						<option value="wxpay">微信支付</option>
-						<option value="points">{@$_CFG.site.points_name}</option>
+						<option value="points">{$_CFG.site.points_name}</option>
 					</select>
 					操作:
 					<select name="action" default="{@$_GET['action']}" style="width:90px; min-width:0;">
@@ -64,7 +64,7 @@
 						旅游基金
 						<elseif condition="$vo['type'] eq 'wxpay'"/>
 						微信支付
-						<else/>{@$_CFG.site.points_name}</if></td>
+						<else/>{$_CFG.site.points_name}</if></td>
 						<td>{$vo['money']}</td>
 						<td>{:get_finance_action($vo['action'])}</td>
 						<td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
