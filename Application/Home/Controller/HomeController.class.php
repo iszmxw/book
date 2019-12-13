@@ -31,8 +31,8 @@ class HomeController extends Controller
     public function _initialize()
     {
 
-        $value = session();
-        dump($value);
+//        $value = session();
+//        dump($value);
         header('Content-Type: text/html; charset=utf-8');
         $this->getGrant();
 
