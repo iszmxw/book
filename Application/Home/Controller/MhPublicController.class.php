@@ -441,6 +441,6 @@ class MhPublicController extends MhHomeController
         } catch (\Exception $e) {
             dump($e);
         }
-        redirect(U('Mh/index'));
+        redirect(U('Book/index'));
     }
 }
