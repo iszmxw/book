@@ -735,6 +735,7 @@ class MhController extends HomeController
         }
 
         $user = session('user');
+
         dump($user);
 
         $_CFG['site']['gonggao'] = "小窝小说站正式免费对外开放了！";

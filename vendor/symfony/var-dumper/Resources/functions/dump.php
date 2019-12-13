@@ -17,6 +17,7 @@ if (!function_exists('dump')) {
      */
     function dump($var, ...$moreVars)
     {
+        ob_start();
         VarDumper::dump($var);
 
         foreach ($moreVars as $v) {
