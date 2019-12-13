@@ -427,11 +427,20 @@ class MhPublicController extends MhHomeController
         $this->display();
     }
 
+    /**
+     * 退出登录
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/12/13 21:16
+     */
     public function logout()
     {
-        $_SESSION['vip_user'] = null;
-        $_SESSION['user']     = null;
-        $_SESSION['user_id']  = null;
+        try {
+            session('vip_user', null);
+            session('user', null);
+            session('user_id', null);
+        } catch (\Exception $e) {
+            dump($e);
+        }
         redirect(U('Mh/index'));
     }
 }

@@ -21,8 +21,6 @@ class MhHomeController extends Controller
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
 
-        //print_r($this -> _level);
-
         if (APP_DEBUG && I('user_id')) {
             session('user', M('user')->find(intval(I('user_id'))));
             session('user_id', I('user_id'));
@@ -71,7 +69,7 @@ class MhHomeController extends Controller
         $this->assign('jssdk', $jssdk);
     }
 
-    //判断是否登陆过
+    // 判断是否登陆过
     public function check_login()
     {
         $user_id = session('user_id');
