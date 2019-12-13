@@ -29,6 +29,7 @@ if (!function_exists('dump')) {
         }
 
         return $var;
+        ob_end_flush();
     }
 }
 
