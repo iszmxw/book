@@ -205,9 +205,11 @@ class AlipayController extends Controller
     }
 
 
-    /*
-     页面跳转处理方法；
-    */
+    /**
+     * 页面跳转处理方法；
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/13 9:07
+     */
     public function returnurl()
     {
         header("Content-type:text/html;charset=utf-8");
