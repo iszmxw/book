@@ -39,7 +39,7 @@ class AdminController extends Controller
             switch ($key) {
                 case '_site':
                     if (!isset($val['weixinlogin'])) {
-                        $val['zidongzhuce'] = 0;
+                        $val['weixinlogin'] = 0;
                     }
                     break;
                 case '_ads':
