@@ -38,6 +38,7 @@ class AdminController extends Controller
             $this->{$key}     = unserialize($v['value']);
             $_CFG[$v['name']] = $this->{$key};
         }
+        dd($_CFG);
         $this->assign('_CFG', $_CFG);
         $GLOBALS['_CFG'] = $_CFG;
         $this->assign('murl', "http://" . $_SERVER['HTTP_HOST'] . __ROOT__ . "/index.php?m=");

@@ -263,7 +263,6 @@ class ConfigController extends AdminController
         $this->display();
     }
 
-
     // 模板设置
     public function tpl()
     {
@@ -356,5 +355,3 @@ class ConfigController extends AdminController
 
 
 }
-
-?>
