@@ -34,21 +34,8 @@ class AdminController extends Controller
         }
         $config = M('config')->select();
         foreach ($config as $v) {
-            $key = '_' . $v['name'];
-            $val = unserialize($v['value']);
-            switch ($key) {
-                case '_site':
-                    if (!isset($val['zidongzhuce'])) {
-                        $val['zidongzhuce'] = 0;
-                    }
-                    break;
-                case '_ads':
-                    if (!isset($val['isopen'])) {
-                        $val['isopen'] = 0;
-                    }
-                    break;
-            }
-            $this->{$key}     = $val;
+            $key              = '_' . $v['name'];
+            $this->{$key}     = unserialize($v['value']);
             $_CFG[$v['name']] = $this->{$key};
         }
         dd($_CFG);
