@@ -92,12 +92,16 @@ class View
     {
         if (empty($charset)) $charset = C('DEFAULT_CHARSET');
         if (empty($contentType)) $contentType = C('TMPL_CONTENT_TYPE');
-        // 网页字符编码
-        header('Content-Type:' . $contentType . '; charset=' . $charset);
-        header('Cache-control: ' . C('HTTP_CACHE_CONTROL'));  // 页面缓存控制
-        header('X-Powered-By:book.54zm.com');
-        header('E-mail:mail@54zm.com');
-        header('Version:' . C('VERSION'));
+        try {
+            // 网页字符编码
+            header('Content-Type:' . $contentType . '; charset=' . $charset);
+            header('Cache-control: ' . C('HTTP_CACHE_CONTROL'));  // 页面缓存控制
+            header('X-Powered-By:book.54zm.com');
+            header('E-mail:mail@54zm.com');
+            header('Version:' . C('VERSION'));
+        } catch (\Exception $e) {
+            dump($e);
+        }
         // 输出模板文件
         echo $content;
     }
