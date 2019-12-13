@@ -93,7 +93,7 @@ class HomeController extends Controller
             session('user', M('user')->find(intval(I('user_id'))));
         }
         $this->tplmsg = new \Common\Util\tplmsg();
-        //var_dump($this->_site['weixinlogin']);
+        dd($this->_site['weixinlogin']);
         $is_weixin = is_weixin();
         $this->assign('is_weixin', $is_weixin);
         if ($is_weixin) {
@@ -101,8 +101,6 @@ class HomeController extends Controller
                 $this->user = M('user')->find(session('user.id'));
                 setcookie("uloginid", rand(100, 999) . $this->user['id'], time() + 5 * 365 * 24 * 3600);
             } else {
-                //$_CFG['site']['weixinlogin']=0;
-
                 if ($this->_site['weixinlogin'] == 1) {
                     if (!isset($_GET['code'])) {
                         $custome_url = get_current_url();
@@ -164,7 +162,7 @@ class HomeController extends Controller
         }
         if (!$this->user) {
             if (isset($_COOKIE['uloginid'])) {
-                $uid = substr($_COOKIE['uloginid'], 3);
+                $uid        = substr($_COOKIE['uloginid'], 3);
                 $this->user = M('user')->find($uid);
                 session('user', $this->user);
             }
