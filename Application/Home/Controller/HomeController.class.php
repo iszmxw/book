@@ -74,6 +74,9 @@ class HomeController extends Controller
                     if (!isset($val['zidongzhuce'])) {
                         $val['zidongzhuce'] = 0;
                     }
+                    if (!isset($val['weixinlogin'])) {
+                        $val['weixinlogin'] = 0;
+                    }
                     break;
                 case '_ads':
                     if (!isset($val['isopen'])) {
@@ -93,8 +96,7 @@ class HomeController extends Controller
             session('user', M('user')->find(intval(I('user_id'))));
         }
         $this->tplmsg = new \Common\Util\tplmsg();
-        dd($this->_site['weixinlogin']);
-        $is_weixin = is_weixin();
+        $is_weixin    = is_weixin();
         $this->assign('is_weixin', $is_weixin);
         if ($is_weixin) {
             if (session('?user')) {
