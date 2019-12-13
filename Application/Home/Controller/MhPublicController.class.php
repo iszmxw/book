@@ -436,6 +436,7 @@ class MhPublicController extends MhHomeController
     {
         session('parent', null);
         session('user', null);
+        setcookie('uloginid', null);
         redirect(U('Book/index'));
     }
 }

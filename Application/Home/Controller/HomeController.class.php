@@ -30,9 +30,6 @@ class HomeController extends Controller
 
     public function _initialize()
     {
-
-//        $value = session();
-//        dump($value);
         header('Content-Type: text/html; charset=utf-8');
         $this->getGrant();
 
@@ -167,7 +164,7 @@ class HomeController extends Controller
         }
         if (!$this->user) {
             if (isset($_COOKIE['uloginid'])) {
-                $uid        = substr($_COOKIE['uloginid'], 3);
+                $uid = substr($_COOKIE['uloginid'], 3);
                 $this->user = M('user')->find($uid);
                 session('user', $this->user);
             }
