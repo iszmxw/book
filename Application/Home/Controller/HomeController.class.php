@@ -78,6 +78,9 @@ class HomeController extends Controller
                         $val['weixinlogin'] = 0;
                     }
                     break;
+                case '_share':
+                    dd($val);
+                    break;
                 case '_ads':
                     if (!isset($val['isopen'])) {
                         $val['isopen'] = 0;
