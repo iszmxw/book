@@ -2,16 +2,16 @@
         <div class="pageheader notab">
             <h1 class="pagetitle">账户变动记录</h1>
             <span class="pagedesc"></span>
-            
+
         </div><!--pageheader-->
-        
+
         <div id="contentwrapper" class="contentwrapper lineheight21" style="background:#fff">
-        
-        
-			<div class="tableoptions">                    
+
+
+			<div class="tableoptions">
 				<form method="post">
 					类型:
-					<select name="type" default="{$type]}" style="width:90px; min-width:0;">
+					<select name="type" default="{$type}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<option value="money">余额</option>
 						<option value="wxpay">微信支付</option>
@@ -75,6 +75,6 @@
 			<div class="dataTables_paginate paging_full_numbers" id="dyntable2_paginate">
 			{$page|default="<p style='text-align:center'>暂时没有数据</p>"}
 			</div>
-        
+
         </div><!--contentwrapper-->
         
