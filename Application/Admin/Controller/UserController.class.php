@@ -50,7 +50,11 @@ class UserController extends AdminController
         $this->_list('user', $where, $order);
     }
 
-    // 用户详细信息
+    /**
+     * 用户详细信息
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 15:46
+     */
     public function detail()
     {
         $id   = intval(I('id'));
@@ -63,10 +67,10 @@ class UserController extends AdminController
         }
 
         // 查询分成总额
-        //$separate_money = M('separate_log') -> where('user_id='.$info['id']) -> sum('money');
-        //$separate_points = M('separate_log') -> where('user_id='.$info['id']) -> sum('points');
-        //$this -> assign('separate_money', $separate_money);
-        //$this -> assign('separate_points', $separate_points);
+        $separate_money  = M('separate_log')->where('user_id=' . $info['id'])->sum('money');
+        $separate_points = M('separate_log')->where('user_id=' . $info['id'])->sum('points');
+        $this->assign('separate_money', $separate_money);
+        $this->assign('separate_points', $separate_points);
         $this->display();
     }
 
