@@ -68,9 +68,7 @@ class UserController extends AdminController
 
         // 查询分成总额
         $separate_money  = M('separate_log')->where('user_id=' . $info['id'])->sum('money');
-        $separate_points = M('separate_log')->where('user_id=' . $info['id'])->sum('points');
         $this->assign('separate_money', $separate_money);
-        $this->assign('separate_points', $separate_points);
         $this->display();
     }
 
