@@ -44,11 +44,7 @@
         <if condition = "@$_GET['cur_index'] neq ''" >
             parent.cur_index = {$_GET['cur_index']};
         </if>
-    parent.
-    {
-        $_GET['event']
-    }
-    ('{$url}');
+    parent.{$_GET['event']}('{$url}');
     </notempty>
 </script>
 </body>
