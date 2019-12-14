@@ -7,22 +7,21 @@ class UserController extends AdminController
     // 通知列表
     public function index()
     {
-        if (IS_POST) {
-            $_GET = $_REQUEST;
-        }
         $where = [];
         $order = null;
-        if (I('id')) {
-            $where['id'] = intval(I('id'));
-        }
-        if (I('vip')) {
-            $where['vip'] = intval(I('vip'));
-        }
-        if (I('vip') == -1) {
-            $where['vip'] = 0;
-        }
-        if (I('name')) {
-            $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
+        if (IS_POST) {
+            if (I('id')) {
+                $where['id'] = intval(I('id'));
+            }
+            if (I('vip')) {
+                $where['vip'] = intval(I('vip'));
+            }
+            if (I('vip') == -1) {
+                $where['vip'] = 0;
+            }
+            if (I('name')) {
+                $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
+            }
         }
 
 
@@ -32,7 +31,7 @@ class UserController extends AdminController
             $order = I('order') . ' ' . $type;
         }
 
-        //发送的升级模板消息
+        // 发送的升级模板消息
         $this->assign('tpls', M('tpl')->order('id desc')->select());
         $this->_list('user', $where, $order);
     }
