@@ -13,6 +13,7 @@ class ChargeController extends AdminController
         foreach ($list as $k => $v) {
             $list[$k]['nickname'] = M('user')->where(array('id' => $v['user_id']))->getField('nickname');
         }
+        $this->assign($where);
         $this->assign('list', $list);
         $this->assign('page', $this->data['page']);
         $this->display();
