@@ -8,14 +8,14 @@ class ReportController extends AdminController
     // 统计报表
     public function index()
     {
-        $where = $cates = $view_data = [];
-        $stime = I('stime');
-        $etime = I('etime');
+        $where     = $cates = $view_data = [];
+        $stime     = I('stime');
+        $etime     = I('etime');
+        $view_data = [
+            'stime' => $stime,
+            'etime' => $etime,
+        ];
         if ($stime && $etime) {
-            $view_data     = [
-                'stime' => $stime,
-                'etime' => $etime,
-            ];
             $stime         = strtotime(I('stime'));
             $etime         = strtotime(I('etime'));
             $where['date'] = array(array('gt', date('Ymd', $stime)), array('lt', date('Ymd', $etime)));
