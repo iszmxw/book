@@ -4,8 +4,11 @@ namespace Admin\Controller;
 
 class ReportController extends AdminController
 {
-
-    // 统计报表
+    /**
+     * 统计报表
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 16:28
+     */
     public function index()
     {
         $where     = $cates = $view_data = [];
@@ -30,10 +33,8 @@ class ReportController extends AdminController
             $val              = $list[$i];
             $cates[]          = $val['date'];
             $data['orders'][] = (int)$val['orders'];
-            dump($val);
-//            $data['wxpay'][]  = sprintf("%2.f", $val['wxpay']);
-            $data['total'][] = sprintf("%2.f", $val['total']);
-            $data['subs'][]  = (int)$val['subs'];
+            $data['total'][]  = sprintf("%2.f", $val['total']);
+            $data['subs'][]   = (int)$val['subs'];
         }
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
