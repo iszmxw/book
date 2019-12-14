@@ -94,18 +94,20 @@ class BookController extends AdminController
             exit;
         }
         $arrcateids = [];
+        $bookcate   = [];
+        $info       = [];
         if (intval($_GET['id']) > 0) {
             $info       = M('book')->find($_GET['id']);
             $cateids    = $info['cateids'];
             $arrcateids = explode(',', $cateids);
             $bookcate   = explode(",", $info['bookcate']);
-            $asdata     = array(
-                'info'       => $info,
-                'arrcateids' => $arrcateids,
-                'bookcate'   => $bookcate,
-            );
-            $this->assign($asdata);
         }
+        $asdata = array(
+            'info'       => $info,
+            'arrcateids' => $arrcateids,
+            'bookcate'   => $bookcate,
+        );
+        $this->assign($asdata);
         $this->display();
     }
 
