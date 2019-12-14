@@ -10,6 +10,7 @@ class UserController extends AdminController
         if (IS_POST) {
             $_GET = $_REQUEST;
         }
+        $where = [];
         if (I('id')) {
             $where['id'] = intval(I('id'));
         }
