@@ -38,7 +38,9 @@ class UserController extends AdminController
             $order = $order . ' ' . $type;
         }
 
-        view($this, $data);
+        foreach ($data as $key => $val) {
+            $this->assign($key, $val);
+        }
 //        $this->assign('id', $id);
 //        $this->assign('vip', $vip);
 //        $this->assign('name', $name);

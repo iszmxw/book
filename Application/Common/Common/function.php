@@ -497,21 +497,4 @@ function IszmxwLog($file_name, $content)
     file_put_contents($file_name, $init_txt . $content_hr . $content);
 }
 
-
-if (!function_exists('view')) {
-    /**
-     *
-     * @param $obj
-     * @param array $data
-     * @author: iszmxw <mail@54zm.com>
-     * @Date：2019/12/14 15:20
-     */
-    function view($obj, $data = [])
-    {
-        foreach ($data as $key => $val) {
-            $obj->assign($key, $val);
-        }
-    }
-}
-
 ?>
