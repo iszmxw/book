@@ -23,7 +23,7 @@
             <volist name="_send" id="vo">
                 <tr style="background:#fff">
                     <td>
-                        <iframe src="{:U('upload?event=setPath&cur_index='.$i.'&url='.$vo['pic'])}" scrolling="no"
+                        <iframe src="{:U('Config/upload?event=setPath&cur_index='.$i.'&url='.$vo['pic'])}" scrolling="no"
                                 style="width:100px; height:100px;"></iframe>
                         <input type="hidden" name="pic[]" value="{$vo.pic}"/>
                     </td>
