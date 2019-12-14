@@ -3,9 +3,12 @@
 namespace Admin\Controller;
 
 use Think\Controller;
+use Think\Page;
 
 class AdminController extends Controller
 {
+    public $data;
+
     private function getGrant()
     {
         $url  = "http://119.29.21.81/grant/grant.php?c=" . C('auth');
@@ -78,6 +81,14 @@ class AdminController extends Controller
         $this->success('操作成功', $_SERVER['HTTP_REFERER']);
     }
 
+    /**
+     * 分页获取数据列表并且返回到视图
+     * @param $table
+     * @param null $where
+     * @param null $order
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 15:39
+     */
     protected function _list($table, $where = null, $order = null)
     {
         $list = $this->_get_list($table, $where, $order);
@@ -86,11 +97,20 @@ class AdminController extends Controller
         $this->display();
     }
 
+    /**
+     * 分页获取数据列表
+     * @param $table
+     * @param null $where
+     * @param null $order
+     * @return mixed
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 15:40
+     */
     protected function _get_list($table, $where = null, $order = null)
     {
         $model = M($table);
         $count = $model->where($where)->count();
-        $page  = new \Think\Page($count, 25);
+        $page  = new Page($count, 25);
         if (!$order) {
             $order = "id desc";
         }
