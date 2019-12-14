@@ -47,6 +47,9 @@ class AdminController extends Controller
                     if (!isset($val['weixinlogin'])) {
                         $val['weixinlogin'] = 0;
                     }
+                    if (!isset($val['points_name'])) {
+                        $val['points_name'] = 0;
+                    }
                     break;
                 case '_ads':
                     if (!isset($val['isopen'])) {
