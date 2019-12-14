@@ -14,6 +14,12 @@ class UserController extends AdminController
         $name  = I('name');
         $order = I('order');
         $type  = I('type');
+        $data  = [
+            'id'    => $id,
+            'vip'   => $vip,
+            'name'  => $name,
+            'order' => $order,
+        ];
         if ($id) {
             $where['id'] = intval($id);
         }
@@ -32,10 +38,11 @@ class UserController extends AdminController
             $order = $order . ' ' . $type;
         }
 
-        $this->assign('id', $id);
-        $this->assign('vip', $vip);
-        $this->assign('name', $name);
-        $this->assign('order', $order);
+        view($data);
+//        $this->assign('id', $id);
+//        $this->assign('vip', $vip);
+//        $this->assign('name', $name);
+//        $this->assign('order', $order);
 
         // 发送的升级模板消息
         $this->assign('tpls', M('tpl')->order('id desc')->select());

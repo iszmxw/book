@@ -28,49 +28,6 @@ function complete_url($url)
 
 }
 
-//举报类型
-function getJutxt($k)
-{
-    $list = C('JUB');
-    dump($list);
-    return $list[$k] ? $list[$k] : "未知";
-}
-
-function openPath($dir)
-{
-    $arr = array();
-    if (is_dir($dir)) {
-        if ($handle = opendir($dir)) {
-            while (false !== ($file = readdir($handle))) {
-                if ($file != "." && $file != "..") {
-                    $arr[] = $file;
-                    dump($arr);
-                }
-            }
-            closedir($handle);
-        }
-    }
-    return $arr;
-}
-
-/**
- * 二维数组根据字段进行排序
- * @params array $array 需要排序的数组
- * @params string $field 排序的字段
- * @params string $sort 排序顺序标志 SORT_DESC 降序；SORT_ASC 升序
- */
-function arraySequence($array, $field, $sort = 'SORT_DESC')
-{
-    $arrSort = array();
-    foreach ($array as $uniqid => $row) {
-        foreach ($row as $key => $value) {
-            $arrSort[$key][$uniqid] = $value;
-        }
-    }
-    array_multisort($arrSort[$field], constant($sort), $array);
-    return $array;
-}
-
 
 //二维数组排序
 function arraySort($array, $field, $sort = 'SORT_DESC')
@@ -110,122 +67,6 @@ function get_order_status($status)
             $status_str = '未知状态';
     }
     return $status_str;
-}
-
-// 获取性别
-function get_sex($status)
-{
-    $status_str = '';
-    switch ($status) {
-        case 1:
-            $status_str = '先生';
-            break;
-        case 2:
-            $status_str = '女士';
-            break;
-        default :
-            $status_str = '未知状态';
-    }
-    return $status_str;
-}
-
-
-//获取上级ID和姓名
-function getParent($parent)
-{
-    if (!$parent || $parent == 0) {
-        $name = '无上级';
-    } else {
-        $name = M('user')->where(array('id' => $parent))->getField('true_name');
-        if (!$name || $name == '') {
-            $name = M('user')->where(array('id' => $parent))->getField('nickname');
-        }
-    }
-    return $name;
-}
-
-//获取姓名或昵称
-function getUserName($user)
-{
-    if (!is_array($user)) {
-        $user = M('user')->find(intval($user));
-    }
-    if ($user['true_name']) {
-        return $user['true_name'];
-    } else {
-        return $user['nickname'];
-    }
-}
-
-//获取订单支付类型
-function getOrderType($type)
-{
-    $return = '';
-    switch ($type) {
-        case 1:
-            $return = '微信支付';
-            break;
-        case 2:
-            $return = '支付宝支付';
-            break;
-        case 3:
-            $return = '余额支付';
-            break;
-        default :
-            $return = '未知支付';
-    }
-    return $return;
-}
-
-// 根据代理等级获取等级名称
-function get_level_name($level = '')
-{
-    if (!$config) {
-        $config = $GLOBALS['_CFG']['level'];
-    }
-    foreach ($config as $k => $v) {
-        $arr[$k] = $v['name'];
-    }
-    if (!$arr[$level]) {
-        $arr[$level] = '普通会员';
-    }
-    return $arr[$level];
-}
-
-// 根据代理等级获取等级名称
-function get_lv_name($lv = '')
-{
-    if (!$config) {
-        $config = $GLOBALS['_CFG']['lv'];
-    }
-    foreach ($config as $k => $v) {
-        $arr[$k] = $v['name'];
-    }
-    if (!$arr[$lv]) {
-        $arr[$lv] = '普通会员';
-    }
-    return $arr[$lv];
-}
-
-//获取合伙人和代理总称
-function get_level_lv_name($level = '', $lv = '')
-{
-    if (!$level && !$lv) {
-        $string = '普通会员';
-    }
-    $config_level = $GLOBALS['_CFG']['level'];
-    $config_lv    = $GLOBALS['_CFG']['lv'];
-
-    if ($level && !$lv) {
-        $string = $config_level[$level]['name'];
-    }
-    if (!$level && $lv) {
-        $string = $config_lv[$lv]['name'];
-    }
-    if ($level && $lv) {
-        $string = $config_level[$level]['name'] . '(' . $config_lv[$lv]['name'] . ')';
-    }
-    return $string;
 }
 
 
@@ -271,42 +112,6 @@ function wxPay($order, $table = '', $type = '')
     $uo           = $jsapi->unifiedOrder();
     $jsapi_params = $jsapi->get_jsApi_parameters();
     return $jsapi_params;
-}
-
-
-// 根据自定义菜单类型返回名称
-function get_selfmenu_type($type)
-{
-    $type_name = '';
-    switch ($type) {
-        case 'click':
-            $type_name = '点击推事件';
-            break;
-        case 'view':
-            $type_name = '跳转URL';
-            break;
-        case 'scancode_push':
-            $type_name = '扫码推事件';
-            break;
-        case 'scancode_waitmsg':
-            $type_name = '扫码推事件且弹出“消息接收中”提示框';
-            break;
-        case 'pic_sysphoto':
-            $type_name = '弹出系统拍照发图';
-            break;
-        case 'pic_photo_or_album':
-            $type_name = '弹出拍照或者相册发图';
-            break;
-        case 'pic_weixin':
-            $type_name = '弹出微信相册发图器';
-            break;
-        case 'location_select':
-            $type_name = '弹出地理位置选择器';
-            break;
-        default :
-            $type_name = '不支持的类型';
-    }
-    return $type_name;
 }
 
 
@@ -357,130 +162,6 @@ function getChapQrcode($id)
     );
 }
 
-//获得财务记录动作名称
-function get_finance_action($action)
-{
-    $return = '';
-    switch ($action) {
-        case 1:
-            $return = '在线充值';
-            break;
-        case 2:
-            $return = '余额支付';
-            break;
-        case 3:
-            $return = '订单分成';
-            break;
-        case 4:
-            $return = '提现成功';
-            break;
-        case 5:
-            $return = '提现退回';
-            break;
-        case 6:
-            $return = '取消订单';
-            break;
-        case 7:
-            $return = '取消分成';
-            break;
-        case 8:
-            $return = '消费漫画';
-            break;
-        case 9:
-            $return = '消费小说';
-            break;
-        case 10:
-            $return = '签到书币';
-            break;
-        case 11:
-            $return = '提现退回';
-            break;
-        case 12:
-            $return = '打赏书币';
-            break;
-        case 13:
-            $return = '分享赠送书币';
-            break;
-        default :
-            $return = '未知操作';
-    }
-    return $return;
-}
-
-// 根据订单提现申请返回状态信息
-function get_withdraw_status($status)
-{
-    $status_str = '';
-    switch ($status) {
-        case -1:
-            $status_str = '已拒绝';
-            break;
-        case 1:
-            $status_str = '待转帐';
-            break;
-        case 2:
-            $status_str = '提现成功';
-            break;
-        case 3:
-            $status_str = '已完成';
-            break;
-        case 4:
-            $status_str = '提交失败';
-            break;
-        default :
-            $status_str = '未知状态';
-    }
-    return $status_str;
-}
-
-// 根据分成请返回状态信息
-function get_separate_status($status)
-{
-    $status_str = '';
-    switch ($status) {
-        case -1:
-            $status_str = '已取消';
-            break;
-        case 1:
-            $status_str = '未分成';
-            break;
-        case 2:
-            $status_str = '已分成';
-            break;
-        default :
-            $status_str = '未知状态';
-    }
-    return $status_str;
-}
-
-// 根据分成请返回分成类型
-function get_separate_type($type)
-{
-    $type_str = '';
-    switch ($type) {
-        case 'lv':
-            $type_str = '代理分成';
-            break;
-        case 'level':
-            $type_str = '合伙人分成';
-            break;
-        default :
-            $type_str = '未知状态';
-    }
-    return $type_str;
-}
-
-//根据条件统计分成
-function separate_all($user_id, $self_id)
-{
-    $money_all = 0;
-    if (is_numeric($user_id) && $user_id > 0 && is_numeric($self_id) && $self_id > 0) {
-        $money_all = M('separate_log')->where("status=2 and user_id={$user_id} and self_id={$self_id} ")->sum('money');
-        $money_all = floatval($money_all);
-    }
-    return sprintf("%.2f", $money_all);
-}
-
 // 根据订漫画分类返回分类名
 function get_mh_cate_name($status)
 {
@@ -529,64 +210,6 @@ function get_mh_cate_name($status)
     return $status_str;
 }
 
-// 将列表变成树形结构
-function list_to_tree($list, $parent = 0)
-{
-    $data = array();
-    foreach ($list as $v) {
-        if ($v['pid'] == $parent) {
-            $data[] = array_merge(array(
-                '_child' => list_to_tree($list, $v['id'])
-            ), $v);
-        }
-    }
-    return $data;
-}
-
-// 将数变成列表
-function tree_to_list($tree, $level = 0)
-{
-    $data = array();
-    foreach ($tree as $v) {
-        $temp = $v['_child'];
-        unset($v['_child']);
-        $data[] = array_merge(array('_level' => $level), $v);
-        if (is_array($temp) && count($temp) > 0) {
-            $data = array_merge($data, tree_to_list($temp, $level + 1));
-        }
-    }
-    return $data;
-}
-
-
-//根据金额获得千/万,flag==false 千和千以下不获得单位
-function getKWmoney($money, $flag = false)
-{
-    if (!$money) {
-        return 0;
-    } else {
-        $html = "";
-        if ($flag) {
-            if ($money >= 1000 && $money < 10000) {
-                $money = intval($money / 1000);
-                $html  = "千";
-            } elseif ($money >= 10000) {
-                $money = intval($money / 10000);
-                $html  = "万";
-            }
-            $return = $money . $html;
-        } else {
-            if ($money >= 10000) {
-                $money = intval($money / 10000);
-                $html  = "万";
-            }
-            $return = $money . $html;
-        }
-    }
-    return $return;
-}
-
-
 /** 添加财务日志
  *    type => money:余额记录,points:积分记录
  */
@@ -600,7 +223,6 @@ function flog($user_id, $type, $money, $action)
         'create_time' => NOW_TIME
     ));
 }
-
 
 /**
  *订单生成分成记录
@@ -759,20 +381,11 @@ function doSeparate($order)
     }
 }
 
-/** 获取课程分类
- */
-function getSorts($sorts_id)
-{
-    return M('goods_sorts')->where(array('id' => $sorts_id))->getField('fname');
-}
-
-
 function create_order_sn($user_id)
 {
     $sn = date("Ymd") . mt_rand(100, 999) . mt_rand(1000, 9999) . $user_id;
     return $sn;
 }
-
 
 //判断是否微信打开
 function is_weixin()
@@ -782,80 +395,6 @@ function is_weixin()
     }
     return false;
 
-}
-
-function is_test()
-{
-    $iss = 1;
-    return $iss;
-}
-
-/**
- * 获取全部数据
- * @param string $type tree获取树形结构 level获取层级结构
- * @param string $order 排序方式
- * @return array         结构数据
- */
-function getTreeData($table = 'Menu', $type = 'tree', $order = '', $name = 'name', $child = 'id', $parent = 'pid')
-{
-    // 判断是否需要排序
-    if (empty($order)) {
-        $data = M($table)->select();
-    } else {
-        $data = M($table)->order($order . ' desc')->select();
-    }
-    // 获取树形或者结构数据
-    if ($type == 'tree') {
-        $data = \Org\Nx\Data::tree($data, $name, $child, $parent);
-    } elseif ($type = "level") {
-        $data = \Org\Nx\Data::channelLevel($data, 0, '&nbsp;', $child);
-    }
-    return $data;
-}
-
-
-//获取当前距离时间
-function gettoTime($time)
-{
-    if ($time) {
-        $to_time = time() - $time;
-        if (($to_time / 3600) < 1) {
-            $string = '刚刚';
-        }
-        if (($to_time / 3600) > 1 && ($to_time / 3600) < 24) {
-            $string = intval($to_time / 3600) . '小时前';
-        }
-        if (($to_time / 3600) >= 24) {
-            if (($to_time / (3600 * 24)) > 30) {
-                $string = '1个月前';
-            } else {
-                $string = intval($to_time / (3600 * 24)) . '天前';
-            }
-        }
-    }
-    return $string;
-}
-
-
-// 获得一个标的列表
-function show_list($table, $where = null, $order = "id desc", $pagesize = 6, $handler = null)
-{
-    $count = M($table)->where($where)->count();
-    $page  = new \Think\Page($count, $pagesize);
-    $list  = M($table)->where($where)->limit($page->limit())->order($order)->select();
-    //echo M()->getLastSql();
-    $handler = '';
-    if ($handler && !empty($list)) {
-        foreach ($list as &$item) {
-            $item = $handler($item);
-        }
-    }
-    return array(
-        'list'        => $list,
-        'page'        => $page->show(),
-        'count'       => $count,
-        'total_pages' => $page->total_pages()
-    );
 }
 
 //发送短信
@@ -882,7 +421,6 @@ function sms($mobile, $con)
         return $statusStr[$rt];
     }
 }
-
 
 /**
  * 对称加密算法之加密
@@ -941,16 +479,6 @@ function jsonError($message = '', $url = null)
     return json_encode($return);
 }
 
-//返回正确
-function jsonSuccess($message = '', $data = '', $url = null)
-{
-    $return['msg']  = $message;
-    $return['data'] = $data;
-    $return['code'] = 1;
-    $return['url']  = $url;
-    return json_encode($return);
-}
-
 /**
  * 打印日志到txt文件
  * @param $file_name $文件名称
@@ -967,6 +495,24 @@ function IszmxwLog($file_name, $content)
         $content_hr = "\r\n" . '时间：' . date('Y-m-d H:i:s') . "======>\r\n";// 时间换行
     }
     file_put_contents($file_name, $init_txt . $content_hr . $content);
+}
+
+
+if (!function_exists('view')) {
+    /**
+     * Get the evaluated view contents for the given view.
+     *
+     * @param string $view
+     * @param array $data
+     * @param array $mergeData
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    function view($data = [])
+    {
+        foreach ($data as $key => $val) {
+            $this->assign($key, $val);
+        }
+    }
 }
 
 ?>
