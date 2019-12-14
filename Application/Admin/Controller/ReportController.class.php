@@ -23,6 +23,7 @@ class ReportController extends AdminController
         $limit = 7;
         // 查询最近七天的报表
         $list = M('data')->limit($limit)->where($where)->order('date desc')->select();
+        dump($list);
         $data = array();
         for ($i = count($list) - 1; $i >= 0; $i--) {
             $val              = $list[$i];
