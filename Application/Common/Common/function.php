@@ -500,17 +500,16 @@ function IszmxwLog($file_name, $content)
 
 if (!function_exists('view')) {
     /**
-     * Get the evaluated view contents for the given view.
      *
-     * @param string $view
+     * @param $obj
      * @param array $data
-     * @param array $mergeData
-     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 15:20
      */
-    function view($data = [])
+    function view($obj, $data = [])
     {
         foreach ($data as $key => $val) {
-            $this->assign($key, $val);
+            $obj->assign($key, $val);
         }
     }
 }
