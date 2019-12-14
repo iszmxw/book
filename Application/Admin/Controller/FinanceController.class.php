@@ -162,7 +162,12 @@ class FinanceController extends AdminController
     // 帐户变动记录
     public function finance_log()
     {
-        $where = [];
+        $where           = [];
+        $data['action']  = I('action');
+        $data['user_id'] = I('user_id');
+        $data['type']    = I('type');
+        $data['time1']   = I('time1');
+        $data['time2']   = I('time2');
         if (I('action')) {
             $where['action'] = intval(I('action'));
         }
@@ -184,9 +189,7 @@ class FinanceController extends AdminController
             $where['create_time'] = array('lt', strtotime(I('time2')) + 86400);
         }
         $this->_list('finance_log', $where);
-        $where['time1'] = I('time1');
-        $where['time2'] = I('time2');
-        $this->assign($where);
+        $this->assign($data);
     }
 
 
