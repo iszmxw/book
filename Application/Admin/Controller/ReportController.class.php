@@ -19,12 +19,13 @@ class ReportController extends AdminController
         for ($i = count($list) - 1; $i >= 0; $i--) {
             $val              = $list[$i];
             $cates[]          = $val['date'];
+            dump($val['date']);
             $data['orders'][] = (int)$val['orders'];
             $data['wxpay'][]  = sprintf("%2.f", $val['wxpay']);
             $data['total'][]  = sprintf("%2.f", $val['total']);
             $data['subs'][]   = (int)$val['subs'];
         }
-        dd($cates);
+        dd(1);
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
         $this->display();
