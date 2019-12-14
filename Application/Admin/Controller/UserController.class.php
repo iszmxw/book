@@ -32,6 +32,9 @@ class UserController extends AdminController
             $order = $order . ' ' . $type;
         }
 
+        $this->assign('id', $id);
+        $this->assign('vip', $vip);
+
         // 发送的升级模板消息
         $this->assign('tpls', M('tpl')->order('id desc')->select());
         $this->_list('user', $where, $order);
