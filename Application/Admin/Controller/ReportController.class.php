@@ -8,7 +8,7 @@ class ReportController extends AdminController
     // 统计报表
     public function index()
     {
-        $cates = [];
+        $where = $cates = [];
         $stime = I('stime');
         $etime = I('etime');
         if ($stime && $etime) {
