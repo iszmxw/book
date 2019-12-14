@@ -38,9 +38,8 @@ class UserController extends AdminController
             $order = $order . ' ' . $type;
         }
 
-        foreach ($data as $key => $val) {
-            $this->assign($key, $val);
-        }
+        // 渲染数据到视图
+        $this->views($data);
         // 发送的升级模板消息
         $this->assign('tpls', M('tpl')->order('id desc')->select());
         // 分页获取数据返回到视图

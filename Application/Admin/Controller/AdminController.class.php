@@ -211,4 +211,18 @@ class AdminController extends Controller
         M($table)->where(array("id" => $id))->save(array($field => intval($status)));
         $this->success('操作成功！');
     }
+
+
+    /**
+     * 渲染数组到视图
+     * @param $data
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 15:43
+     */
+    public function views($data)
+    {
+        foreach ($data as $key => $val) {
+            $this->assign($key, $val);
+        }
+    }
 }
