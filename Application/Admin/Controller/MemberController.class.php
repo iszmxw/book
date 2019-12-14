@@ -46,8 +46,10 @@ class MemberController extends AdminController
             exit;
 
         }
-        if ($_GET['id'] > 0) {
-            $this->assign('info', M('member')->find(intval($_GET['id'])));
+
+
+        if (I('get.id') > 0) {
+            $this->assign('info', M('member')->find(intval(I('get.id'))));
         }
         $this->display();
     }
