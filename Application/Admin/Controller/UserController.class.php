@@ -19,6 +19,8 @@ class UserController extends AdminController
             'vip'   => $vip,
             'name'  => $name,
             'order' => $order,
+            // 发送的升级模板消息
+            'tpls'  => M('tpl')->order('id desc')->select()
         ];
         if ($id) {
             $where['id'] = intval($id);
@@ -37,11 +39,8 @@ class UserController extends AdminController
             $type  = $type == 'asc' ? 'asc' : 'desc';
             $order = $order . ' ' . $type;
         }
-
         // 渲染数据到视图
         $this->views($data);
-        // 发送的升级模板消息
-        $this->assign('tpls', M('tpl')->order('id desc')->select());
         // 分页获取数据返回到视图
         $this->_list('user', $where, $order);
     }
