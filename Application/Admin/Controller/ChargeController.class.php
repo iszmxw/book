@@ -21,23 +21,25 @@ class ChargeController extends AdminController
     private function _get_where()
     {
         if (IS_POST) {
-            $_GET      = array_merge($_GET, $_POST);
             $_GET['p'] = 1; //如果是post的话回到第一页
         }
-
-        if (!empty($_GET['user_id'])) {
-            $where['user_id'] = intval($_GET['user_id']);
+        $user_id = I('user_id');
+        $time1   = I('time1');
+        $time2   = I('time2');
+        $where   = [];
+        if (!empty($user_id)) {
+            $where['user_id'] = intval($user_id);
         }
 
-        if (!empty($_GET['time1']) && !empty($_GET['time2'])) {
+        if (!empty($time1) && !empty($time2)) {
             $where['create_time'] = array(
-                array('gt', strtotime($_GET['time1'])),
-                array('lt', strtotime($_GET['time2']) + 86400)
+                array('gt', strtotime($time1)),
+                array('lt', strtotime($time2) + 86400)
             );
-        } elseif (!empty($_GET['time1'])) {
-            $where['create_time'] = array('gt', strtotime($_GET['time1']));
-        } elseif (!empty($_GET['time2'])) {
-            $where['create_time'] = array('lt', strtotime($_GET['time2']) + 86400);
+        } elseif (!empty($time1)) {
+            $where['create_time'] = array('gt', strtotime($time1));
+        } elseif (!empty($time2)) {
+            $where['create_time'] = array('lt', strtotime($time2) + 86400);
         }
         return $where;
     }
