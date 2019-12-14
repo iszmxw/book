@@ -33,17 +33,13 @@ class BookController extends AdminController
             $cateids = implode(',', $_POST['arrcateids']);
             unset($_POST['arrcateids']);
             $_POST['cateids'] = $cateids;
-
-            $bookcate = implode(',', $_POST['bookcate']);
+            $bookcate         = implode(',', $_POST['bookcate']);
             unset($_POST['bookcate']);
             $_POST['bookcate'] = $bookcate;
-
             // 修改
             if (isset($_GET['id'])) {
                 $_POST['update_time'] = NOW_TIME;
-                $rs                   = M('book')->where('id=' . intval($_GET['id']))->save($_POST);
-
-                $product_id = intval($_GET['id']);
+                M('book')->where('id=' . intval($_GET['id']))->save($_POST);
                 $this->success('操作成功！');
             } else {
                 $_POST['create_time'] = NOW_TIME;
@@ -93,6 +89,8 @@ class BookController extends AdminController
 
             exit;
         }
+
+        // 初始化数据
         $arrcateids = [];
         $bookcate   = [];
         $info       = [];
