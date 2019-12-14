@@ -10,7 +10,7 @@ class WithdrawController extends AdminController
         if (IS_POST) {
             $_GET = $_REQUEST;
         }
-
+        $where = [];
         if (!empty($_GET['status'])) {
             $where['status'] = intval($_GET['status']);
         }
