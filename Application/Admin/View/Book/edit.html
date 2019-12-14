@@ -61,7 +61,7 @@
                     <foreach name="_bookcate" item="v" key="k">
                         <if condition="$v['show'] eq 2">
                             <input type="checkbox" name="bookcate[]" id="bookcate" value="{$k}"
-                            <if condition="in_array($k, $bookcate)">checked</if>
+                            <if condition="in_array($k, $_bookcate)">checked</if>
                             />{$v['name']}&nbsp;&nbsp;&nbsp;
                         </if>
                     </foreach>
