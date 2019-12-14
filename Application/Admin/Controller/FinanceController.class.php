@@ -194,18 +194,21 @@ class FinanceController extends AdminController
     {
         $where = [];
         if (IS_POST) {
-            $_GET      = $_REQUEST;
             $_GET['p'] = 1;
         }
-        if (!empty($_GET['user_id'])) {
-            $where['user_id'] = intval($_GET['user_id']);
+        $data['user_id'] = I('user_id');
+        $data['self_id'] = I('self_id');
+        $data['time']    = I('time');
+        if (!empty($data['user_id'])) {
+            $where['user_id'] = intval($data['user_id']);
         }
-        if (!empty($_GET['self_id'])) {
-            $where['self_id'] = intval($_GET['self_id']);
+        if (!empty($data['self_id'])) {
+            $where['self_id'] = intval($data['self_id']);
         }
-        if (!empty($_GET['time'])) {
-            $where['date'] = $_GET['time'];
+        if (!empty($data['time'])) {
+            $where['date'] = $data['time'];
         }
+        $this->assign($data);
         $this->_list("slog", $where, 'create_time desc');
     }
 

@@ -11,11 +11,11 @@
 			<div class="tableoptions">                    
 				<form method="post">
 					获币用户:
-					<input type="text" name="user_id" value="{$_GET['user_id']}" placeholder="请输入获币用户ID" class="smallinput" style="width:100px;" />
+					<input type="text" name="user_id" value="{$user_id}" placeholder="请输入获币用户ID" class="smallinput" style="width:100px;" />
 					访问用户:
-					<input type="text" name="self_id" value="{$_GET['self_id']}" placeholder="输入访问用户ID" class="smallinput" style="width:100px;" />
+					<input type="text" name="self_id" value="{$self_id}" placeholder="输入访问用户ID" class="smallinput" style="width:100px;" />
 					时间:
-					<input type="text" name="time" value="{$_GET['time']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
+					<input type="text" name="time" value="{$time}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
 					<input type="submit" value="查找" />
 				</form>
 			</div><!--tableoptions-->
