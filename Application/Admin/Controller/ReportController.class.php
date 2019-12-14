@@ -34,7 +34,6 @@ class ReportController extends AdminController
         }
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
-        dd($view_data);
         $this->views($view_data);
         $this->display();
     }
