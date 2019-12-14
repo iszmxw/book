@@ -35,6 +35,7 @@ class ReportController extends AdminController
             $data['subs'][]  = (int)$val['subs'];
         }
         dump($data);
+        dump($cates);
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
         $this->views($view_data);
