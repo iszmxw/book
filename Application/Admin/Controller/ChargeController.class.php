@@ -13,7 +13,6 @@ class ChargeController extends AdminController
         foreach ($list as $k => $v) {
             $list[$k]['nickname'] = M('user')->where(array('id' => $v['user_id']))->getField('nickname');
         }
-        $this->assign($where);
         $this->assign('list', $list);
         $this->assign('page', $this->data['page']);
         $this->display();
@@ -42,6 +41,10 @@ class ChargeController extends AdminController
         } elseif (!empty($time2)) {
             $where['create_time'] = array('lt', strtotime($time2) + 86400);
         }
+
+        $this->assign('user_id', $user_id);
+        $this->assign('time1', $time1);
+        $this->assign('time2', $time2);
         return $where;
     }
 
