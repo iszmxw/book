@@ -165,6 +165,7 @@ class FinanceController extends AdminController
         $where           = [];
         $data['action']  = I('action');
         $data['user_id'] = I('user_id');
+        $data['order_sn'] = I('order_sn');
         $data['type']    = I('type');
         $data['time1']   = I('time1');
         $data['time2']   = I('time2');
@@ -173,6 +174,9 @@ class FinanceController extends AdminController
         }
         if (I('user_id')) {
             $where['user_id'] = intval(I('user_id'));
+        }
+        if (I('order_sn')) {
+            $where['order_sn'] = intval(I('order_sn'));
         }
         if (I('type')) {
             $where['type'] = I('type');
