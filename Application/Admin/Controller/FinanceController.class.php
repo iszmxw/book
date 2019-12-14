@@ -162,29 +162,30 @@ class FinanceController extends AdminController
     // 帐户变动记录
     public function finance_log()
     {
-        if (IS_POST) {
-            $_GET = $_REQUEST;
+        $where = [];
+        if (I('action')) {
+            $where['action'] = intval(I('action'));
         }
-        if (!empty($_GET['action'])) {
-            $where['action'] = intval($_GET['action']);
+        if (I('user_id')) {
+            $where['user_id'] = intval(I('user_id'));
         }
-        if (!empty($_GET['user_id'])) {
-            $where['user_id'] = intval($_GET['user_id']);
-        }
-        if (!empty($_GET['type'])) {
-            $where['type'] = $_GET['type'];
+        if (I('type')) {
+            $where['type'] = I('type');
         }
 
-        if (!empty($_GET['time1']) && !empty($_GET['time2'])) {
+        if (I('time1') && I('time2')) {
             $where['create_time'] = array(
-                array('gt', strtotime($_GET['time1'])),
-                array('lt', strtotime($_GET['time2']) + 86400)
+                array('gt', strtotime(I('time1'))),
+                array('lt', strtotime(I('time2')) + 86400)
             );
-        } elseif (!empty($_GET['time1'])) {
-            $where['create_time'] = array('gt', strtotime($_GET['time1']));
-        } elseif (!empty($_GET['time2'])) {
-            $where['create_time'] = array('lt', strtotime($_GET['time2']) + 86400);
+        } elseif (I('time1')) {
+            $where['create_time'] = array('gt', strtotime(I('time1')));
+        } elseif (I('time2')) {
+            $where['create_time'] = array('lt', strtotime(I('time2')) + 86400);
         }
+        $where['time1'] = I('time1');
+        $where['time2'] = I('time2');
+        $this->assign($where);
         $this->_list('finance_log', $where);
     }
 
