@@ -127,48 +127,58 @@ class FinanceController extends AdminController
     // 分成记录
     public function separate_log()
     {
+        $where = [];
         if (IS_POST) {
-            $_GET      = $_REQUEST;
             $_GET['p'] = 1;
         }
-        if (!empty($_GET['status'])) {
-            $where['status'] = intval($_GET['status']);
+        $data = [
+            'status'   => I('status'),
+            'user_id'  => I('user_id'),
+            'order_id' => I('order_id'),
+            'order_sn' => I('order_sn'),
+            'level'    => I('level'),
+            'time1'    => I('time1'),
+            'time2'    => I('time2'),
+        ];
+        if (I('status')) {
+            $where['status'] = intval(I('status'));
         }
-        if (!empty($_GET['user_id'])) {
-            $where['user_id'] = intval($_GET['user_id']);
+        if (I('user_id')) {
+            $where['user_id'] = intval(I('user_id'));
         }
-        if (!empty($_GET['order_id'])) {
-            $where['order_id'] = intval($_GET['order_id']);
+        if (I('order_id')) {
+            $where['order_id'] = intval(I('order_id'));
         }
-        if (!empty($_GET['order_sn'])) {
-            $where['order_sn'] = intval($_GET['order_sn']);
+        if (I('order_sn')) {
+            $where['order_sn'] = intval(I('order_sn'));
         }
-        if (!empty($_GET['level'])) {
-            $where['level'] = intval($_GET['level']);
+        if (I('level')) {
+            $where['level'] = intval(I('level'));
         }
-        if (!empty($_GET['time1']) && !empty($_GET['time2'])) {
+        if (I('time1') && I('time2')) {
             $where['create_time'] = array(
-                array('gt', strtotime($_GET['time1'])),
-                array('lt', strtotime($_GET['time2']) + 86400)
-            );
-        } elseif (!empty($_GET['time1'])) {
-            $where['create_time'] = array('gt', strtotime($_GET['time1']));
-        } elseif (!empty($_GET['time2'])) {
-            $where['create_time'] = array('lt', strtotime($_GET['time2']) + 86400);
+                array('gt', strtotime(I('time1')),
+                    array('lt', strtotime(I('time2')) + 86400)
+                ));
+        } elseif (I('time1')) {
+            $where['create_time'] = array('gt', strtotime(I('time1')));
+        } elseif (I('time2')) {
+            $where['create_time'] = array('lt', strtotime(I('time2')) + 86400);
         }
+        $this->assign($data);
         $this->_list('separate_log', $where);
     }
 
     // 帐户变动记录
     public function finance_log()
     {
-        $where           = [];
-        $data['action']  = I('action');
-        $data['user_id'] = I('user_id');
+        $where            = [];
+        $data['action']   = I('action');
+        $data['user_id']  = I('user_id');
         $data['order_sn'] = I('order_sn');
-        $data['type']    = I('type');
-        $data['time1']   = I('time1');
-        $data['time2']   = I('time2');
+        $data['type']     = I('type');
+        $data['time1']    = I('time1');
+        $data['time2']    = I('time2');
         if (I('action')) {
             $where['action'] = intval(I('action'));
         }
