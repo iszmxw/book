@@ -30,6 +30,7 @@ class ReportController extends AdminController
             $val              = $list[$i];
             $cates[]          = $val['date'];
             $data['orders'][] = (int)$val['orders'];
+            dump($val);
 //            $data['wxpay'][]  = sprintf("%2.f", $val['wxpay']);
             $data['total'][] = sprintf("%2.f", $val['total']);
             $data['subs'][]  = (int)$val['subs'];
