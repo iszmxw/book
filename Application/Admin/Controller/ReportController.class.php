@@ -15,8 +15,8 @@ class ReportController extends AdminController
             'stime' => $stime,
             'etime' => $etime,
         ];
-        $limit     = 0;
         if ($stime && $etime) {
+            $limit         = 0;
             $stime         = strtotime(I('stime'));
             $etime         = strtotime(I('etime'));
             $where['date'] = array(array('EGT', date('Ymd', $stime)), array('ELT', date('Ymd', $etime)));
@@ -25,7 +25,6 @@ class ReportController extends AdminController
         }
         // 查询最近七天的报表
         $list = M('data')->limit($limit)->where($where)->order('date desc')->select();
-        dump($list);
         $data = array();
         for ($i = count($list) - 1; $i >= 0; $i--) {
             $val              = $list[$i];
