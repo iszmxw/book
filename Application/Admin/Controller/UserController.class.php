@@ -13,10 +13,10 @@ class UserController extends AdminController
         if (!empty($_GET['id'])) {
             $where['id'] = intval($_GET['id']);
         }
-        if (!empty($_GET['vip'])) {
-            $where['vip'] = intval($_GET['vip']);
+        if (I('vip')) {
+            $where['vip'] = intval(I('vip'));
         }
-        if ($_GET['vip'] == -1) {
+        if (I('vip') == -1) {
             $where['vip'] = 0;
         }
         if (!empty($_GET['name'])) {
