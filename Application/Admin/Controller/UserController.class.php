@@ -41,11 +41,7 @@ class UserController extends AdminController
         foreach ($data as $key => $val) {
             $this->assign($key, $val);
         }
-//        $this->assign('id', $id);
-//        $this->assign('vip', $vip);
-//        $this->assign('name', $name);
-//        $this->assign('order', $order);
-
+        dump(M('tpl')->order('id desc')->select());
         // 发送的升级模板消息
         $this->assign('tpls', M('tpl')->order('id desc')->select());
         $this->_list('user', $where, $order);
