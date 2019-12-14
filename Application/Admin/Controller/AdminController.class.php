@@ -160,6 +160,7 @@ class AdminController extends Controller
 
     public function upload()
     {
+        $errmsg = null;
         if (I('url')) {
             $this->assign('url', I('url'));
         }
@@ -171,7 +172,7 @@ class AdminController extends Controller
                 $field = 'file';
             }
             if ($_FILES[$field]['size'] < 1 && $_FILES[$field]['size'] > 0) {
-                $this->assign('errmsg', '上传错误！');
+                $errmsg = "上传错误！";
             } else {
                 $ext = $this->_get_ext($_FILES[$field]['name']);
                 if (!in_array(strtolower($ext), array('gif', 'jpg', 'png'))) {
@@ -181,11 +182,12 @@ class AdminController extends Controller
                 if (move_uploaded_file($_FILES[$field]['tmp_name'], $new_name['fullname'])) {
                     $this->assign('url', $new_name['fullname']);
                 } else {
-                    $this->assign('errmsg', '文件保存错误！');
+                    $errmsg = '文件保存错误！';
                 }
             }
         }
         C('LAYOUT_ON', false);
+        $this->assign('errmsg', $errmsg);
         $this->display('Admin/upload');
     }
 
