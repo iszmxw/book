@@ -7,9 +7,6 @@ class WithdrawController extends AdminController
     // 列表
     public function index()
     {
-        if (IS_POST) {
-            $_GET = $_REQUEST;
-        }
         $where  = [];
         $status = I('status');
         $time1  = I('time1');
