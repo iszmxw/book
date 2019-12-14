@@ -8,10 +8,14 @@ class ReportController extends AdminController
     // 统计报表
     public function index()
     {
-        $where = $cates = [];
+        $where = $cates = $view_data = [];
         $stime = I('stime');
         $etime = I('etime');
         if ($stime && $etime) {
+            $view_data     = [
+                'stime' => $stime,
+                'etime' => $etime,
+            ];
             $stime         = strtotime(I('stime'));
             $etime         = strtotime(I('etime'));
             $where['date'] = array(array('gt', date('Ymd', $stime)), array('lt', date('Ymd', $etime)));
@@ -25,11 +29,12 @@ class ReportController extends AdminController
             $cates[]          = $val['date'];
             $data['orders'][] = (int)$val['orders'];
 //            $data['wxpay'][]  = sprintf("%2.f", $val['wxpay']);
-            $data['total'][]  = sprintf("%2.f", $val['total']);
-            $data['subs'][]   = (int)$val['subs'];
+            $data['total'][] = sprintf("%2.f", $val['total']);
+            $data['subs'][]  = (int)$val['subs'];
         }
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
+        $this->views($view_data);
         $this->display();
     }
 
