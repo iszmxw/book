@@ -50,6 +50,9 @@ class AdminController extends Controller
                     if (!isset($val['points_name'])) {
                         $val['points_name'] = 0;
                     }
+                    if (!isset($val['withdraw'])) {
+                        $val['withdraw'] = 1;
+                    }
                     break;
                 case '_ads':
                     if (!isset($val['isopen'])) {
