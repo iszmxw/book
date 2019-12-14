@@ -2,11 +2,11 @@
         <div class="pageheader notab">
             <h1 class="pagetitle">充值记录</h1>
             <span class="pagedesc">查看商城中的用户充值记录</span>
-            
+
         </div><!--pageheader-->
-        
+
         <div id="contentwrapper" class="contentwrapper lineheight21">
-			<div class="tableoptions">        
+			<div class="tableoptions">
 				<form method="post" id="form">
 					用户ID:
 					<input type="text" name="user_id" value="{$user_id}" class="smallinput" style="width:50px;" />
@@ -40,15 +40,14 @@
 						<td>{$vo.create_time|date="Y-m-d H:i",###}</td>
 						<td>{$vo.money|floatval}</td>
 						<td>已支付</td>
-						
+
 					</tr>
 					</volist>
 				</tbody>
 			</table>
 			<div class="dataTables_paginate paging_full_numbers" id="dyntable2_paginate">
-			<if condition="$orders gt 0">
-			
-			<!-- <span style="float:left;">
+                    <!-- <if condition="$orders gt 0">
+			<span style="float:left;">
 			<if condition="@$_GET['status'] eq ''">
 			总充值数：{$orders_paid}/{$orders},
 			总金额：￥{$total_paid}/￥{$total},
@@ -59,11 +58,11 @@
 			总充值数：{$orders},
 			总金额：￥{$total}
 			</if>
-			</span> -->
-			</if>
-			
+			</span>
+			</if>-->
+
 			{$page|default="<p style='text-align:center'>暂时没有数据</p>"}
 			</div>
-        
+
         </div><!--contentwrapper-->
         
