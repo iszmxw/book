@@ -7,16 +7,16 @@ class TreeController extends AdminController
     // 通知列表
     public function index()
     {
-
         $this->display();
     }
 
     // 获取数据
     public function get_users()
     {
-        $id = intval($_POST['id']);
-        if (!$id && $_POST['root'] > 0) {
-            $id = intval($_POST['root']);
+        $id   = intval(I('id'));
+        $root = I('root');
+        if (!$id && $root > 0) {
+            $id = intval($root);
         }
         $users = M('user')->where('parent1=' . $id)->select();
         $data  = array();
