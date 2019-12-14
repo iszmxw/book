@@ -4,9 +4,14 @@ namespace Admin\Controller;
 
 class UserController extends AdminController
 {
-    // 通知列表
+    /**
+     * 用户管理列表
+     * @author: iszmxw <mail@54zm.com>
+     * @Date：2019/12/14 15:46
+     */
     public function index()
     {
+        // 接收数据
         $where = [];
         $order = null;
         $id    = I('id');
