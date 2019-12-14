@@ -10,8 +10,8 @@ class UserController extends AdminController
         if (IS_POST) {
             $_GET = $_REQUEST;
         }
-        if (!empty($_GET['id'])) {
-            $where['id'] = intval($_GET['id']);
+        if (I('id')) {
+            $where['id'] = intval(I('id'));
         }
         if (I('vip')) {
             $where['vip'] = intval(I('vip'));
@@ -19,15 +19,15 @@ class UserController extends AdminController
         if (I('vip') == -1) {
             $where['vip'] = 0;
         }
-        if (!empty($_GET['name'])) {
-            $where['true_name|nickname'] = array('like', '%' . $_GET['name'] . '%');
+        if (I('name')) {
+            $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
         }
 
 
         // 组合排序方式
-        if (in_array($_GET['order'], array('id', 'money', 'agent1', 'agent2', 'agent3', 'sub_time'))) {
-            $type  = $_GET['type'] == 'asc' ? 'asc' : 'desc';
-            $order = $_GET['order'] . ' ' . $type;
+        if (in_array(I('order'), array('id', 'money', 'agent1', 'agent2', 'agent3', 'sub_time'))) {
+            $type  = I('type') == 'asc' ? 'asc' : 'desc';
+            $order = I('order') . ' ' . $type;
         }
 
         //发送的升级模板消息
@@ -38,7 +38,7 @@ class UserController extends AdminController
     // 用户详细信息
     public function detail()
     {
-        $id   = intval($_GET['id']);
+        $id   = intval(I('id'));
         $info = M('user')->find($id);
         $this->assign('info', $info);
 
@@ -88,7 +88,7 @@ class UserController extends AdminController
     // 校准下级代理数
     public function correct_agent()
     {
-        $user_id = intval($_GET['id']);
+        $user_id = intval(I('id'));
         $agent1  = M('user')->where('parent1=' . $user_id)->count();
         $agent2  = M('user')->where('parent2=' . $user_id)->count();
         $agent3  = M('user')->where('parent3=' . $user_id)->count();
@@ -190,11 +190,11 @@ class UserController extends AdminController
         if (IS_POST) {
             $_GET = $_REQUEST;
         }
-        if (!empty($_GET['id'])) {
-            $where['id'] = intval($_GET['id']);
+        if (('id')) {
+            $where['id'] = intval(I('id'));
         }
-        if (!empty($_GET['name'])) {
-            $where['true_name|nickname'] = array('like', '%' . $_GET['name'] . '%');
+        if (I('name')) {
+            $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
         }
 
         $list = M('user')->where($where)->select();
