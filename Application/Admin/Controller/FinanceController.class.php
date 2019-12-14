@@ -192,6 +192,7 @@ class FinanceController extends AdminController
     //分享书币
     public function share()
     {
+        $where = [];
         if (IS_POST) {
             $_GET      = $_REQUEST;
             $_GET['p'] = 1;
