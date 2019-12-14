@@ -17,10 +17,10 @@ class ReportController extends AdminController
         ];
         $limit     = 0;
         if ($stime && $etime) {
-            $stime = strtotime(I('stime'));
-            $etime = strtotime(I('etime'));
-            dump($stime,$etime);
+            $stime         = strtotime(I('stime'));
+            $etime         = strtotime(I('etime'));
             $where['date'] = array(array('gt', date('Ymd', $stime)), array('lt', date('Ymd', $etime)));
+            dump($where['date']);
         } else {
             $limit = 7;
         }
