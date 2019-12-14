@@ -93,7 +93,7 @@ class BookController extends AdminController
 
             exit;
         }
-
+        $arrcateids = [];
         if (intval($_GET['id']) > 0) {
             $info       = M('book')->find($_GET['id']);
             $cateids    = $info['cateids'];
