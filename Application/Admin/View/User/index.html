@@ -59,10 +59,10 @@
             <th class="head1">VIP</th>
             <th class="head1">VIP到期时间</th>
             <th class="head1">
-                <a href="<?php if($order == 'money' && $type == 'desc'){
-								echo U('index?order=money&type=desc');
-							}else{
+                <a href="<?php if($order == 'money' && $type == 'asc'){
 								echo U('index?order=money&type=asc');
+							}else{
+								echo U('index?order=money&type=desc');
 							}?>" style="color:red">
                     账户书币
                     <?php if($order == 'money' && $type == 'desc')echo '↑';else echo '↓';?>
