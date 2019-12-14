@@ -18,6 +18,7 @@ class ReportController extends AdminController
             'stime' => $stime,
             'etime' => $etime,
         ];
+        // 按照时间段进行筛选查询，默认查询最近的七天数据
         if ($stime && $etime) {
             $limit         = 0;
             $stime         = strtotime(I('stime'));
