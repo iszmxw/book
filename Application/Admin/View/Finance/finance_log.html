@@ -11,14 +11,14 @@
 			<div class="tableoptions">                    
 				<form method="post">
 					类型:
-					<select name="type" default="{$_GET['type']}" style="width:90px; min-width:0;">
+					<select name="type" default="{$type]}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<option value="money">余额</option>
 						<option value="wxpay">微信支付</option>
 						<option value="points">{$_CFG.site.points_name}</option>
 					</select>
 					操作:
-					<select name="action" default="{$_GET['action']}" style="width:90px; min-width:0;">
+					<select name="action" default="{$action}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<?php
 							for($i=0;$i<20;$i++){
@@ -30,13 +30,13 @@
 						?>
 					</select>
 					用户:
-					<input type="text" name="user_id" value="{$_GET['user_id']}" placeholder="请输入用户编号" class="smallinput" style="width:100px;" />
+					<input type="text" name="user_id" value="{$user_id}" placeholder="请输入用户编号" class="smallinput" style="width:100px;" />
 					订单号:
-					<input type="text" name="order_sn" value="{$_GET['order_sn']}" placeholder="输入订单号" class="smallinput" style="width:100px;" />
+					<input type="text" name="order_sn" value="{$order_sn}" placeholder="输入订单号" class="smallinput" style="width:100px;" />
 					操作时间:
-					<input type="text" name="time1" value="{$_GET['time1']}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
+					<input type="text" name="time1" value="{$time1}" class="smallinput" style="width:100px;" onclick="WdatePicker()" />
 					到
-					<input type="text" name="time2" value="{$_GET['time2']}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
+					<input type="text" name="time2" value="{$time2}" class="smallinput" style="width:100px;" onclick="WdatePicker()"  />
 					<input type="submit" value="查找" />
 				</form>
 			</div><!--tableoptions-->
