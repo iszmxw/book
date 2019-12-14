@@ -12,26 +12,24 @@ class UserController extends AdminController
         $id    = I('id');
         $vip   = I('vip');
         $name  = I('name');
-        if (IS_POST) {
-            if ($id) {
-                $where['id'] = intval($id);
-            }
-            if ($vip) {
-                $where['vip'] = intval($vip);
-            }
-            if ($vip == -1) {
-                $where['vip'] = 0;
-            }
-            if ($name) {
-                $where['true_name|nickname'] = array('like', '%' . $name . '%');
-            }
+        $order = I('order');
+        $type  = I('type');
+        if ($id) {
+            $where['id'] = intval($id);
         }
-
-
+        if ($vip) {
+            $where['vip'] = intval($vip);
+        }
+        if ($vip == -1) {
+            $where['vip'] = 0;
+        }
+        if ($name) {
+            $where['true_name|nickname'] = array('like', '%' . $name . '%');
+        }
         // 组合排序方式
-        if (in_array(I('order'), array('id', 'money', 'agent1', 'agent2', 'agent3', 'sub_time'))) {
-            $type  = I('type') == 'asc' ? 'asc' : 'desc';
-            $order = I('order') . ' ' . $type;
+        if (in_array($order, array('id', 'money', 'agent1', 'agent2', 'agent3', 'sub_time'))) {
+            $type  = $type == 'asc' ? 'asc' : 'desc';
+            $order = $order . ' ' . $type;
         }
 
         // 发送的升级模板消息
