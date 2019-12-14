@@ -15,7 +15,8 @@ class ReportController extends AdminController
             'stime' => $stime,
             'etime' => $etime,
         ];
-        $limit     = 0;
+        dump($view_data);
+        $limit = 0;
         if ($stime && $etime) {
             $stime         = strtotime(I('stime'));
             $etime         = strtotime(I('etime'));
@@ -37,7 +38,6 @@ class ReportController extends AdminController
         }
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
-        dump($view_data, $where);
         $this->views($view_data);
         $this->display();
     }
