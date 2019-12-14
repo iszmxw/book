@@ -23,6 +23,9 @@ class UserController extends AdminController
                 $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
             }
         }
+        foreach ($where as $key => $val) {
+            $this->assign($key, $val);
+        }
 
 
         // 组合排序方式
