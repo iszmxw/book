@@ -10,19 +10,22 @@ class WithdrawController extends AdminController
         if (IS_POST) {
             $_GET = $_REQUEST;
         }
-        $where = [];
-        if (!empty($_GET['status'])) {
-            $where['status'] = intval($_GET['status']);
+        $where  = [];
+        $status = I('status');
+        $time1  = I('time1');
+        $time2  = I('time2');
+        if ($status) {
+            $where['status'] = intval($status);
         }
-        if (!empty($_GET['time1']) && !empty($_GET['time2'])) {
+        if (!empty($time1) && !empty($time2)) {
             $where['create_time'] = array(
-                array('gt', strtotime($_GET['time1'])),
-                array('lt', strtotime($_GET['time2']) + 86400)
+                array('gt', strtotime($time1)),
+                array('lt', strtotime($time2) + 86400)
             );
-        } elseif (!empty($_GET['time1'])) {
-            $where['create_time'] = array('gt', strtotime($_GET['time1']));
-        } elseif (!empty($_GET['time2'])) {
-            $where['create_time'] = array('lt', strtotime($_GET['time2']) + 86400);
+        } elseif (!empty($time1)) {
+            $where['create_time'] = array('gt', strtotime($time1));
+        } elseif (!empty($time2)) {
+            $where['create_time'] = array('lt', strtotime($time2) + 86400);
         }
 
         $list = $this->_get_list('withdraw', $where);
@@ -33,7 +36,9 @@ class WithdrawController extends AdminController
                 $v['bank'] = unserialize($v['bank']);
             }
         }
-
+        $this->assign('status', $status);
+        $this->assign('time1', $time1);
+        $this->assign('time2', $time2);
         $this->assign('list', $list);
         $this->assign('page', $this->data['page']);
         $this->display();
