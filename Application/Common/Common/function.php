@@ -539,4 +539,60 @@ function get_selfmenu_type($type)
     return $type_name;
 }
 
+/**
+ * 获得财务记录动作名称
+ * @param $action
+ * @return string
+ * @author: iszmxw <mail@54zm.com>
+ * @Date：2019/12/14 17:24
+ */
+function get_finance_action($action)
+{
+    $return = '';
+    switch ($action) {
+        case 1:
+            $return = '在线充值';
+            break;
+        case 2:
+            $return = '余额支付';
+            break;
+        case 3:
+            $return = '订单分成';
+            break;
+        case 4:
+            $return = '提现成功';
+            break;
+        case 5:
+            $return = '提现退回';
+            break;
+        case 6:
+            $return = '取消订单';
+            break;
+        case 7:
+            $return = '取消分成';
+            break;
+        case 8:
+            $return = '消费漫画';
+            break;
+        case 9:
+            $return = '消费小说';
+            break;
+        case 10:
+            $return = '签到书币';
+            break;
+        case 11:
+            $return = '提现退回';
+            break;
+        case 12:
+            $return = '打赏书币';
+            break;
+        case 13:
+            $return = '分享赠送书币';
+            break;
+        default :
+            $return = '未知操作';
+    }
+    return $return;
+}
+
 ?>
