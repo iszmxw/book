@@ -188,9 +188,8 @@ class FinanceController extends AdminController
         } elseif (I('time2')) {
             $where['create_time'] = array('lt', strtotime(I('time2')) + 86400);
         }
-        $this->_list('finance_log', $where);
-        dd($data);
         $this->assign($data);
+        $this->_list('finance_log', $where);
     }
 
 
