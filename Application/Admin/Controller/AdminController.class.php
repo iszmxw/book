@@ -160,12 +160,12 @@ class AdminController extends Controller
 
     public function upload()
     {
-        if (!empty($_GET['url'])) {
-            $this->assign('url', $_GET['url']);
+        if (I('url')) {
+            $this->assign('url', I('url'));
         }
         if (IS_POST) {
-            if ($_GET['field']) {
-                $field = $_GET['field'];
+            if (I('field')) {
+                $field = I('field');
             }
             if (empty($field)) {
                 $field = 'file';
