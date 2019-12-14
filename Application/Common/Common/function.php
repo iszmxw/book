@@ -548,7 +548,6 @@ function get_selfmenu_type($type)
  */
 function get_finance_action($action)
 {
-    $return = '';
     switch ($action) {
         case 1:
             $return = '在线充值';
@@ -563,6 +562,7 @@ function get_finance_action($action)
             $return = '提现成功';
             break;
         case 5:
+        case 11:
             $return = '提现退回';
             break;
         case 6:
@@ -579,9 +579,6 @@ function get_finance_action($action)
             break;
         case 10:
             $return = '签到书币';
-            break;
-        case 11:
-            $return = '提现退回';
             break;
         case 12:
             $return = '打赏书币';
