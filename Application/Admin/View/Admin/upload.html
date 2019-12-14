@@ -41,10 +41,9 @@
     </notempty>
 
     <notempty name = "url">
-        <
-    if condition = "@$_GET['cur_index'] neq ''" >
-    parent.cur_index = {$_GET['cur_index']};
-    </if>
+        <if condition = "@$_GET['cur_index'] neq ''" >
+            parent.cur_index = {$_GET['cur_index']};
+        </if>
     parent.
     {
         $_GET['event']
