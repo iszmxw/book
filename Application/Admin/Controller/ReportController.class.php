@@ -8,14 +8,10 @@ class ReportController extends AdminController
     // 统计报表
     public function index()
     {
-        if (IS_POST) {
-            $stime = strtotime($_POST['stime']);
-            $etime = strtotime($_POST['etime']);
-
-            $where['date'] = array(array('gt', date('Ymd', $stime)), array('lt', date('Ymd', $etime)));
-        } else {
-            $limit = 7;
-        }
+        $stime         = strtotime(I('stime'));
+        $etime         = strtotime(I('etime'));
+        $where['date'] = array(array('gt', date('Ymd', $stime)), array('lt', date('Ymd', $etime)));
+        $limit         = 7;
 
         // 查询最近七天的报表
         $list = M('data')->limit($limit)->where($where)->order('date desc')->select();
