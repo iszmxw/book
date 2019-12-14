@@ -497,4 +497,46 @@ function IszmxwLog($file_name, $content)
     file_put_contents($file_name, $init_txt . $content_hr . $content);
 }
 
+
+/**
+ * 根据自定义菜单类型返回名称
+ * @param $type
+ * @return string
+ * @author: iszmxw <mail@54zm.com>
+ * @Date：2019/12/14 17:22
+ */
+function get_selfmenu_type($type)
+{
+    $type_name = '';
+    switch ($type) {
+        case 'click':
+            $type_name = '点击推事件';
+            break;
+        case 'view':
+            $type_name = '跳转URL';
+            break;
+        case 'scancode_push':
+            $type_name = '扫码推事件';
+            break;
+        case 'scancode_waitmsg':
+            $type_name = '扫码推事件且弹出“消息接收中”提示框';
+            break;
+        case 'pic_sysphoto':
+            $type_name = '弹出系统拍照发图';
+            break;
+        case 'pic_photo_or_album':
+            $type_name = '弹出拍照或者相册发图';
+            break;
+        case 'pic_weixin':
+            $type_name = '弹出微信相册发图器';
+            break;
+        case 'location_select':
+            $type_name = '弹出地理位置选择器';
+            break;
+        default :
+            $type_name = '不支持的类型';
+    }
+    return $type_name;
+}
+
 ?>
