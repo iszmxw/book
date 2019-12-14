@@ -55,7 +55,11 @@ class ConfigController extends AdminController
         $this->display();
     }
 
-    //打赏设置
+    /**
+     * 打赏赠送设置
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/12/14 23:28
+     */
     public function send()
     {
         if (IS_POST) {
