@@ -18,7 +18,8 @@
   "require": {
     "php": ">=5.4.0",
     "filp/whoops": "^2.0",
-    "symfony/var-dumper": "~3.3"
+    "symfony/var-dumper": "~3.3",
+    "ext-json": "*"
   },
   "config": {
     "preferred-install": "dist",

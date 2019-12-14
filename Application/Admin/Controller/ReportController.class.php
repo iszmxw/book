@@ -24,6 +24,7 @@ class ReportController extends AdminController
             $data['total'][]  = sprintf("%2.f", $val['total']);
             $data['subs'][]   = (int)$val['subs'];
         }
+        dd($cates);
         $this->assign('data', json_encode($data));
         $this->assign('cates', json_encode($cates));
         $this->display();
