@@ -12,9 +12,11 @@ class UserController extends AdminController
         if (IS_POST) {
             if (I('id')) {
                 $where['id'] = intval(I('id'));
+                $this->assign('id', I('id'));
             }
             if (I('vip')) {
                 $where['vip'] = intval(I('vip'));
+                $this->assign('vip', I('vip'));
             }
             if (I('vip') == -1) {
                 $where['vip'] = 0;
@@ -22,9 +24,6 @@ class UserController extends AdminController
             if (I('name')) {
                 $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
             }
-        }
-        foreach ($where as $key => $val) {
-            $this->assign($key, $val);
         }
 
 
