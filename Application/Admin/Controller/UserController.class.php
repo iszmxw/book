@@ -9,20 +9,21 @@ class UserController extends AdminController
     {
         $where = [];
         $order = null;
+        $id    = I('id');
+        $vip   = I('vip');
+        $name  = I('name');
         if (IS_POST) {
-            if (I('id')) {
-                $where['id'] = intval(I('id'));
-                $this->assign('id', I('id'));
+            if ($id) {
+                $where['id'] = intval($id);
             }
-            if (I('vip')) {
-                $where['vip'] = intval(I('vip'));
-                $this->assign('vip', I('vip'));
+            if ($vip) {
+                $where['vip'] = intval($vip);
             }
-            if (I('vip') == -1) {
+            if ($vip == -1) {
                 $where['vip'] = 0;
             }
-            if (I('name')) {
-                $where['true_name|nickname'] = array('like', '%' . I('name') . '%');
+            if ($name) {
+                $where['true_name|nickname'] = array('like', '%' . $name . '%');
             }
         }
 
