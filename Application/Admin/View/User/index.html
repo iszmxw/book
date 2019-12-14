@@ -22,15 +22,15 @@
 			<div class="tableoptions">        
 				<form method="post" id="form">
 					VIP:
-					<select name="vip" default="{$_GET['vip']}" style="width:90px; min-width:0;">
+					<select name="vip" default="{$vip}" style="width:90px; min-width:0;">
 						<option value="">全部</option>
 						<option value="1">是</option>
 						<option value="-1">否</option>
 					</select>
 					编号:
-					<input type="text" name="id" value="{$_GET['id']}" class="smallinput" style="width:100px;" />
+					<input type="text" name="id" value="{$id}" class="smallinput" style="width:100px;" />
 					昵称/姓名:
-					<input type="text" name="name" value="{$_GET['name']}" class="smallinput" style="width:100px;" />
+					<input type="text" name="name" value="{$name}" class="smallinput" style="width:100px;" />
 					<input type="submit" value="查找" />
 					<input type="button" value="导出" onclick="exportExcel()" />
 					<script>
