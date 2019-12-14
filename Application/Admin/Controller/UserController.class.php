@@ -35,6 +35,7 @@ class UserController extends AdminController
         $this->assign('id', $id);
         $this->assign('vip', $vip);
         $this->assign('name', $name);
+        $this->assign('order', $order);
 
         // 发送的升级模板消息
         $this->assign('tpls', M('tpl')->order('id desc')->select());
