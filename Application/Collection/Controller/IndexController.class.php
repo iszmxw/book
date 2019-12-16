@@ -47,7 +47,7 @@ class IndexController extends CollectionController
         $redis->auth('blog_54zm_com');              //密码验证
         $redis->select(2);                          //选择数据库2
         while (1) {
-            $res = $redis->lPush(time());
+            $res = $redis->lpop('iszmxw');
             if ($res) {
                 echo $res . "\r\n";
             }
