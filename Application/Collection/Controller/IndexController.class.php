@@ -14,6 +14,20 @@ class IndexController extends CollectionController
      */
     public function index()
     {
+        $redis = new \Redis();
+        $redis->connect('127.0.0.1', 6379);
+        while (1) {
+            $res = $redis->lpop('listname');
+            if ($res) {
+                echo $res . "\r\n";
+            }
+            sleep(1);
+        }
+    }
+
+
+    public function collections()
+    {
         $url   = "https://www.biquge.com.cn/book/32883/";
         $ql    = QueryList::get($url);
         $title = $ql->find('#info>h1')->text(); // 获取小说标题
