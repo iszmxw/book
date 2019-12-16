@@ -40,7 +40,7 @@ class IndexController extends CollectionController
     }
 
 
-    public function zip($title, $url)
+    public function zip()
     {
         $redis = new \Redis();
         $redis->connect('118.89.61.124', 4399);
