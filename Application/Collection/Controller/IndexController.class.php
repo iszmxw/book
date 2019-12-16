@@ -18,6 +18,9 @@ class IndexController extends CollectionController
         $redis->connect('118.89.61.124', 4399);
         $redis->auth('blog_54zm_com');              //密码验证
         $redis->select(2);                          //选择数据库2
+        $url  = "https://www.biquge.com.cn/book/32883/";
+        $data = self::collections($url);
+        dump($data);
         $res = $redis->lPush('iszmxw', time());
 //        while (1) {
 //            $res = $redis->lPush(time());
@@ -29,13 +32,16 @@ class IndexController extends CollectionController
     }
 
 
-    public function collections()
+    public static function collections($url)
     {
-        $url   = "https://www.biquge.com.cn/book/32883/";
         $ql    = QueryList::get($url);
         $title = $ql->find('#info>h1')->text(); // 获取小说标题
         $texts = $ql->find('dd>a')->texts(); //获取搜索结果标题列表
         $hrefs = $ql->find('dd>a')->attrs('href'); //获取搜索结果链接列表
-        dump($title, $texts, $hrefs);
+        return [
+            'title' => $title,
+            'texts' => $texts,
+            'hrefs' => $hrefs,
+        ];
     }
 }
