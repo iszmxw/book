@@ -55,10 +55,10 @@ class IndexController extends CollectionController
         if ($res) {
             echo $res . "\r\n";
         }
-        while (1) {
-
-            sleep(1);
-        }
+//        while (1) {
+//
+//            sleep(1);
+//        }
 
     }
 
