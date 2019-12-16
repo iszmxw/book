@@ -48,7 +48,7 @@ class IndexController extends CollectionController
         $redis->select(2);                          //选择数据库2
         $res = $redis->lpop('iszmxw');
         if ($res) {
-            $data = json_decode($res);
+            $data = json_decode($res, true);
             $this->handlezip($data['title'], $data['url']);
         }
 
