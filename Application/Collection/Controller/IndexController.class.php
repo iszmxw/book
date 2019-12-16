@@ -50,13 +50,27 @@ class IndexController extends CollectionController
 //            }
 //            sleep(1);
 //        }
-        $url     = "https://www.biquge.com.cn/book/32883/196851.html";
-        $ql      = QueryList::get($url);
-        $title   = $ql->find('.bookname>h1')->text(); // 获取小说内容
-        $content = $ql->find('#content')->html(); // 获取小说内容
-        $content = str_replace('<br><br>', "\r\n", $content);
-        $re      = file_put_contents("$title.txt", $content);
-        dump($re);
+        $url      = "https://www.biquge.com.cn/book/32883/196851.html";
+        $ql       = QueryList::get($url);
+        $title    = $ql->find('.bookname>h1')->text(); // 获取小说章节标题
+        $filename = "$title.txt";
+        $content  = $ql->find('#content')->html(); // 获取小说内容
+        $content  = str_replace('<br><br>', "\r\n", $content); // 处理小说内容
+        $re       = file_put_contents($filename, $content);
+        // 打开压缩文件
+        $zip = new \ZipArchive();
+        if ($zip->open('test.zip') === TRUE) {
+            $zip->addFile($filename, 'newname.txt');
+            $zip->close();
+            echo 'ok';
+        } else {
+            echo 'failed';
+        }
+        if (FALSE !== $re) {
+            return "$title.txt";
+        } else {
+            return false;
+        }
     }
 
 }
