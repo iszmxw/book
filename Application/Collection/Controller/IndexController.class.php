@@ -47,17 +47,13 @@ class IndexController extends CollectionController
         $redis->auth('blog_54zm_com');              //密码验证
         $redis->select(2);                          //选择数据库2
         $res = $redis->lpop('iszmxw');
-        if ($res) {
-            $data = json_decode($res, true);
-            $this->handlezip($data['title'], $data['url']);
+        while (1) {
+            if ($res) {
+                $data = json_decode($res, true);
+                $this->handlezip($data['title'], $data['url']);
+            }
+            sleep(1);
         }
-
-        die();
-
-//        while (1) {
-//
-//            sleep(1);
-//        }
 
     }
 
@@ -83,7 +79,7 @@ class IndexController extends CollectionController
             if ($zip->open($zipname) === TRUE) {
                 $zip->addFile($filename);
                 $zip->close();
-                dump("第二次添加文件到压缩包");
+                echo "第二次添加文件到压缩包\r\n";
             } else {
                 // 文件集合
                 $fileList = array(
@@ -94,7 +90,7 @@ class IndexController extends CollectionController
                     $zip->addFile($file, basename($file));   //向压缩包中添加文件
                 }
                 $zip->close();  //关闭压缩包
-                dump("首次创建压缩包");
+                echo "首次创建压缩包\r\n";
             }
         }
     }
