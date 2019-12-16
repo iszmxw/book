@@ -69,7 +69,7 @@ class IndexController extends CollectionController
     {
         $ql       = QueryList::get($url);
         $chapter  = $ql->find('.bookname>h1')->text(); // 获取小说章节标题
-        $filename = "$chapter.txt";
+        $filename = "/iszmxw/$chapter.txt";
         $content  = $ql->find('#content')->html(); // 获取小说内容
         $content  = str_replace('<br><br>', "\r\n", $content); // 处理小说内容
         $re       = file_put_contents($filename, $content);
