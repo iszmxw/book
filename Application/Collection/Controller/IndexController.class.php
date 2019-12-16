@@ -25,13 +25,6 @@ class IndexController extends CollectionController
             $res  = $redis->lPush('iszmxw', $json);
             dump($res);
         }
-//        while (1) {
-//            $res = $redis->lPush(time());
-//            if ($res) {
-//                echo $res . "\r\n";
-//            }
-//            sleep(1);
-//        }
     }
 
 
@@ -45,4 +38,22 @@ class IndexController extends CollectionController
             'hrefs' => $hrefs,
         ];
     }
+
+
+    public function zip()
+    {
+
+//        while (1) {
+//            $res = $redis->lPush(time());
+//            if ($res) {
+//                echo $res . "\r\n";
+//            }
+//            sleep(1);
+//        }
+        $url     = "https://www.biquge.com.cn/book/32883/196851.html";
+        $ql      = QueryList::get($url);
+        $content = $ql->find('#content')->text(); // 获取小说内容
+        dump($content);
+    }
+
 }
