@@ -42,15 +42,30 @@ class IndexController extends CollectionController
 
     public function zip($title, $url)
     {
+        $redis = new \Redis();
+        $redis->connect('118.89.61.124', 4399);
+        $redis->auth('blog_54zm_com');              //密码验证
+        $redis->select(2);                          //选择数据库2
+        while (1) {
+            $res = $redis->lPush(time());
+            if ($res) {
+                echo $res . "\r\n";
+            }
+            sleep(1);
+        }
 
-//        while (1) {
-//            $res = $redis->lPush(time());
-//            if ($res) {
-//                echo $res . "\r\n";
-//            }
-//            sleep(1);
-//        }
-//        $url      = "https://www.biquge.com.cn/book/32883/196851.html";
+    }
+
+
+    /**
+     * 压缩zip
+     * @param $title
+     * @param $url
+     * @author：iszmxw <mail@54zm.com>
+     * @time：2019/12/17 0:39
+     */
+    public function handlezip($title, $url)
+    {
         $ql       = QueryList::get($url);
         $chapter  = $ql->find('.bookname>h1')->text(); // 获取小说章节标题
         $filename = "$chapter.txt";
