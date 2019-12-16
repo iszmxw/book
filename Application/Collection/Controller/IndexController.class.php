@@ -47,15 +47,13 @@ class IndexController extends CollectionController
         $redis->auth('blog_54zm_com');              //密码验证
         $redis->select(2);                          //选择数据库2
         $res = $redis->lpop('iszmxw');
-//            if ($res) {
-//                echo $res;
-//                $data = json_decode($res);
-//                $this->handlezip($data['title'], $data['url']);
-//            }
         if ($res) {
-            echo $res . "\r\n";
+            $data = json_decode($res);
+            $this->handlezip($data['title'], $data['url']);
         }
+
         die();
+
 //        while (1) {
 //
 //            sleep(1);
