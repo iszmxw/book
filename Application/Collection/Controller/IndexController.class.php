@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Controller;
+namespace Collection\Controller;
 
 
 use QL\QueryList;

@@ -1,9 +1,8 @@
 <?php
 
-namespace Admin\Controller;
+namespace Collection\Controller;
 
 use Think\Controller;
-use Think\Page;
 
 class CollectionController extends Controller
 {
