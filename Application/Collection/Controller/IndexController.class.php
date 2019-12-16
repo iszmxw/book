@@ -49,7 +49,7 @@ class IndexController extends CollectionController
         while (1) {
             $res = $redis->lpop('iszmxw');
             if ($res) {
-                echo $res . "\r\n";
+                $data = json_decode($res);
             }
             sleep(1);
         }
