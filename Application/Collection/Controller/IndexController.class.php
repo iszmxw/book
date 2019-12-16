@@ -55,6 +55,7 @@ class IndexController extends CollectionController
         if ($res) {
             echo $res . "\r\n";
         }
+        die();
 //        while (1) {
 //
 //            sleep(1);
