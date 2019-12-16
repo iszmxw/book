@@ -40,7 +40,7 @@ class IndexController extends CollectionController
     }
 
 
-    public function zip()
+    public function zip($url)
     {
 
 //        while (1) {
@@ -61,18 +61,20 @@ class IndexController extends CollectionController
         $fileList = array(
             realpath($filename)
         );
-        $filename = "iszmxw.zip";
+        $zipname  = "iszmxw.zip";
         $zip      = new \ZipArchive();
-        $zip->open($filename, \ZipArchive::CREATE);   //打开压缩包
-        foreach ($fileList as $file) {
-            $zip->addFile($file, basename($file));   //向压缩包中添加文件
-        }
-        $zip->close();  //关闭压缩包
 
-        if (FALSE !== $re) {
-            return "$title.txt";
+        if ($zip->open($zipname) === TRUE) {
+            $zip->addFile($filename, 'newname.txt');
+            $zip->close();
+            dump("第二次添加文件到压缩包");
         } else {
-            return false;
+            $zip->open($zipname, \ZipArchive::CREATE);   //打开压缩包
+            foreach ($fileList as $file) {
+                $zip->addFile($file, basename($file));   //向压缩包中添加文件
+            }
+            $zip->close();  //关闭压缩包
+            dump("首次创建压缩包");
         }
     }
 
