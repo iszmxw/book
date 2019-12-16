@@ -18,12 +18,12 @@ class IndexController extends CollectionController
         $redis->connect('118.89.61.124', 4399);
         $redis->auth('blog_54zm_com');              //密码验证
         $redis->select(2);                          //选择数据库2
-        $url  = "https://www.biquge.com.cn/book/32883/";
-        $data = self::collections($url);
+        $url    = "https://www.biquge.com.cn/book/32883/";
+        $data   = self::collections($url);
         $result = [];
         foreach ($data['texts'] as $key => $val) {
             $result[$key]['title'] = $data['texts'][$key];
-            $result[$key]['url']   = $data['hrefs'][$key];
+            $result[$key]['url']   = "https://www.biquge.com.cn" . $data['hrefs'][$key];
         }
         $res = $redis->lPush('iszmxw', time());
         dump($result);
