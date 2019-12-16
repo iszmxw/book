@@ -58,12 +58,10 @@ class IndexController extends CollectionController
         $content  = str_replace('<br><br>', "\r\n", $content); // 处理小说内容
         $re       = file_put_contents($filename, $content);
 
-        dd(realpath($filename));
         $fileList = array(
-            "c:/wamp/www/log.txt",
-            "c:/wamp/www/weixin.class.php"
+            realpath($filename)
         );
-        $filename = "test.zip";
+        $filename = "iszmxw.zip";
         $zip      = new \ZipArchive();
         $zip->open($filename, \ZipArchive::CREATE);   //打开压缩包
         foreach ($fileList as $file) {
