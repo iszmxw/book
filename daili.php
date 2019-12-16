@@ -31,4 +31,7 @@ define('DIR_SECURE_CONTENT', 'powered by http://blog.54zm.com');
 define('APP_DEBUG', true);
 
 define('APP_PATH', './Application/');
+
+// 使用composer自动加载器
+require './vendor/autoload.php';
 require './ThinkPHP/ThinkPHP.php';
