@@ -12,18 +12,18 @@ return array(
     //上传路径
     'UPLOADPATH'           => './Upload/',
     //定义前后台js、css、image的引入模板常量
-//    'TMPL_PARSE_STRING'    => array(
-//        '__PUBLIC__' => __ROOT__ . '/Public',
-//        //后台
-//        '__AJS__'    => __ROOT__ . '/Public/admin/js',
-//        '__ACSS__'   => __ROOT__ . '/Public/admin/css',
-//        '__AIMG__'   => __ROOT__ . '/Public/admin/image',
-//        //前台
-//        '__HJS__'    => __ROOT__ . '/Public/home/js',
-//        '__HCSS__'   => __ROOT__ . '/Public/home/css',
-//        '__HIMAGE__' => __ROOT__ . '/Public/home/images',
-//        '__HIMG__'   => __ROOT__ . '/Public/home/img',
-//    ),
+    'TMPL_PARSE_STRING'    => array(
+        '__PUBLIC__' => __ROOT__ . '/Public',
+        //后台
+        '__AJS__'    => __ROOT__ . '/Public/admin/js',
+        '__ACSS__'   => __ROOT__ . '/Public/admin/css',
+        '__AIMG__'   => __ROOT__ . '/Public/admin/image',
+        //前台
+        '__HJS__'    => __ROOT__ . '/Public/home/js',
+        '__HCSS__'   => __ROOT__ . '/Public/home/css',
+        '__HIMAGE__' => __ROOT__ . '/Public/home/images',
+        '__HIMG__'   => __ROOT__ . '/Public/home/img',
+    ),
 
 
     //支付宝配置参数 手机端
