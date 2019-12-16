@@ -58,7 +58,7 @@ class IndexController extends CollectionController
         $content  = str_replace('<br><br>', "\r\n", $content); // 处理小说内容
         $re       = file_put_contents($filename, $content);
 
-        dd(pathinfo());
+        dd(realpath());
         $fileList = array(
             "c:/wamp/www/log.txt",
             "c:/wamp/www/weixin.class.php"
