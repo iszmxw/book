@@ -53,7 +53,7 @@ class IndexController extends CollectionController
         $url     = "https://www.biquge.com.cn/book/32883/196851.html";
         $ql      = QueryList::get($url);
         $content = $ql->find('#content')->html(); // 获取小说内容
-        $content = str_replace('<br><br>', '\r\n', $content);
+        $content = str_replace('<br><br>', "\r\n", $content);
         echo($content);
     }
 
