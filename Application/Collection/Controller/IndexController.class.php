@@ -40,7 +40,7 @@ class IndexController extends CollectionController
     }
 
 
-    public function zip($url)
+    public function zip($title, $url)
     {
 
 //        while (1) {
@@ -50,31 +50,32 @@ class IndexController extends CollectionController
 //            }
 //            sleep(1);
 //        }
-        $url      = "https://www.biquge.com.cn/book/32883/196851.html";
+//        $url      = "https://www.biquge.com.cn/book/32883/196851.html";
         $ql       = QueryList::get($url);
-        $title    = $ql->find('.bookname>h1')->text(); // 获取小说章节标题
-        $filename = "$title.txt";
+        $chapter  = $ql->find('.bookname>h1')->text(); // 获取小说章节标题
+        $filename = "$chapter.txt";
         $content  = $ql->find('#content')->html(); // 获取小说内容
         $content  = str_replace('<br><br>', "\r\n", $content); // 处理小说内容
         $re       = file_put_contents($filename, $content);
-
-        $fileList = array(
-            realpath($filename)
-        );
-        $zipname  = "iszmxw.zip";
-        $zip      = new \ZipArchive();
-
-        if ($zip->open($zipname) === TRUE) {
-            $zip->addFile($filename, 'newname.txt');
-            $zip->close();
-            dump("第二次添加文件到压缩包");
-        } else {
-            $zip->open($zipname, \ZipArchive::CREATE);   //打开压缩包
-            foreach ($fileList as $file) {
-                $zip->addFile($file, basename($file));   //向压缩包中添加文件
+        if ($re) {
+            $zipname = "$title.zip";
+            $zip     = new \ZipArchive();
+            if ($zip->open($zipname) === TRUE) {
+                $zip->addFile($filename);
+                $zip->close();
+                dump("第二次添加文件到压缩包");
+            } else {
+                // 文件集合
+                $fileList = array(
+                    realpath($filename)
+                );
+                $zip->open($zipname, \ZipArchive::CREATE);   //打开压缩包
+                foreach ($fileList as $file) {
+                    $zip->addFile($file, basename($file));   //向压缩包中添加文件
+                }
+                $zip->close();  //关闭压缩包
+                dump("首次创建压缩包");
             }
-            $zip->close();  //关闭压缩包
-            dump("首次创建压缩包");
         }
     }
 
