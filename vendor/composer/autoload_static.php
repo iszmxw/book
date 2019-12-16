@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitebcaaec9a2961130845bb51a9f0052e3
+class ComposerStaticInit9c3176050d0fb00334966683374f3592
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -146,7 +146,6 @@ class ComposerStaticInitebcaaec9a2961130845bb51a9f0052e3
         'Cache\\Adapter\\Common\\PhpCacheItem' => __DIR__ . '/..' . '/cache/adapter-common/PhpCacheItem.php',
         'Cache\\Adapter\\Common\\PhpCachePool' => __DIR__ . '/..' . '/cache/adapter-common/PhpCachePool.php',
         'Cache\\Adapter\\Common\\TagSupportWithArray' => __DIR__ . '/..' . '/cache/adapter-common/TagSupportWithArray.php',
-        'Cache\\Adapter\\Common\\Tests\\CacheItemTest' => __DIR__ . '/..' . '/cache/adapter-common/Tests/CacheItemTest.php',
         'Cache\\Adapter\\Filesystem\\FilesystemCachePool' => __DIR__ . '/..' . '/cache/filesystem-adapter/FilesystemCachePool.php',
         'Cache\\TagInterop\\TaggableCacheItemInterface' => __DIR__ . '/..' . '/cache/tag-interop/TaggableCacheItemInterface.php',
         'Cache\\TagInterop\\TaggableCacheItemPoolInterface' => __DIR__ . '/..' . '/cache/tag-interop/TaggableCacheItemPoolInterface.php',
@@ -397,9 +396,9 @@ class ComposerStaticInitebcaaec9a2961130845bb51a9f0052e3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitebcaaec9a2961130845bb51a9f0052e3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitebcaaec9a2961130845bb51a9f0052e3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitebcaaec9a2961130845bb51a9f0052e3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9c3176050d0fb00334966683374f3592::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9c3176050d0fb00334966683374f3592::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9c3176050d0fb00334966683374f3592::$classMap;
 
         }, null, ClassLoader::class);
     }

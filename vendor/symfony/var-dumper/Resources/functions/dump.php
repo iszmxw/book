@@ -15,12 +15,9 @@ if (!function_exists('dump')) {
     /**
      * @author Nicolas Grekas <p@tchwork.com>
      */
-    function dump($var, ...$moreVars)
+    function dump($var)
     {
-        ob_start();
-        VarDumper::dump($var);
-
-        foreach ($moreVars as $v) {
+        foreach (func_get_args() as $v) {
             VarDumper::dump($v);
         }
 
@@ -29,17 +26,5 @@ if (!function_exists('dump')) {
         }
 
         return $var;
-        ob_end_flush();
-    }
-}
-
-if (!function_exists('dd')) {
-    function dd(...$vars)
-    {
-        foreach ($vars as $v) {
-            VarDumper::dump($v);
-        }
-
-        die(1);
     }
 }

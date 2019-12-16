@@ -16,7 +16,6 @@ return array(
     'Cache\\Adapter\\Common\\PhpCacheItem' => $vendorDir . '/cache/adapter-common/PhpCacheItem.php',
     'Cache\\Adapter\\Common\\PhpCachePool' => $vendorDir . '/cache/adapter-common/PhpCachePool.php',
     'Cache\\Adapter\\Common\\TagSupportWithArray' => $vendorDir . '/cache/adapter-common/TagSupportWithArray.php',
-    'Cache\\Adapter\\Common\\Tests\\CacheItemTest' => $vendorDir . '/cache/adapter-common/Tests/CacheItemTest.php',
     'Cache\\Adapter\\Filesystem\\FilesystemCachePool' => $vendorDir . '/cache/filesystem-adapter/FilesystemCachePool.php',
     'Cache\\TagInterop\\TaggableCacheItemInterface' => $vendorDir . '/cache/tag-interop/TaggableCacheItemInterface.php',
     'Cache\\TagInterop\\TaggableCacheItemPoolInterface' => $vendorDir . '/cache/tag-interop/TaggableCacheItemPoolInterface.php',
