@@ -28,3 +28,15 @@ if (!function_exists('dump')) {
         return $var;
     }
 }
+
+
+if (!function_exists('dd')) {
+    function dd(...$vars)
+    {
+        foreach ($vars as $v) {
+            VarDumper::dump($v);
+        }
+
+        die(1);
+    }
+}
