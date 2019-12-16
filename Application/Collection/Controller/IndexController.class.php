@@ -57,15 +57,20 @@ class IndexController extends CollectionController
         $content  = $ql->find('#content')->html(); // 获取小说内容
         $content  = str_replace('<br><br>', "\r\n", $content); // 处理小说内容
         $re       = file_put_contents($filename, $content);
-        // 打开压缩文件
-        $zip = new \ZipArchive();
-        if ($zip->open('test.zip') === TRUE) {
-            $zip->addFile($filename, 'newname.txt');
-            $zip->close();
-            echo 'ok';
-        } else {
-            echo 'failed';
+
+        dd(pathinfo());
+        $fileList = array(
+            "c:/wamp/www/log.txt",
+            "c:/wamp/www/weixin.class.php"
+        );
+        $filename = "test.zip";
+        $zip      = new \ZipArchive();
+        $zip->open($filename, \ZipArchive::CREATE);   //打开压缩包
+        foreach ($fileList as $file) {
+            $zip->addFile($file, basename($file));   //向压缩包中添加文件
         }
+        $zip->close();  //关闭压缩包
+
         if (FALSE !== $re) {
             return "$title.txt";
         } else {
