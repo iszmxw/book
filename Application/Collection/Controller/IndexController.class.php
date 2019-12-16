@@ -21,7 +21,7 @@ class IndexController extends CollectionController
         $url    = "https://www.biquge.com.cn/book/32883/";
         $data   = self::collections($url);
         $result = [];
-        foreach ($data['urls'] as $key => $val) {
+        foreach ($data['hrefs'] as $key => $val) {
             $result[$key]['title'] = $data['title'];
             $result[$key]['url']   = "https://www.biquge.com.cn" . $data['hrefs'][$key];
         }
