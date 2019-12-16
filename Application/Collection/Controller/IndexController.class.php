@@ -48,10 +48,13 @@ class IndexController extends CollectionController
         $redis->select(2);                          //选择数据库2
         while (1) {
             $res = $redis->lpop('iszmxw');
-            if ($res) {
-                echo $res;
+//            if ($res) {
+//                echo $res;
 //                $data = json_decode($res);
 //                $this->handlezip($data['title'], $data['url']);
+//            }
+            if ($res) {
+                echo $res . "\r\n";
             }
             sleep(1);
         }
