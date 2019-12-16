@@ -17,9 +17,10 @@
   ],
   "require": {
     "php": ">=5.4.0",
+    "ext-json": "*",
     "filp/whoops": "^2.0",
-    "symfony/var-dumper": "~3.3",
-    "ext-json": "*"
+    "jaeger/querylist": "dev-master",
+    "symfony/var-dumper": "~3.3"
   },
   "config": {
     "preferred-install": "dist",
