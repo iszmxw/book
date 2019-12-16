@@ -49,8 +49,9 @@ class IndexController extends CollectionController
         while (1) {
             $res = $redis->lpop('iszmxw');
             if ($res) {
-                $data = json_decode($res);
-                $this->handlezip($data['title'], $data['url']);
+                echo $res;
+//                $data = json_decode($res);
+//                $this->handlezip($data['title'], $data['url']);
             }
             sleep(1);
         }
