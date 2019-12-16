@@ -20,8 +20,13 @@ class IndexController extends CollectionController
         $redis->select(2);                          //选择数据库2
         $url  = "https://www.biquge.com.cn/book/32883/";
         $data = self::collections($url);
-        dump($data);
+        $result = [];
+        foreach ($data['texts'] as $key => $val) {
+            $result[$key]['title'] = $data['texts'][$key];
+            $result[$key]['url']   = $data['hrefs'][$key];
+        }
         $res = $redis->lPush('iszmxw', time());
+        dump($result);
 //        while (1) {
 //            $res = $redis->lPush(time());
 //            if ($res) {
