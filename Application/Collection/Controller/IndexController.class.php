@@ -15,7 +15,9 @@ class IndexController extends CollectionController
     public function index()
     {
         $redis = new \Redis();
-        $redis->connect('127.0.0.1', 6379);
+        $redis->connect('118.89.61.124', 4399);
+        $redis->auth('blog_54zm_com'); //密码验证
+        $redis->select(2);//选择数据库2
         while (1) {
             $res = $redis->lpop('listname');
             if ($res) {
