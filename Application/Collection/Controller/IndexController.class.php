@@ -22,7 +22,7 @@ class IndexController extends CollectionController
         $data   = self::collections($url);
         $result = [];
         foreach ($data['texts'] as $key => $val) {
-            $result[$key]['title'] = $data['texts'][$key];
+            $result[$key]['title'] = $data['title'];
             $result[$key]['url']   = "https://www.biquge.com.cn" . $data['hrefs'][$key];
         }
         $res = $redis->lPush('iszmxw', time());
@@ -41,11 +41,9 @@ class IndexController extends CollectionController
     {
         $ql    = QueryList::get($url);
         $title = $ql->find('#info>h1')->text(); // 获取小说标题
-        $texts = $ql->find('dd>a')->texts(); //获取搜索结果标题列表
         $hrefs = $ql->find('dd>a')->attrs('href'); //获取搜索结果链接列表
         return [
             'title' => $title,
-            'texts' => $texts,
             'hrefs' => $hrefs,
         ];
     }
