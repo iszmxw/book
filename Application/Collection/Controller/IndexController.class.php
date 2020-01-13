@@ -16,6 +16,7 @@ class IndexController extends Controller
      */
     public function index()
     {
+        dd(1);
         $redis = new \Redis();
         $redis->connect('118.89.61.124', 4399);
         $redis->auth('blog_54zm_com');              //密码验证
