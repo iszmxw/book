@@ -4,7 +4,7 @@
  * 明航模块
  */
 // 检测PHP环境
-if (version_compare(PHP_VERSION, '5.3.0', '<')) die('require PHP > 5.3.0 !');
+if (version_compare(PHP_VERSION, '5.3.0', '<')) die('PHP 版本必须大于等于5.3.0 !');
 
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为 false
 
@@ -16,20 +16,10 @@ define('APP_MODE', 'cli');
 // 定义模块名
 define('BIND_MODULE', 'CliModule');
 
-// 定义应用目录（linux 下需要写绝对目录）
-define('APP_PATH', dirname(__FILE__) . '/Application/');
+define('DIR_SECURE_CONTENT', 'powered by http://blog.54zm.com');
 
-// 定义网站根目录
-define('ROOT_PATH', realpath('./') . DIRECTORY_SEPARATOR);
+define('APP_PATH', './Application/');
 
-// 定义根路径
-define('ROOT_URL', rtrim(dirname($_SERVER["SCRIPT_NAME"]), '\\/') . '/');
-
-// 网站地址
-define('BASE_URL', "http://" . $_SERVER["HTTP_HOST"]);
-
-// 文件上传地址
-define('UPLOAD', BASE_URL . '/Public/Upload/');
-
-// 引入 ThinkPHP 入口文件
-require dirname(__FILE__) . '/ThinkPHP/ThinkPHP.php';
+// 使用composer自动加载器
+require './vendor/autoload.php';
+require './ThinkPHP/ThinkPHP.php';
