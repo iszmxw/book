@@ -44,25 +44,23 @@ class BookController extends AdminController
      */
     public function edit()
     {
-        $get_data = I('get.');
         if (IS_POST) {
-            $post_data = I('post.');
-            $cateids   = implode(',', $post_data['arrcateids']);
-            unset($post_data['arrcateids']);
-            $post_data['cateids'] = $cateids;
-            $bookcate             = implode(',', $post_data['bookcate']);
-            unset($post_data['bookcate']);
-            $post_data['bookcate'] = $bookcate;
+            $cateids = implode(',', $_POST['arrcateids']);
+            unset($_POST['arrcateids']);
+            $_POST['cateids'] = $cateids;
+            $bookcate         = implode(',', $_POST['bookcate']);
+            unset($_POST['bookcate']);
+            $_POST['bookcate'] = $bookcate;
             // 修改
-            if (isset($get_data['id'])) {
-                $post_data['update_time'] = NOW_TIME;
-                M('book')->where('id=' . intval($get_data['id']))->save($post_data);
+            if (isset($_GET['id'])) {
+                $_POST['update_time'] = NOW_TIME;
+                M('book')->where('id=' . intval($_GET['id']))->save($_POST);
                 $this->success('操作成功！');
             } else {
-                $post_data['create_time'] = NOW_TIME;
-                $post_data['update_time'] = NOW_TIME;
-                $rs                       = M('book')->add($post_data);
-                $product_id               = $rs;
+                $_POST['create_time'] = NOW_TIME;
+                $_POST['update_time'] = NOW_TIME;
+                $rs                   = M('book')->add($_POST);
+                $product_id           = $rs;
 
                 //若上传了分集压缩包
                 if (!empty($_FILES['cert'])) {
@@ -86,7 +84,7 @@ class BookController extends AdminController
                                 $zip->close();
                                 //解压完成之后删除
                                 unlink($file);
-                                $post_data['cert'] = $path;
+                                $_POST['cert'] = $path;
                             } else {
                                 $this->error('解压失败!');
                             }
@@ -110,8 +108,8 @@ class BookController extends AdminController
         $arrcateids = [];
         $bookcate   = [];
         $info       = [];
-        if (isset($get_data['id']) && intval($get_data['id']) > 0) {
-            $info       = M('book')->find($get_data['id']);
+        if (intval($_GET['id']) > 0) {
+            $info       = M('book')->find($_GET['id']);
             $cateids    = $info['cateids'];
             $arrcateids = explode(',', $cateids);
             $bookcate   = explode(",", $info['bookcate']);
@@ -189,19 +187,17 @@ class BookController extends AdminController
     // 编辑、添加小说分集
     public function episodesedit()
     {
-        $bid      = I('bid', 0, 'intval');
-        $get_data = I('get.');
+        $bid = I('bid', 0, 'intval');
         if (IS_POST) {
-            $post_data = I('post.');
-            $bid       = I('post.bid');
-            if (isset($get_data['id'])) { // 修改
-                $post_data['update_time'] = NOW_TIME;
-                $rs                       = M('book_episodes')->where('id=' . intval($get_data['id']))->save($post_data);
+            $bid = I('post.bid');
+            if (isset($_GET['id'])) { // 修改
+                $_POST['update_time'] = NOW_TIME;
+                $rs                   = M('book_episodes')->where('id=' . intval($_GET['id']))->save($_POST);
             } else { // 添加
-                $post_data['create_time'] = NOW_TIME;
-                $post_data['update_time'] = NOW_TIME;
-                $post_data['bid']         = $bid;
-                $rs                       = M('book_episodes')->add($post_data);
+                $_POST['create_time'] = NOW_TIME;
+                $_POST['update_time'] = NOW_TIME;
+                $_POST['bid']         = $bid;
+                $rs                   = M('book_episodes')->add($_POST);
             }
 
             $cnt = M('book_episodes')->where("bid={$bid}")->count();
@@ -211,8 +207,8 @@ class BookController extends AdminController
             exit;
         }
 
-        if (intval($get_data['id']) > 0) {
-            $info = M('book_episodes')->find($get_data['id']);
+        if (intval($_GET['id']) > 0) {
+            $info = M('book_episodes')->find($_GET['id']);
 
             $asdata = array(
                 'info' => $info,
@@ -229,16 +225,14 @@ class BookController extends AdminController
     // 删除小说
     public function del()
     {
-        $get_data = I('get.');
-        $this->_del('book', $get_data['id']);
+        $this->_del('book', $_GET['id']);
         $this->success('操作成功！', $_SERVER['HTTP_REFERER']);
     }
 
     // 删除小说分集
     public function episodesdel()
     {
-        $get_data = I('get.');
-        $this->_del('book_episodes', $get_data['id']);
+        $this->_del('book_episodes', $_GET['id']);
         $this->success('操作成功！', $_SERVER['HTTP_REFERER']);
     }
 
@@ -251,8 +245,7 @@ class BookController extends AdminController
 
     public function delComment()
     {
-        $get_data = I('get.');
-        $this->_del('comment', $get_data['id']);
+        $this->_del('comment', $_GET['id']);
         $this->success('操作成功！', $_SERVER['HTTP_REFERER']);
     }
 
