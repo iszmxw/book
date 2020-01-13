@@ -121,7 +121,6 @@ class BookController extends AdminController
             'arrcateids' => $arrcateids,
             'bookcate'   => $bookcate,
         );
-        dd($asdata);
         $this->assign($asdata);
         $this->display();
     }
