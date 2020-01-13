@@ -110,6 +110,7 @@ class BookController extends AdminController
         $arrcateids = [];
         $bookcate   = [];
         $info       = [];
+        dd($get_data['id']);
         if (intval($get_data['id']) > 0) {
             $info       = M('book')->find($get_data['id']);
             $cateids    = $info['cateids'];
