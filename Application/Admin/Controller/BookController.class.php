@@ -12,9 +12,10 @@ class BookController extends AdminController
         $where = [];
         $title = I('title');
         if (isset($title)) {
-            $_GET['p']      = 1; //如果是post的话回到第一页
-            $_GET['title']  = $_POST['title'];
-            $where['title'] = array('like', '%' . $_POST['title'] . '%');
+            if (IS_POST) {
+                $p = 1; // 如果是post的话回到第一页
+            }
+            $where['title'] = array('like', '%' . $title . '%');
         }
         // 组合排序方式
         $order = I('order');
@@ -27,6 +28,8 @@ class BookController extends AdminController
         } else {
             $order = "sort desc";
         }
+        $view_data = ['title' => $title];
+        $this->assign($view_data);
         $this->_list('book', $where, $order);
     }
 
