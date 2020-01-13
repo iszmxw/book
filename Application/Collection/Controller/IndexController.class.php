@@ -4,11 +4,13 @@ namespace Collection\Controller;
 
 
 use QL\QueryList;
+use Think\Controller;
 
-class IndexController extends CollectionController
+class IndexController extends Controller
 {
+
+
     /**
-     *
      * @author：iszmxw <mail@54zm.com>
      * @time：2019/12/16 20:20
      */
@@ -17,12 +19,12 @@ class IndexController extends CollectionController
         $redis = new \Redis();
         $redis->connect('118.89.61.124', 4399);
         $redis->auth('blog_54zm_com');              //密码验证
-        $redis->select(2);                          //选择数据库2
+        $redis->select(1);                          //选择数据库1
         $url  = "https://www.biquge.com.cn/book/32883/";
         $data = self::collections($url);
         foreach ($data['hrefs'] as $key => $val) {
             $json = json_encode(['title' => $data['title'], 'url' => "https://www.biquge.com.cn" . $data['hrefs'][$key]], true);
-            $res  = $redis->lPush('iszmxw', $json);
+            $res  = $redis->lPush('book', $json);
             dump($res);
         }
     }
